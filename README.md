@@ -12,9 +12,9 @@ The [Reuse Tool](https://reuse.software/) must be used for your samples project.
 3. The README.md file (this file):
 Please edit this file as it is the primary description file for your project. You can find some placeholder titles for sections below.
 
-# [Title]
+# Create simple, connected digital experiences with API-based integration
 <!-- Please include descriptive title -->
-Create simple, connected digital experiences with API-based integration
+
 <!--- Register repository https://api.reuse.software/register, then add REUSE badge:
 [![REUSE status](https://api.reuse.software/badge/github.com/SAP-samples/REPO-NAME)](https://api.reuse.software/info/github.com/SAP-samples/REPO-NAME)
 -->
@@ -34,7 +34,7 @@ A single point of access to all API for all developers, powered by workflows and
 An empowered developer ecosystem with self-service access to API, supported by secure digital processes. Reference architectures for federation of remotely managed API, customized developer portal, and billing and invoicing of rate plans with [Stripe](https://stripe.com/).
 
 ## Requirements
-You can find the detailed pre-requisites for running each part of this mission in the (Getting started guide)[]
+You can find the detailed pre-requisites for running each part of this mission in the [Getting started guide](./01-GettingStartedGuide/GettingStartedGuide.md)
 
 ## Download and Installation
 
