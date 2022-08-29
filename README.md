@@ -14,15 +14,27 @@ Please edit this file as it is the primary description file for your project. Yo
 
 # [Title]
 <!-- Please include descriptive title -->
-
+Create simple, connected digital experiences with API-based integration
 <!--- Register repository https://api.reuse.software/register, then add REUSE badge:
 [![REUSE status](https://api.reuse.software/badge/github.com/SAP-samples/REPO-NAME)](https://api.reuse.software/info/github.com/SAP-samples/REPO-NAME)
 -->
 
 ## Description
-<!-- Please include SEO-friendly description -->
+Realize a unified catalog and developer portal for all API, wherever they’re managed. Build your own digital experiences with SAP low code solutions, SAP Integration Suite, and SAP BTP, Kyma runtime to operationalize access requests, federate API from disparate gateways, and monetize their use.
+
+In an API-first economy, the new business opportunities created from transactional and analytical systems are invaluable. Ensure governance, agility, and a clean line of sight into consumption help you make the most of them.
+
+## Challenge
+While consumption of API is a standard function of software development, API providers face a number of unique challenges. These include securing access to sensitive data in cloud and on-premise systems, managing API across a heterogenous landscape, and creating revenue opportunities from internal and external usage.
+
+## Solution
+A single point of access to all API for all developers, powered by workflows and event-based integration with third party API management. This unified catalog consists of a tailored UX, an API key approval process, and automated billing based on rate plans.
+
+## Outcome
+An empowered developer ecosystem with self-service access to API, supported by secure digital processes. Reference architectures for federation of remotely managed API, customized developer portal, and billing and invoicing of rate plans with [Stripe](https://stripe.com/).
 
 ## Requirements
+You can find the detailed pre-requisites for running each part of this mission in the (Getting started guide)[]
 
 ## Download and Installation
 
