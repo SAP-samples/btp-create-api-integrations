@@ -36,7 +36,7 @@ A single point of access to all API for all developers, powered by workflows and
 An empowered developer ecosystem with self-service access to API, supported by secure digital processes. Reference architectures for federation of remotely managed API, customized developer portal, and billing and invoicing of rate plans with [Stripe](https://stripe.com/).
 
 ## Requirements
-You can find the detailed pre-requisites for running each part of this mission in the [Getting started guide](./01-GettingStartedGuide/GettingStartedGuide.md)
+You can find the detailed pre-requisites for running each part of this mission in the [Getting started guide](./01-GettingStartedGuide/README.md)
 
 ## Download and Installation
 
