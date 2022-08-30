@@ -1,5 +1,5 @@
 # Prepare SAP API Management for service account access
-1. Import [API Proxy](https://github.com/SAP-samples/btp-create-api-integrations/raw/low-code-dev-portal/DevPortal_Guest.zip) into your instance of SAP API Management via the **Develop** menu
+1. Import [API Proxy](https://github.com/SAP-samples/btp-create-api-integrations/raw/low-code-dev-portal/DevPortal_Anonymous.zip) into your instance of SAP API Management via the **Develop** menu
 2. Update the Target EndPoint to reflect your environment. The host name depends on which region you are subscribed in and can be retrieved from the service key created in the previous section.
 3. [Implement SAP Cloud Foundry services policy](https://api.sap.com/policytemplate/SAPCloudFoundryXSUAAJWTToken) which is already included as part of the proxy file above
   - TargetEndpoint > PreFlow > getcredential > client id and secret
@@ -15,6 +15,6 @@
   - Copy the Application Key and navigate to the Test Console
   - Select the Guest Access product you created in the previous step
   - Remove **APIMgmt.** from the resource field
-  - Add APIKey header, paste value from the previous step and execute the request
+  - Enable Basic Authentication and enter the API Key and Secret in the user and password fields, respectively
 
     ![Test API](./img/TestConsole.png)
