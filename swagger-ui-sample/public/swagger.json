@@ -1,0 +1,317 @@
+{
+    "x-odata-version": "4.0",
+    "swagger": "2.0",
+    "info": {
+        "title": "API Business Hub Enterprise - Registering Users(CF)",
+        "description": "<p>API Business Hub Enterprise registering user service allows you to register new users on to the API Business Hub Enterprise. An application developer can access the API Business Hub Enterprise only if he is registered on the API Business Hub Enterprise.</p>",
+        "version": "1.0"
+    },
+    "securityDefinitions": {
+        "OAuth2_ClientCredentials": {
+            "type": "oauth2",
+            "flow": "application",
+            "tokenUrl": "https://{tokenUrl}/oauth/token?grant_type=client_credentials",
+            "scopes": {}
+        }
+    },
+    "security": [{
+        "OAuth2_ClientCredentials": []
+    }],
+    "externalDocs": {
+        "description": "Business Documentation",
+        "url": "https://help.sap.com/viewer/66d066d903c2473f81ec33acfe2ccdb4/Cloud/en-US/786d107e1dbf414ca15ae9ddb2cb49e6.html"
+    },
+    "host": "saptfe.prod.apimanagement.us20.hana.ondemand.com:443",
+    "schemes": ["https"],
+    "x-sap-shortText": "Enables you to register new users on to the API Business Hub Enterprise.",
+    "basePath": "/sapapimanagement/api/1.0",
+    "consumes": ["application/json"],
+    "produces": ["application/json"],
+    "definitions": {
+        "badRequest": {
+            "type": "string"
+        },
+        "InternalError": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "string",
+                    "description": "Error code"
+                },
+                "message": {
+                    "type": "object",
+                    "properties": {
+                        "lang": {
+                            "type": "string",
+                            "description": "Language code of the error mesage"
+                        },
+                        "value": {
+                            "type": "string",
+                            "description": "Detailed error message"
+                        }
+                    }
+                }
+            }
+        },
+        "developerRoles": {
+            "type": "object",
+            "properties": {
+                "rolesAccess": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "status": {
+                                "type": "string",
+                                "enum": ["registered", "revoked", "rejected"],
+                                "default": "registered"
+                            },
+                            "role": {
+                                "type": "string",
+                                "default": "API_ApplicationDeveloper"
+                            },
+                            "responseReason": {
+                                "type": "string",
+                                "default": "Accepting or Rejecting or Revoking Access"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "developerEntity": {
+            "type": "object",
+            "properties": {
+                "autoReLogin": {
+                    "type": "boolean",
+                    "enum": [false, true]
+                },
+                "rolesAccess": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "status": {
+                                "type": "string",
+                                "enum": ["registered", "revoked"],
+                                "default": "registered"
+                            },
+                            "role": {
+                                "type": "string",
+                                "default": "API_ApplicationDeveloper"
+                            },
+                            "responseReason": {
+                                "type": ["string", "null"]
+                            }
+                        }
+                    }
+                },
+                "userId": {
+                    "type": "string"
+                },
+                "emailId": {
+                    "type": "string"
+                },
+                "firstName": {
+                    "type": "string"
+                },
+                "lastName": {
+                    "type": "string"
+                },
+                "country": {
+                    "type": "string"
+                }
+            }
+        },
+        "developerPostEntity": {
+            "type": "object",
+            "properties": {
+                "rolesAccess": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "requestReason": {
+                                "type": "string"
+                            },
+                            "role": {
+                                "type": "string",
+                                "default": "API_ApplicationDeveloper"
+                            }
+                        }
+                    }
+                },
+                "userId": {
+                    "type": "string"
+                },
+                "emailId": {
+                    "type": "string"
+                },
+                "firstName": {
+                    "type": "string"
+                },
+                "lastName": {
+                    "type": "string"
+                },
+                "country": {
+                    "type": "string"
+                }
+            }
+        }
+    },
+    "paths": {
+        "/registrations/{developerid}": {
+            "put": {
+                "tags": ["registrations"],
+                "summary": "Accept or reject or revoke a specific developers access to the API Business Hub Enterprise.",
+                "description": "API Business Hub Enterprise admin can revoke the access of an existing user by setting the status to revoked. Similarly, request from an user to access the API Business Hub Enterprise can either be accepted or rejected by setting the status to registered or rejected respectively.",
+                "produces": ["application/json"],
+                "parameters": [{
+                    "name": "Developer Roles",
+                    "in": "body",
+                    "description": "New entity",
+                    "schema": {
+                        "$ref": "#/definitions/developerRoles"
+                    }
+                }, {
+                    "name": "developerid",
+                    "in": "path",
+                    "required": true,
+                    "type": "string"
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Created entity",
+                        "schema": {
+                            "$ref": "#/definitions/developerEntity"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request - Missing required parameter or provided input not in the required format",
+                        "schema": {
+                            "$ref": "#/definitions/badRequest"
+                        }
+                    },
+                    "default": {
+                        "description": "Error",
+                        "schema": {
+                            "$ref": "#/definitions/InternalError"
+                        }
+                    }
+                }
+            }
+        },
+        "/registrations": {
+            "get": {
+                "tags": ["registrations"],
+                "summary": "Get the list of both registered users and users whose registration request is still pending for confirmation.",
+                "description": "Depending on the request, the list of users is displayed. Select registered to view all registered users. Select pending to view all users whose registration is yet to be confirmed.",
+                "produces": ["application/json"],
+                "parameters": [{
+                    "name": "type",
+                    "in": "query",
+                    "description": "Select the type, either registered or pending. Default value is registered",
+                    "required": true,
+                    "enum": ["registered", "pending"],
+                    "default": "registered",
+                    "type": "string"
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Retrieved entity",
+                        "schema": {
+                            "title": "Developer",
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "autoReLogin": {
+                                        "type": "boolean",
+                                        "enum": [false, true]
+                                    },
+                                    "rolesAccess": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object",
+                                            "properties": {
+                                                "status": {
+                                                    "type": "string",
+                                                    "default": "registered"
+                                                },
+                                                "role": {
+                                                    "type": "string",
+                                                    "default": "registered"
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "userId": {
+                                        "type": "string"
+                                    },
+                                    "emailId": {
+                                        "type": "string"
+                                    },
+                                    "firstName": {
+                                        "type": "string"
+                                    },
+                                    "lastName": {
+                                        "type": "string"
+                                    },
+                                    "country": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request - Missing required parameter or provided input not in the required format",
+                        "schema": {
+                            "$ref": "#/definitions/badRequest"
+                        }
+                    },
+                    "default": {
+                        "description": "Error",
+                        "schema": {
+                            "$ref": "#/definitions/InternalError"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": ["registrations"],
+                "summary": "Register on the API Business Hub Enterprise.",
+                "description": "Users register on the API Business Hub Enterprise to gain access to the Portal. This operation sends an access request to the portal admin. However, if this operation is performed by the portal admin, then the user will be registered on the portal and will have the required permissions to access the portal.",
+                "produces": ["application/json"],
+                "parameters": [{
+                    "name": "Developer Roles",
+                    "in": "body",
+                    "description": "New entity",
+                    "schema": {
+                        "$ref": "#/definitions/developerPostEntity"
+                    }
+                }],
+                "responses": {
+                    "201": {
+                        "description": "Created entity",
+                        "schema": {
+                            "$ref": "#/definitions/developerEntity"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request - Missing required parameter or provided input not in the required format",
+                        "schema": {
+                            "$ref": "#/definitions/badRequest"
+                        }
+                    },
+                    "default": {
+                        "description": "Error",
+                        "schema": {
+                            "$ref": "#/definitions/InternalError"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,462 @@
+.opblock-description-wrapper {
+  background-color: var(--dts-f3-base) !important;
+}
+
+.opblock-section .table-container {
+  background-color: var(--dts-f3-base) !important;
+}
+
+.opblock-body .execute-wrapper {
+  background-color: var(--dts-f3-base) !important;
+}
+
+.responses-wrapper .responses-inner {
+  background-color: var(--dts-f3-base) !important;
+  overflow-x: auto;
+}
+
+.swagger-ui .opblock .opblock-summary {
+  padding: 0px !important;
+}
+
+.opblock-body {
+  background-color: var(--dts-f3-base) !important;
+}
+
+.opblock.opblock-post.is-open
+  > div:last-of-type
+  .opblock-body
+  .opblock-section-header {
+  background-color: rgba(73, 204, 144, 0.05) !important;
+}
+
+.opblock.opblock-get.is-open
+  > div:last-of-type
+  .opblock-body
+  .opblock-section-header {
+  background-color: rgba(97, 175, 254, 0.05) !important;
+}
+
+.opblock.opblock-put.is-open
+  > div:last-of-type
+  .opblock-body
+  .opblock-section-header {
+  background-color: rgba(252, 161, 48, 0.05) !important;
+}
+
+.opblock.opblock-delete.is-open
+  > div:last-of-type
+  .opblock-body
+  .opblock-section-header {
+  background-color: rgba(249, 62, 62, 0.05) !important;
+}
+
+.opblock.opblock-patch.is-open
+  > div:last-of-type
+  .opblock-body
+  .opblock-section-header {
+  background-color: rgba(80, 227, 194, 0.05) !important;
+}
+
+.opblock-generate-code {
+  font-family: "72-Regular";
+  font-style: normal;
+  font-size: 14px;
+  color: #0070b1 !important;
+  outline: none;
+  padding-right: 5px;
+  text-align: right;
+  width: 110px;
+}
+
+.opblock-summary-path-tryout-codesnippet-summary-description {
+  width: 100%;
+  overflow: hidden;
+}
+
+.opblock-summary-path-tryout-codesnippet {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-top: 10px;
+}
+
+.opblock-summary-pathvalue {
+  width: 80%;
+}
+
+.opblock-tryout-codesnippet {
+  display: flex;
+  width: 20%;
+}
+
+.opblock-summaryvalue {
+  padding-left: 9px;
+}
+
+.opblock-try-out {
+  font-family: "72-Regular";
+  font-style: normal;
+  font-size: 14px;
+  color: #0070b1 !important;
+  outline: none;
+  padding-right: 5px;
+  text-align: right;
+  width: 60px;
+}
+
+.swagger-ui .opblock .opblock-summary-method {
+  align-self: stretch;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.swagger-ui .opblock .opblock-summary-operation-id,
+ï¿½.swagger-ui .opblock .opblock-summary-path,
+ï¿½.swagger-ui .opblock .opblock-summary-path__deprecated {
+  flex-basis: 66% !important;
+}
+.opblock-separator {
+  text-align: right;
+}
+
+.markdown p,
+.markdown,
+.col .response-col_status,
+.col .col_header .response-col_status,
+.col .col_header .response-col_description {
+  font-family: "72-Regular" !important;
+}
+
+.swagger-ui .opblock-description-wrapper p,
+.swagger-ui .opblock-external-docs-wrapper p,
+.swagger-ui .opblock-title_normal p {
+  font-family: "72-Regular" !important;
+  font-size: 1.2rem !important;
+}
+
+.swagger-ui .opblock-description-wrapper,
+.swagger-ui .opblock-external-docs-wrapper,
+.swagger-ui .opblock-title_normal {
+  font-family: "72-Regular" !important;
+}
+
+.swagger-ui h2 {
+  font-size: 1.6rem !important;
+}
+
+.swagger-ui .model-example .model-box {
+  border: 1px solid #ccc;
+  background-color: var(--dts-f3-base) !important;
+}
+.swagger-ui .opblock .opblock-section-header h4 {
+  font-size: 1.6rem !important;
+}
+
+.swagger-ui .model-title {
+  font-size: 12px !important;
+}
+
+.swagger-ui .custom-opblock-description {
+  font-size: 12px !important;
+  font-family: "72-Regular" !important;
+  padding: 0px 20px;
+  padding-top: 5px;
+}
+
+.swagger-ui .parameters {
+  table-layout: fixed;
+  word-break: break-word;
+}
+
+/* th.col.col_header.parameters-col_name {
+  width: 20%;
+} */
+
+th.col_header.parameters-col_name {
+  width: 20%;
+}
+
+.renderedMarkdown div p,
+.col .response-col_links i,
+.swagger-ui .parameter__name.required,
+.renderedMarkdown,
+.parameter__type,
+.parameter__in {
+  font-family: "72-Regular" !important;
+}
+
+.parameter__name,
+.opblock-title,
+.opblock-section-header,
+.opblock-tag .no-desc,
+.opblock-summary-description,
+.opblock-summary-method,
+.opblock-summary-path a span {
+  font-family: "72-Bold" !important;
+  font-size: 1.4rem !important;
+}
+
+.swagger-ui .opblock .opblock-summary-method,
+.swagger-ui .opblock .opblock-summary-operation-id,
+.swagger-ui .opblock .opblock-summary-path,
+.swagger-ui .opblock .opblock-summary-path__deprecated {
+  font-weight: 700 !important;
+}
+
+.model-box * {
+  font-family: "72-Regular" !important;
+}
+
+.swagger-ui .table-container {
+  padding: 0px 20px !important;
+}
+
+.desc-more-btn,
+.desc-less-btn {
+  color: #337ab7;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+/* Code snippet CSS classes */
+
+.codeHighlight pre code {
+  display: block;
+  padding: 0.5em;
+  background: #f0f0f0;
+}
+.codeHighlight pre code,
+.codeHighlight pre .subst,
+.codeHighlight pre .tag .title,
+.codeHighlight pre .lisp .title,
+.codeHighlight pre .clojure .built_in,
+.codeHighlight pre .nginx .title {
+  color: black;
+}
+.codeHighlight pre .string,
+.codeHighlight pre .title,
+.codeHighlight pre .constant,
+.codeHighlight pre .parent,
+.codeHighlight pre .tag .value,
+.codeHighlight pre .rules .value,
+.codeHighlight pre .rules .value .number,
+.codeHighlight pre .preprocessor,
+.codeHighlight pre .ruby .symbol,
+.codeHighlight pre .ruby .symbol .string,
+.codeHighlight pre .aggregate,
+.codeHighlight pre .template_tag,
+.codeHighlight pre .django .variable,
+.codeHighlight pre .smalltalk .class,
+.codeHighlight pre .addition,
+.codeHighlight pre .flow,
+.codeHighlight pre .stream,
+.codeHighlight pre .bash .variable,
+.codeHighlight pre .apache .tag,
+.codeHighlight pre .apache .cbracket,
+.codeHighlight pre .tex .command,
+.codeHighlight pre .tex .special,
+.codeHighlight pre .erlang_repl .function_or_atom,
+.codeHighlight pre .markdown .header {
+  color: #800;
+}
+.codeHighlight pre .comment,
+.codeHighlight pre .annotation,
+.codeHighlight pre .template_comment,
+.codeHighlight pre .diff .header,
+.codeHighlight pre .chunk,
+.codeHighlight pre .markdown .blockquote {
+  color: #888;
+}
+.codeHighlight pre .number,
+.codeHighlight pre .date,
+.codeHighlight pre .regexp,
+.codeHighlight pre .literal,
+.codeHighlight pre .smalltalk .symbol,
+.codeHighlight pre .smalltalk .char,
+.codeHighlight pre .go .constant,
+.codeHighlight pre .change,
+.codeHighlight pre .markdown .bullet,
+.codeHighlight pre .markdown .link_url {
+  color: #080;
+}
+.codeHighlight pre .label,
+.codeHighlight pre .javadoc,
+.codeHighlight pre .ruby .string,
+.codeHighlight pre .decorator,
+.codeHighlight pre .filter .argument,
+.codeHighlight pre .localvars,
+.codeHighlight pre .array,
+.codeHighlight pre .attr_selector,
+.codeHighlight pre .important,
+.codeHighlight pre .pseudo,
+.codeHighlight pre .pi,
+.codeHighlight pre .doctype,
+.codeHighlight pre .deletion,
+.codeHighlight pre .envvar,
+.codeHighlight pre .shebang,
+.codeHighlight pre .apache .sqbracket,
+.codeHighlight pre .nginx .built_in,
+.codeHighlight pre .tex .formula,
+.codeHighlight pre .erlang_repl .reserved,
+.codeHighlight pre .prompt,
+.codeHighlight pre .markdown .link_label,
+.codeHighlight pre .vhdl .attribute,
+.codeHighlight pre .clojure .attribute,
+.codeHighlight pre .coffeescript .property {
+  color: #88f;
+}
+.codeHighlight pre .keyword,
+.codeHighlight pre .id,
+.codeHighlight pre .phpdoc,
+.codeHighlight pre .title,
+.codeHighlight pre .built_in,
+.codeHighlight pre .aggregate,
+.codeHighlight pre .css .tag,
+.codeHighlight pre .javadoctag,
+.codeHighlight pre .phpdoc,
+.codeHighlight pre .yardoctag,
+.codeHighlight pre .smalltalk .class,
+.codeHighlight pre .winutils,
+.codeHighlight pre .bash .variable,
+.codeHighlight pre .apache .tag,
+.codeHighlight pre .go .typename,
+.codeHighlight pre .tex .command,
+.codeHighlight pre .markdown .strong,
+.codeHighlight pre .request,
+.codeHighlight pre .status {
+  font-weight: bold;
+}
+.codeHighlight pre .markdown .emphasis {
+  font-style: italic;
+}
+.codeHighlight pre .nginx .built_in {
+  font-weight: normal;
+}
+.codeHighlight pre .coffeescript .javascript,
+.codeHighlight pre .javascript .xml,
+.codeHighlight pre .tex .formula,
+.codeHighlight pre .xml .javascript,
+.codeHighlight pre .xml .vbscript,
+.codeHighlight pre .xml .css,
+.codeHighlight pre .xml .cdata {
+  opacity: 0.5;
+}
+
+/* Code snippet CSS classes end */
+
+/* Dropdown Button */
+.dropBtn {
+  color: #3b73af;
+  font-size: 14px;
+  font-weight: 600;
+  padding-right: 20px;
+  background-color: #f1f1f1;
+  cursor: pointer !important;
+}
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  margin-left: 30px;
+  box-shadow: 0px 8px 8px 0px rgba(0, 0, 0, 0.2);
+}
+.dropdown-noparams {
+  margin-left: 52% !important;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: #3b73af !important;
+  padding: 5px 5px 5px 5px;
+  text-decoration: none;
+  display: block;
+  font-size: 12px;
+  cursor: pointer !important;
+}
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {
+  background-color: #f1f1f1;
+  text-decoration: none !important;
+  cursor: pointer !important;
+}
+.customParamAdd {
+  text-align: right !important;
+}
+.customHeaderLabel {
+  vertical-align: middle !important;
+  padding: 8px 0px 0px 0px !important;
+}
+
+.opblock:not(.is-open) span.opblock-summary-path {
+  display: block;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+/*SwaggerUpgrade - 3.26.0 Changes*/
+
+.headers td.header-col .markdown p {
+  font-weight: 600 !important;
+  font-family: Source Code Pro, monospace !important;
+  color: #3b4151 !important;
+}
+
+.opblock-summary-description .markdown p {
+  margin-bottom: 0px;
+}
+
+.swagger-ui .opblock.opblock-get .opblock-summary-method {
+  height: auto;
+}
+
+.swagger-ui .opblock.opblock-put .opblock-summary-method {
+  height: auto;
+}
+
+.swagger-ui .opblock.opblock-post .opblock-summary-method {
+  height: auto;
+}
+
+.swagger-ui .opblock.opblock-patch .opblock-summary-method {
+  height: auto;
+}
+
+.swagger-ui .opblock.opblock-delete .opblock-summary-method {
+  height: auto;
+}
+
+.swagger-ui .opblock-tag {
+  display: none !important;
+}
+
+.swagger-ui section.models .model-box {
+  background-color: var(--dts-color-lightgrey)!important;
+  border: none!important;
+}
+
+div#ctlg-swagger-ui-container {
+  clear: both;
+}
+
+.swagger-ui .markdown p, .swagger-ui .markdown pre, .swagger-ui .renderedMarkdown p, .swagger-ui .renderedMarkdown pre {
+  margin : 0em auto!important;
+}
+
+section#models {
+  background: white!important;
+}
+
+/*Commented as this causes issue for API Response - Models - Toggle */
+/* ::after {
+  background: transparent !important;
+} */
+
+/* Fix to ensure no word overflow in safari*/
+.parameters-col_description input[type="text"] {
+  word-break: normal;
+}

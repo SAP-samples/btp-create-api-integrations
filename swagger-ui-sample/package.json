@@ -1,0 +1,15 @@
+{
+    "name": "swagger-ui-express-docker",
+    "version": "1.0.0",
+    "description": "Node.js on Docker",
+    "author": "james.rapp@sap.com",
+    "main": "app.js",
+    "scripts": {
+        "start": "node app.js"
+    },
+    "dependencies": {
+        "express": "^4.16.1",
+        "fs": "^0.0.1-security",
+        "swagger-ui-express": "^4.5.0"
+    }
+}
