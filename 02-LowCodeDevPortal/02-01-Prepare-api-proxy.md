@@ -18,3 +18,5 @@
   - Enable Basic Authentication and enter the API Key and Secret in the user and password fields, respectively
 
     ![Test API](./img/TestConsole.png)
+
+    Note: The URL rewrite is needed to handle the [entity container](https://docs.microsoft.com/en-us/dotnet/framework/data/adonet/entity-container) that the platform API are inside of. The EntityContainer.EntitySet syntax is not widely used in SAP applications and is not understood by SAP low code tools or SAP Cloud Application Programming (CAP). The result is only the EntitySet being added to the URL, resulting in a 404.
