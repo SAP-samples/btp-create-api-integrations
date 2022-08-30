@@ -8,9 +8,11 @@ In this section, see how to use BTP boosters and then automate the setup of SAP 
 ### [Subscribe to SAP Integration Suite](./01-02-Subscribe-Integration-Suite.md)
 ### [Deploy SAP BTP, Kyma runtime](https://github.com/SAP-docs/btp-cloud-platform/blob/main/docs/50-administration-and-ops/create-the-kyma-environment-instance-09dd313.md)
 If you're interested in API federation and monetization, you will need an instance of Kyma runtime. Follow these instructions to get started with Kyma.
-### Activate the API Management capability in SAP Integration Suite
-### Create service instances for API access 
+### [Activate the API Management capability in SAP Integration Suite](01-04-Activate-API-Management.md)
+### [Create service instances for API access](01-05-Create-service-instances.md) 
 
 ## Onboarding for Stripe
 
 ## Pre-requisites for API Gateway federation
+
+  TODO

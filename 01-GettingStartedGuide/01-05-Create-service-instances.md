@@ -23,4 +23,13 @@ A service instance lets us build a UI that retrieves data from Business Hub Ente
       }
       ```
   5. Complete the process and confirm the successful creation of the service instance
-
+  6. Locate the service instance and create a service key. Make note of the JSON values which will look something like this
+      ```
+      {
+      "url": "https://devportal.cfapps.hana.ondemand.com",
+      "tokenUrl": "https://tenant.authentication.hana.ondemand.com/oauth/token",
+      "developerId": "SYSTEM",
+      "clientId": "sb-devportal-apiaccess|dev-portal-xsuaa",
+      "clientSecret": "secret"
+      }
+      ```
