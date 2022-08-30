@@ -12,6 +12,9 @@ If you're interested in API federation and monetization, you will need an instan
 ### [Create service instances for API access](01-05-Create-service-instances.md) 
 
 ## Onboarding for Stripe
+As part of the mission scope, you can deploy an API billing service that utilizes [Stripe](https://stripe.com) invoicing. The following resources help you create a Stripe developer account and get you started with their Node.js SDK.
+  - Register a free [Stripe developer](https://dashboard.stripe.com/register) account
+  - Get started with the [Stripe Node.js SDK](https://stripe.com/docs/development/quickstart/node)
 
 ## Pre-requisites for API Gateway federation
 
