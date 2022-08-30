@@ -20,3 +20,10 @@
     ![Test API](./img/TestConsole.png)
 
     Note: The URL rewrite is needed to handle the [entity container](https://docs.microsoft.com/en-us/dotnet/framework/data/adonet/entity-container) that the platform API are inside of. The EntityContainer.EntitySet syntax is not widely used in SAP applications and is not understood by SAP low code tools or SAP Cloud Application Programming (CAP). The result is only the EntitySet being added to the URL, resulting in a 404.
+
+# Create a destination to use in your low code app
+1. Access your subaccount in the BTP cockpit and select Connectivity > Destinations
+2. Select **Import Destination** and provide the [destination template](https://github.com/SAP-samples/btp-create-api-integrations/blob/low-code-dev-portal/LCDevPortal.destination.txt)
+3. Customize the URL to reflect the service path from your API proxy
+4. Update the user name and password fields with the API Key and Secret from the previous step
+5. Save the destination
