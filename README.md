@@ -30,6 +30,8 @@ While consumption of API is a standard function of software development, API pro
 ## Solution
 A single point of access to all API for all developers, powered by workflows and event-based integration with third party API management. This unified catalog consists of a tailored UX, an API key approval process, and automated billing based on rate plans.
 
+![Low Code Developer Portal - Solution Diagram](./images/dev_portal_solution_diagram.png)
+
 ## Outcome
 An empowered developer ecosystem with self-service access to API, supported by secure digital processes. Reference architectures for federation of remotely managed API, customized developer portal, and billing and invoicing of rate plans with [Stripe](https://stripe.com/).
 
