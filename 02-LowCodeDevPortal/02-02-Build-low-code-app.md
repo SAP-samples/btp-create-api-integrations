@@ -78,3 +78,23 @@ However, we are providing the basic authentication credentials for the custom HT
   5. Preview the app check the new page
 
   ![Application Detail](img/ApplicationDetail.png)
+
+## Swagger UI (Optional)
+As an optional step, you can deploy this ["Dockerized" version of swagger-ui-express](https://github.com/SAP-samples/btp-create-api-integrations/tree/low-code-dev-portal/swagger-ui-sample) on Kyma and use it to provide the API documentation from your Business Hub Enterprise tenant. The full experience of Business Hub Enterprise uses [Swagger UI](https://swagger.io/tools/swagger-ui/) which is implemented as a browser-side js/css. SAP AppGyver doesn't currently support inclusion of custom client side libraries but may in a future release. The sample isn't intended to be used productively, as you would run into POST body size issues for very lengthy API documentation and each successive POST overwrites the previous documentation. Instead, consider it an example of how you can solve problems creatively with low code tools.
+
+You can use this [Developer Tutorial](https://developers.sap.com/mission.cp-kyma-node-js.html) to assist. 
+
+  1. Access the **API Product Detail** page and add logic to the component tap event of the basic card list
+  2. Add an HTTP request with the following properties
+     * URL (formula): "https://virtual-host.prod.apimanagement.datacenter.hana.ondemand.com/sapapimanagementguest/odata/1.0/data.svc/APIProxies('"+repeated.current.name+"')?$expand=ToProxyEndPoints,ToProxyEndPoints/ToAPIResources,ToProxyEndPoints/ToAPIResources/ToAPIResourceDocumentation,ToAPIProducts/ToAPIResources&$format=json"
+     * Add the same basic authentication header as above
+  3. Add another HTTP request and connect it to output 1 of the previous one. Set the following properties, updating the Kyma URL to match your environment.
+     * URL (text): https://swagger-ui-express.kyma-cluster-info.com/api-spec/
+     * Method: POST
+     * Request Body (formula): {"content":SELECT_BY_KEY(outputs["HTTP request"].resBodyParsed.d.ToProxyEndPoints.results[0].ToAPIResources.results, "title", "SWAGGER_JSON")[0].ToAPIResourceDocumentation.results[0].content}
+  4.  Install the **Open web browser** component and attach one to the last POST request. Set the URL to https://swagger-ui-express.kyma-cluster-info.com/api-docs/
+  5.  Attach Toast components to the failure nodes of the HTTP requests with messages like **No documentation available** and ** Swagger POST failed**
+
+The result should look something like this:
+
+  ![Swagger UI config](img/swaggeruisteps.png)
