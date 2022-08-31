@@ -19,6 +19,7 @@ In this section, you will build a low code app in SAP AppGyver. Unlike previous 
 
 ## API Product Detail
 At the time of writing, OData associations and expands are not yet supported via destinations. Therefore, we will make some HTTP calls directly to the underlying API gateway using the same credentials.
+
 1. Create an app variable called **selectedProduct** and set the value type to text
 2. Open **API Product Detail** and add a page parameter called **APIProduct** with type text
 3. Create a page variable called pv_APIProxies to store information about the proxies inside an API Product. Set it to be a list and the item type to be an object before adding the named properties.
@@ -56,3 +57,24 @@ At the time of writing, OData associations and expands are not yet supported via
 11. Previewing the app should now let you navigate from an API Product to the Detail page where you see the API Proxies inside a product, as in the below
 
   ![API Product Detail](img/APIProductDetail%20view.png)
+
+## Application Details
+Create another page to display the API Keys for this system user. So far, you have implemented several controls over access to your BTP account, namely:
+* A read-only service account onboarded to the Business Hub Enterprise tenant
+* A service instance in the context of that user
+* An API Proxy, protected by a rather trivial Basic Authentication scheme
+* A BTP destination to manage the Basic Authentication credentials
+  
+However, we are providing the basic authentication credentials for the custom HTTP requests we make from the low code application. Although this is less than ideal (you can see the authorization header in Chrome developer tools), we can freely distribute this API Key to internal users due to the read-only nature of the underlying account. We could further protect the endpoint from denial of service attack and other malicious activity, by applying rate limits to the API proxy or other policies
+
+  1. Create a new page called **Application Detail**
+  2. Customize the title and add a Basic Card list
+  3. Edit the configuration and select the Applications integration
+     * Map content to the formula ```"API Key: " + LOOKUP(source.record, "app_key")```
+     * Map id to id
+     * label to developer_id
+     * title to title
+  4. Enable navigation and configure items for the home and applications pages. 
+  5. Preview the app check the new page
+
+    ![Application Detail](img/ApplicationDetail.png)
