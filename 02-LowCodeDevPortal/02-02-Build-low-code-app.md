@@ -77,4 +77,4 @@ However, we are providing the basic authentication credentials for the custom HT
   4. Enable navigation and configure items for the home and applications pages. 
   5. Preview the app check the new page
 
-    ![Application Detail](img/ApplicationDetail.png)
+  ![Application Detail](img/ApplicationDetail.png)
