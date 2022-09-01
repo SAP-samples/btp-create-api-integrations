@@ -91,7 +91,7 @@ You can use this [Developer Tutorial](https://developers.sap.com/mission.cp-kyma
   3. Add another HTTP request and connect it to output 1 of the previous one. Set the following properties, updating the Kyma URL to match your environment.
      * URL (text): https://swagger-ui-express.kyma-cluster-info.com/api-spec/
      * Method: POST
-     * Request Body (formula): {"content":SELECT_BY_KEY(outputs["HTTP request"].resBodyParsed.d.ToProxyEndPoints.results[0].ToAPIResources.results, "title", "SWAGGER_JSON")[0].ToAPIResourceDocumentation.results[0].content}
+     * Request Body (formula): ```{"content":SELECT_BY_KEY(outputs["HTTP request"].resBodyParsed.d.ToProxyEndPoints.results[0].ToAPIResources.results, "title", "SWAGGER_JSON")[0].ToAPIResourceDocumentation.results[0].content}```
   4.  Install the **Open web browser** component and attach one to the last POST request. Set the URL to https://swagger-ui-express.kyma-cluster-info.com/api-docs/
   5.  Attach Toast components to the failure nodes of the HTTP requests with messages like **No documentation available** and ** Swagger POST failed**
 
