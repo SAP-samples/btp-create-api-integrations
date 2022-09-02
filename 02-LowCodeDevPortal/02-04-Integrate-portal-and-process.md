@@ -14,7 +14,7 @@ Now that your low code portal is built and request API access process deployed, 
   10. Now we will modify the outputs of the Basic Card list on the Home page to store the list of API Products during the initial refresh
      ![Component Editor](img/ComponentEditor.png)
 
-  11. Click **PROPERTIES** and add  a list of objects with 2 properties as below
+  11. Click **PROPERTIES** and add  a list of objects to output values with 2 properties as below (note the property key name for later)
      ![Output value](img/OutputValues.png)
 
   12. Return to **VIEW**, select **BASIC CARD LIST 1** from the tree, add a **Set output value** node, and connect it to the output of **Set private data variable**
