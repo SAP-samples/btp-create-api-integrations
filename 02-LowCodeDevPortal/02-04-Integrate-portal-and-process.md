@@ -33,4 +33,4 @@ Now that your low code portal is built and request API access process deployed, 
 
   18. Use the following formula for the option list ```MAP<item>(appVars.APIList, { label: LOOKUP(item, "title"), value: LOOKUP(item, "id") })```
   19. A preview of the app now shows the dropdown list populated and the selected product highlighted as the default
-      ![App preview](img/PreviewHomeScreen.png)
+      ![App preview](img/PopulatedForm.png)
