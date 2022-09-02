@@ -1,7 +1,6 @@
 # Low code Developer Portal scope
-
-  1. [Prepare platform API proxy](./02-01-Prepare-api-proxy.md) - Import and configure an API proxy to manage service credentials and provision access to the Business Hub Enterprise platform API      
-  2. Build and test SAP AppGyver app
-  3. Create API Key request process
-  4. Integrate Dev portal with request process via API
-  5. Test E2E
+* [Prepare platform API proxy](./02-01-Prepare-api-proxy.md) - Import and configure an API proxy to manage service credentials and provision access to the Business Hub Enterprise platform API      
+* [Build and test SAP AppGyver app](02-02-Build-low-code-app.md) - Create the low code Developer Portal
+* Create API Key request process
+* [Integrate Dev portal with request process via API](02-04-Integrate-portal-and-process.md) - Invoke your process from the low code portal
+* Test E2E
