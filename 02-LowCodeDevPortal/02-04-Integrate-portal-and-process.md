@@ -35,3 +35,24 @@ Now that your low code portal is built and request API access process deployed, 
    ```MAP<item>(appVars.APIList, { label: LOOKUP(item, "title"), value: LOOKUP(item, "id") })```
   19. A preview of the app now shows the dropdown list populated and the selected product highlighted as the default
       ![App preview](img/PopulatedForm.png)
+
+  20. Add a REST integration under **Data** and point to the API Proxy for the Workflow Instance endpoint. Enable the POST method and add a basic authentication header
+  21. Set a custom schema for the POST and enter the input structure from the process
+  22. Install the REST countries data component from the component market
+  23. Configure the resultant REST entity with a query parameter
+      * Key: fields
+      * Label: fields
+      * Value: name,alpha2Code
+  24. Add a data variable to the form page for RestCountries 
+  25. Duplicate the API Product dropdown and rename it to Country
+  26. Set the option list to a mapping, select the data variable for RestCountries, and set the label and value fields to name and alpha2Code respectively
+  27. Set selected value to No Value
+  28. Add a page variable with type object, name it processContext, and repeat the field names for the process inputs
+  29. Set the **Component onChange** event for each field in the request form to the corresponding named property of the processContext variable. Set the value to a formula ```STRING(self.value)```
+  30. Use the email field for user id as well, so apply 2 consecutive **Set page variable** nodes attached to each other
+  31. For the 2 dropdown fields, add a **Receive event** node and then set the page variable accordingly
+  32. Add logic to the submit button, starting with an **If condition**. Set the value to ```IF(IS_NULLY(pageVars.processContext), false, true)```
+      * Note that we really need to check every field to ensure they aren't blank but for simplicity sake we'll check the entire object
+  33. For Output 1, attach a Create Record node and configure the record properties as a custom object, mapping the page parameter values to it
+  34. For Output 2, attach a Toast dialog and set the message to something like, **Please complete all fields**
+  35. Save the application
