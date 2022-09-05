@@ -48,12 +48,10 @@ Now that your low code portal is built and request API access process deployed, 
   26. Set the option list to a mapping, select the data variable for RestCountries, and set the label and value fields to name and alpha2Code respectively
   27. Set selected value to No Value
   28. Add a page variable with type object, name it processContext, and repeat the field names for the process inputs
-  29. Set the page mount event to set the **apiproduct** page variable to the equivalent page parameter. We will overwrite this if the API Product dropdown is modified
-  30. Set the **Component onChange** event for each field in the request form to the corresponding named property of the processContext variable. Set the value to a formula ```STRING(self.value)```
-  31. Use the email field for user id as well, so apply 2 consecutive **Set page variable** nodes attached to each other
-  32. For the 2 dropdown fields, add a **Receive event** node and then set the page variable accordingly
-  33. Add logic to the submit button, starting with an **If condition**. Set the value to ```IF(IS_NULLY(pageVars.processContext), false, true)```
+  29. Set the **Component onChange** event for each field in the request form to the corresponding named property of the processContext variable. Set the value to a formula ```STRING(self.value)```
+  30. Use the email field for user id as well, so apply 2 consecutive **Set page variable** nodes attached to each other
+  31. Add logic to the submit button, starting with an **If condition**. Set the value to ```IF(IS_NULLY(pageVars.processContext), false, true)```
       * Note that we really need to check every field to ensure they aren't blank but for simplicity sake we'll check the entire object
-  34. For Output 1, attach a Create Record node and configure the record properties as a custom object, mapping the page parameter values to it
-  35. For Output 2, attach a Toast dialog and set the message to something like, **Please complete all fields**
-  36. Save the application
+  32. For Output 1, attach a Create Record node and configure the record properties as a custom object, mapping the page parameter values to it. You can retrieve the values from the 2 dropdown menus directy by using Component Properties > Another component's property or output value option 
+  33. For Output 2, attach a Toast dialog and set the message to something like, **Please complete all fields**
+  34. Save the application
