@@ -93,7 +93,7 @@ You can use this [Developer Tutorial](https://developers.sap.com/mission.cp-kyma
      * Method: POST
      * Request Body (formula): ```{"content":SELECT_BY_KEY(outputs["HTTP request"].resBodyParsed.d.ToProxyEndPoints.results[0].ToAPIResources.results, "title", "SWAGGER_JSON")[0].ToAPIResourceDocumentation.results[0].content}```
   *  Install the **Open web browser** component and attach one to the last POST request. Set the URL to https://swagger-ui-express.kyma-cluster-info.com/api-docs/
-  *  Attach Toast components to the failure nodes of the HTTP requests with messages like **No documentation available** and ** Swagger POST failed**
+  *  Attach Toast components to the failure nodes of the HTTP requests with messages like **No documentation available** and **Swagger POST failed**
 
 The result should look something like this:
 
