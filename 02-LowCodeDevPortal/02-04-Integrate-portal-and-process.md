@@ -37,9 +37,13 @@ Now that your low code portal is built and request API access process deployed, 
       ![App preview](img/PopulatedForm.png)
 
   20. Add a REST integration under **Data** and point to the API Proxy for the Workflow Instance endpoint. Enable the POST method and add a basic authentication header
+    ![REST properties](img/RESTprops.png)
+
   21. Set a custom schema for the POST and enter the input structure from the process
+    ![POST custom schema](img/RESTcustomschema.png)\
+
   22. Install the REST countries data component from the component market
-  23. Configure the resultant REST entity with a query parameter
+  23. Configure the REST entity with a query parameter
       * Key: fields
       * Label: fields
       * Value: name,alpha2Code
