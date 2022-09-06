@@ -33,3 +33,4 @@ A service instance lets us build a UI that retrieves data from Business Hub Ente
       "clientSecret": "secret"
       }
       ```
+  7. Create a service instance of SAP Process Automation along with a service key. Note the URL and credentials.
