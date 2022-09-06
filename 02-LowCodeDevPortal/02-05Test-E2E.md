@@ -1,0 +1,2 @@
+# Test the low code developer portal end to end
+As a final step in this mission scope, browse the developer portal as a guest, identify an interesting API Product, and submit an access request. As an administrator, approve that request and have the new developer automatically onboarded to the full SAP API Management, Business Hub Enterprise experience. This section tests all of the integration points between SAP BTP services.

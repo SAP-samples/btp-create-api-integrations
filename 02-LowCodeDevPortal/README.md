@@ -3,4 +3,4 @@
 * [Build and test SAP AppGyver app](02-02-Build-low-code-app.md) - Create the low code Developer Portal
 * [Create Developer onboarding request process](02-03-Create-request-process.md)
 * [Integrate Dev portal with request process via API](02-04-Integrate-portal-and-process.md) - Invoke your process from the low code portal
-* Test E2E
+* [Test the low code developer portal end to end]
