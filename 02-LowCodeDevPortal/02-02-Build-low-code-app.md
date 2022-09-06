@@ -86,7 +86,7 @@ You can use this [Developer Tutorial](https://developers.sap.com/mission.cp-kyma
 
   * Access the **API Product Detail** page and add logic to the component tap event of the basic card list
   * Add an HTTP request with the following properties
-     * URL (formula): "https://virtual-host.prod.apimanagement.datacenter.hana.ondemand.com/sapapimanagementguest/odata/*0/data.svc/APIProxies('"+repeated.current.name+"')?$expand=ToProxyEndPoints,ToProxyEndPoints/ToAPIResources,ToProxyEndPoints/ToAPIResources/ToAPIResourceDocumentation,ToAPIProducts/ToAPIResources&$format=json"
+     * URL (formula): "https://virtual-host.prod.apimanagement.datacenter.hana.ondemand.com/sapapimanagementguest/odata/1.0/data.svc/APIProxies('"+repeated.current.name+"')?$expand=ToProxyEndPoints,ToProxyEndPoints/ToAPIResources,ToProxyEndPoints/ToAPIResources/ToAPIResourceDocumentation,ToAPIProducts/ToAPIResources&$format=json"
      * Add the same basic authentication header as above
   * Add another HTTP request and connect it to output 1 of the previous one. Set the following properties, updating the Kyma URL to match your environment.
      * URL (text): https://swagger-ui-express.kyma-cluster-info.com/api-spec/
