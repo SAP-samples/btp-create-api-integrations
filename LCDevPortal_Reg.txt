@@ -1,0 +1,10 @@
+#
+#Tue Sep 06 21:53:19 UTC 2022
+URL=https\://tenantid.prod.apimanagement.datacenter.hana.ondemand.com/sapapimanagement/api/1.0
+Name=LCDevPortal_Reg
+HTML5.DynamicDestination=true
+ProxyType=Internet
+Type=HTTP
+WebIDEEnabled=true
+Authentication=NoAuthentication
+sap.processautomation.enabled=true
