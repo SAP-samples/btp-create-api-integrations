@@ -11,7 +11,7 @@ Now that your low code portal is built and request API access process deployed, 
   9. Create an App Variable called **APIList** as a list of object with 2 properties
      ![Create app variable](img/SetPageVar.png)
 
-  10. Now we will modify the outputs of the Basic Card list on the Home page to store the list of API Products during the initial refresh
+  10. Modify the outputs of the Basic Card list on the Home page to store the list of API Products during the initial refresh
      ![Component Editor](img/ComponentEditor.png)
 
   11. Click **PROPERTIES** and add  a list of objects to output values with 2 properties as below (note the property key name for later)
