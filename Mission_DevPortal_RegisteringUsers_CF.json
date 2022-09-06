@@ -1,0 +1,82 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Register Users",
+        "version": "1.0.0"
+    },
+    "servers": [{
+        "url": "https://eu10devportal.cfapps.eu10.hana.ondemand.com/api/1.0"
+    }],
+    "components": {
+        "securitySchemes": {
+            "basicAuth": {
+                "type": "http",
+                "scheme": "basic"
+            }
+        }
+    },
+    "paths": {
+        "/registrations": {
+            "post": {
+                "description": "Users register on the API Business Hub Enterprise to gain access to the Portal. This operation sends an access request to the portal admin. However, if this operation is performed by the portal admin, then the user will be registered on the portal and will have the required permissions to access the portal. ",
+                "operationId": "register",
+                "summary": "Register on the API Business Hub Enterprise.",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "userId": {
+                                        "type": "string"
+                                    },
+                                    "firstName": {
+                                        "type": "string"
+                                    },
+                                    "lastName": {
+                                        "type": "string"
+                                    },
+                                    "emailId": {
+                                        "type": "string"
+                                    },
+                                    "country": {
+                                        "type": "string"
+                                    },
+                                    "rolesAccess": {
+                                        "type": "object",
+                                        "properties": {
+                                            "requestReason": {
+                                                "type": "string"
+                                            },
+                                            "role": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    }
+
+                                }
+                            }
+                        }
+
+                    }
+                },
+                "security": [{
+                    "basicAuth": []
+                }],
+                "parameters": [{
+                    "name": "Accept",
+                    "in": "header",
+                    "schema": {
+                        "type": "string"
+                    },
+                    "example": "application/json"
+                }],
+                "responses": {
+                    "201": {
+                        "description": "Created entity"
+                    }
+                }
+            }
+        }
+    }
+}
