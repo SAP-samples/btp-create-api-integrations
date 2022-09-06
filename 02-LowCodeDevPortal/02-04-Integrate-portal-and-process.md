@@ -52,10 +52,20 @@ Now that your low code portal is built and request API access process deployed, 
   26. Set the option list to a mapping, select the data variable for RestCountries, and set the label and value fields to name and alpha2Code respectively
   27. Set selected value to No Value
   28. Add a page variable with type object, name it processContext, and repeat the field names for the process inputs
-  29. Set the **Component onChange** event for each field in the request form to the corresponding named property of the processContext variable. Set the value to a formula ```STRING(self.value)```
+    ![Process context variable](./img/processContextSetup.png)
+
+  29. Set the **Component onChange** event for each input field in the request form to the corresponding named property of the processContext variable. Set the value to a formula ```STRING(self.value)```
+    ![Input field settings](./img/selfValue.png)
+
   30. Use the email field for user id as well, so apply 2 consecutive **Set page variable** nodes attached to each other
+    ![Email and User ID](./img/emailUserid.png)
+
   31. Add logic to the submit button, starting with an **If condition**. Set the value to ```IF(IS_NULLY(pageVars.processContext), false, true)```
       * Note that we really need to check every field to ensure they aren't blank but for simplicity sake we'll check the entire object
-  32. For Output 1, attach a Create Record node and configure the record properties as a custom object, mapping the page parameter values to it. You can retrieve the values from the 2 dropdown menus directy by using Component Properties > Another component's property or output value option 
+  32. For Output 1, attach a Create Record node and configure the record properties as a custom object, mapping the page parameter values to it. You can retrieve the values from the 2 dropdown menus directy by using Component Properties > Another component's property or output value option
+    ![Process context application](./img/processContext.png)
+
   33. For Output 2, attach a Toast dialog and set the message to something like, **Please complete all fields**
-  34. Save the application
+  34. Add additional toast dialog to the outputs of the **Create record** node to notify of success or failure
+    ![Submit button](./img/submitButton.png)
+  35. Save the application
