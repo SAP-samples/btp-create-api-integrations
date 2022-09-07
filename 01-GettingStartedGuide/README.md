@@ -16,7 +16,7 @@ As part of the mission scope, you can deploy an API billing service that utilize
 
   ![API Monetization with Stripe - Solution Diagram](../images/api_monetization_solution_diagram.png)
 
-## Pre-requisites for API Gateway federation
+## Pre-requisites for API Gateway federation (Future scope item)
 This part of the use case scope demonstrates federation of API from different gateway providers. The sample provided here shows how to integrate Microsoft Azure API Management with SAP Integration Suite, but it can be applied to any 3rd party API gateway that supports eventing with the [CloudEvents](https://cloudevents.io/) standard and can provide an OpenAPI specification for it's resources.
   * Get an instance of [Azure API Management](https://docs.microsoft.com/en-us/azure/api-management/get-started-create-service-instance)
   * Activate [Azure Event Grid](https://docs.microsoft.com/en-us/azure/event-grid/)
