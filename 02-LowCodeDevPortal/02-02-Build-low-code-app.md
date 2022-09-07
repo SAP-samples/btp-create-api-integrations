@@ -38,7 +38,7 @@ At the time of writing, OData associations and expands are not yet supported via
 * Add logic to the Page mounted event to send an HTTP request. You may need to install this component from the flow function market.
 * Set the URL to a formula like this (updating the virtual-host and datacenter pieces to match your environment):
 
-"https://virtual-host.prod.apimanagement.datacenter.hana.ondemand.com/sapapimanagementguest/odata/*0/data.svc/APIProducts('"+params.APIProduct+"')?$format=json&$expand=ToAPIProxies,ToAPIResources,ToRatePlans"
+"https://virtual-host.prod.apimanagement.datacenter.hana.ondemand.com/sapapimanagementguest/odata/1.0/data.svc/APIProducts('"+params.APIProduct+"')?$format=json&$expand=ToAPIProxies,ToAPIResources,ToRatePlans"
 
 * Create a header under optional inputs to hold the basic authentication header. You can use a formula to encode the values at runtime:
 
