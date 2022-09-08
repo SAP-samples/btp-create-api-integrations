@@ -9,10 +9,11 @@ All SAP BTP services in this use case have free tier service plans. Remember to 
 * [Activate the API Management capability in SAP Integration Suite](01-04-Activate-API-Management.md)
 * [Create service instances for API access](01-05-Create-service-instances.md) 
 
-## Onboarding for Stripe
+## Pre-requisites for for Stripe
 As part of the mission scope, you can deploy an API billing service that utilizes [Stripe](https://stripe.com) invoicing. The following resources help you create a Stripe developer account and get you started with their Node.js SDK.
   * Register a free [Stripe developer](https://dashboard.stripe.com/register) account
   * Get started with the [Stripe Node.js SDK](https://stripe.com/docs/development/quickstart/node)
+  * Setup a Sample API based on the ES5 Demo system (incl. a Rate Plan, API Key verification aso.) as described in the **Develop** scope of the the mission [Get Started with Integration Suite - API Management](https://discovery-center.cloud.sap/missiondetail/3062/3072/). This is an **essential requirement** for the invoicing scope. Also create the respective API Product in **API Business Hub Enterprise** and test your application as described in the mission. This will create some charges for your Stripe invoices.
 
   ![API Monetization with Stripe - Solution Diagram](../images/api_monetization_solution_diagram.png)
 
