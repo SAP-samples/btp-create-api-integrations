@@ -23,7 +23,7 @@ Disclaimer: The code in this project may include calls to APIs ("API Calls") of
  and non-commercial test and evaluation of such API Calls. Nothing herein grants
  you any rights to use or access any SAP External Product, or provide any third
  parties the right to use of access any SAP External Product, through API Calls.
+ 
 Files: *
 Copyright: 2022 SAP and btp-create-api-integrations contributors.
 License: Apache-2.0
-
