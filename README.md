@@ -1,6 +1,6 @@
-# Create simple, connected digital experiences with API-based integration
+[![REUSE status](https://api.reuse.software/badge/github.com/SAP-samples/btp-create-api-integrations)](https://api.reuse.software/info/github.com/SAP-samples/btp-create-api-integrations)
 
-[![REUSE status](https://api.reuse.software/badge/github.com/SAP-samples/REPO-NAME)](https://api.reuse.software/info/github.com/SAP-samples/btp-create-api-integrations)
+# Create simple, connected digital experiences with API-based integration
 
 ## Description
 Realize a unified catalog and developer portal for all API, wherever they’re managed. Build your own digital experiences with SAP low code solutions, SAP Integration Suite, and SAP BTP, Kyma runtime to operationalize access requests, federate API from disparate gateways, and monetize their use.
