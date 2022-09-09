@@ -11,11 +11,11 @@
 ### Option 1: Using _kubectl_
 Run the following command in your terminal:
 
-```$ kubectl create secret generic stripe-key --from-literal=STRIPE_API_KEY=<<stripe-secrect-key<>> --namespace <<namespace>>```
+```$ kubectl create secret generic stripe-key --from-literal=STRIPE_API_KEY=<stripe-secrect-key> --namespace <namespace>```
 
 We expect the response _secret/stripe-secret created_ but to make sure it's avaialble on the namespace, execute:
 
-```$ kubectl get secrets --namespace <<namespace>>```
+```$ kubectl get secrets --namespace <namespace>```
 
 The last entry should be the secret we just created.
 ```bash
@@ -34,15 +34,18 @@ stripe-key                                     Opaque                           
 # Deploy the invoicing components to Kyma
 * Checkout the stripe branch of the sap-samples GitHub repository
 * Change to the **btp-invoicing** directory and install the npm dependencies doing an **npm install**
-* Go to **btp-invoicing/chart/values.yaml** and update **<<your_docker_account>>** with your Docker Hub username
+* Go to **btp-invoicing/chart/values.yaml** and update **<your_docker_account>** with your Docker Hub username
 * If your target Kyma namespace is not named **trial** go to **btp-invoicing/chart/charts/web-application/templates/network-policy.yaml** and update the **kubernetes.io/metadata.name** property
 * Do a **docker login** to login to Docker Hub from your command line
 * Execute the npm command **build-deploy:kyma** with the following parameters
-  - image_name - Name of the image incl. your docker account like **<<your_docker_account>>/btp-invoicing**
+
+  ```$ npm run build-deploy:kyma --image_name=<your_docker_account>/btp-invoicing --namespace=<namespace>```
+  - image_name - Name of the image incl. your docker account like **<your_docker_account>/btp-invoicing**
   - namespace - Name of the Kyma namespace like **trial** or **default** (Kyma namespace needs to be created before deployment)
-* A sample call looks like - `npm run build-deploy:kyma --image_name=<<your_docker_account>>/btp-invoicing --namespace=<<namespace>>`
+
 * Change to the **cron-job** directory
 * If your target Kyma namespace is not named **trial** go to **cron-job/chart/templates/deployment.yaml** and update the **INVOICING_SERVICE_NAMESPACE** environment variable value
 * Execute the npm command **deploy:kyma** with the following parameters
+
+  ```$ npm run deploy:kyma --namespace=<namespace>```
   - namespace - Name of your Kyma namespace like **trial** or **default**
-* A sample call looks like - `npm run deploy:kyma --namespace=<<namespace>>`
