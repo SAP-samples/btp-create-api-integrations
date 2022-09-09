@@ -1,5 +1,5 @@
 # Enable access to Integration Suite platform API
-The following steps allow you to create a service account for unregistered users to browse your API catalog
+The following steps allow you to create a service account for unregistered users to browse your API catalog. Please make sure the Cloud Foundry environment is enabled in your subaccount to create the service instances. 
 
 ## Create a service account for Business Hub Enterprise guest access
 
@@ -42,6 +42,7 @@ A service instance lets us interact with the API Management, API portal service 
   * Click **Instances and Subscriptions** and select **Create**
   * Select **API Management, API portal** from the Service list and fill out the remaining fields as below
      ![Service instance details](img/API_ServiceInstance.png)
+  * If the service is not available in the Service list, please assign it to your subaccount from your global account
   * On the next tab, add the JSON parameters to provide administrator access using this service instance
       ```
       {
