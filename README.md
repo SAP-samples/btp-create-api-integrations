@@ -1,9 +1,6 @@
-# Create simple, connected digital experiences with API-based integration
-<!-- Please include descriptive title -->
+[![REUSE status](https://api.reuse.software/badge/github.com/SAP-samples/btp-create-api-integrations)](https://api.reuse.software/info/github.com/SAP-samples/btp-create-api-integrations)
 
-<!--- Register repository https://api.reuse.software/register, then add REUSE badge:
-[![REUSE status](https://api.reuse.software/badge/github.com/SAP-samples/REPO-NAME)](https://api.reuse.software/info/github.com/SAP-samples/REPO-NAME)
--->
+# Create simple, connected digital experiences with API-based integration
 
 ## Description
 Realize a unified catalog and developer portal for all API, wherever they’re managed. Build your own digital experiences with SAP low code solutions, SAP Integration Suite, and SAP BTP, Kyma runtime to operationalize access requests, federate API from disparate gateways, and monetize their use.
@@ -25,12 +22,13 @@ An empowered developer ecosystem with self-service access to API, supported by s
 You can find the detailed pre-requisites for running each part of this mission in the [Getting started guide](./01-GettingStartedGuide/README.md)
 
 ## Download and Installation
+- Artifacts needed for the low-code developer portal scenario can be found in a [dedicated branch](https://github.com/SAP-samples/btp-create-api-integrations/tree/low-code-dev-portal)
 
 ## Known Issues
-<!-- You may simply state "No known issues. -->
+- API bills can only be read for completed months, not current month
 
 ## How to obtain support
-[Create an issue](https://github.com/SAP-samples/<repository-name>/issues) in this repository if you find a bug or have questions about the content.
+[Create an issue](https://github.com/SAP-samples/btp-create-api-integrations/issues) in this repository if you find a bug or have questions about the content.
  
 For additional support, [ask a question in SAP Community](https://answers.sap.com/questions/ask.html).
 
