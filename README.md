@@ -25,12 +25,13 @@ An empowered developer ecosystem with self-service access to API, supported by s
 You can find the detailed pre-requisites for running each part of this mission in the [Getting started guide](./01-GettingStartedGuide/README.md)
 
 ## Download and Installation
+- Artifacts needed for the low-code developer portal scenario can be found in a [dedicated branch](https://github.com/SAP-samples/btp-create-api-integrations/tree/low-code-dev-portal)
 
 ## Known Issues
-<!-- You may simply state "No known issues. -->
+- API bills can only be read for completed months, not current month
 
 ## How to obtain support
-[Create an issue](https://github.com/SAP-samples/<repository-name>/issues) in this repository if you find a bug or have questions about the content.
+[Create an issue](https://github.com/SAP-samples/btp-create-api-integrations/issues) in this repository if you find a bug or have questions about the content.
  
 For additional support, [ask a question in SAP Community](https://answers.sap.com/questions/ask.html).
 
