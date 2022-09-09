@@ -1,0 +1,9 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: btp-create-api-integrations
+Upstream-Contact: james.rapp@sap.com
+Source: https://github.com/sap-samples/btp-create-api-integrations
+
+Files: *
+Copyright: 2022 SAP and btp-create-api-integrations contributors.
+License: Apache-2.0
+
