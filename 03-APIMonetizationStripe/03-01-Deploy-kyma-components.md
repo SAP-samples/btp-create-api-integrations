@@ -8,6 +8,23 @@
 * In Windows PowerShell the command to set the environment variable looks like e.g. `$ENV:KUBECONFIG="C:\path\to\kubeconfig.yaml"`
 
 # Add the Stripe API Key as a secret to your Kyma environment
+### Option 1: Using _kubectl_
+Run the following command in your terminal:
+
+```$ kubectl create secret generic stripe-key --from-literal=STRIPE_API_KEY=<<stripe-secrect-key<>> --namespace <<namespace>>```
+
+We expect the response _secret/stripe-secret created_ but to make sure it's avaialble on the namespace, execute:
+
+```$ kubectl get secrets --namespace <<namespace>>```
+
+The last entry should be the secret we just created.
+```bash
+NAME                                           TYPE                                  DATA   AGE
+...                                            ...                                   ...    ...
+stripe-key                                     Opaque                                1      11s
+```
+
+### Option 2: Via Kyma Dashboard
 * Go to your Kyma target namespace (e.g. trial or default) and add a new secret in the **Configuration** section
 * Name your secret **stripe-key** and add the **Secret Key** of your Stripe Developer portal as a new **Data** value named **STRIPE_API_KEY** 
 
