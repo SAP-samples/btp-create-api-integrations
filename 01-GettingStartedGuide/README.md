@@ -23,7 +23,7 @@ As part of the mission scope, you can deploy an API billing service that utilize
 
       ![API_Bill](./img/API_Portal_Bill.png)
 
-  * Here you can see the detailed architecture diagram of the API Monetization with Strip mission scope. 
+  * Here you can see the detailed architecture diagram of the API Monetization with Stripe mission scope. 
 
   ![API Monetization with Stripe - Solution Diagram](../images/api_monetization_solution_diagram.png)
 
