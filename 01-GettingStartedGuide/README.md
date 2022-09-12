@@ -1,7 +1,7 @@
 # Getting started with the use case
 
 ## Setup phase
-All SAP BTP services in this use case have free tier service plans. Remember to select these service plans when activating subscriptions in your subaccount to prevent unexpected charges. [Discover other free services](https://help.sap.com/docs/BTP/65de2977205c403bbc107264b8eccf4b/524e1081d8dc4b0f9d055a6bec383ec3.html) on the [SAP Discovery Center](https://discovery-center.cloud.sap/#/viewServices?provider=all&regions=all&category=freetierservices).
+All [test] SAP BTP services in this use case have free tier service plans. Remember to select these service plans when activating subscriptions in your subaccount to prevent unexpected charges. [Discover other free services](https://help.sap.com/docs/BTP/65de2977205c403bbc107264b8eccf4b/524e1081d8dc4b0f9d055a6bec383ec3.html) on the [SAP Discovery Center](https://discovery-center.cloud.sap/#/viewServices?provider=all&regions=all&category=freetierservices).
 
 * [Setup SAP low code solutions using BTP boosters](https://github.com/SAP-docs/btp-cloud-platform/blob/main/docs/30-development/boosters-fb1b561.md) - In this section, see how to use BTP boosters and then automate the setup of SAP BTP low code SaaS applications by executing the SAP Process Automation and SAP AppGyver boosters in your subaccount
 * [Subscribe to SAP Integration Suite](./01-02-Subscribe-Integration-Suite.md)
