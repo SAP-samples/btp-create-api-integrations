@@ -1,4 +1,4 @@
-![REUSE status](https://api.reuse.software/badge/github.com/SAP-samples/btp-create-api-integrations)](https://api.reuse.software/info/github.com/SAP-samples/btp-create-api-integrations)
+[![REUSE status](https://api.reuse.software/badge/github.com/SAP-samples/btp-create-api-integrations)](https://api.reuse.software/info/github.com/SAP-samples/btp-create-api-integrations)
 
 # Create simple, connected digital experiences with API-based integration
 
