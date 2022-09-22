@@ -3,6 +3,7 @@ The following steps allow you to create a service account for unregistered users
 
 ## Create a service account for Business Hub Enterprise guest access
 
+  * Assign yourself the **AuthGroup.SelfService.Admin** role
   * Access the Business Hub Enterprise URL and select **Manage**
   * Select **Manage Users** > **Registered Users** and click the plus sign to add a new user
   * Enter details for a generic user account and assign it the **Developer** role
