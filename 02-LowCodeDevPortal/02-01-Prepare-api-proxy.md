@@ -1,11 +1,12 @@
 # Prepare SAP API Management for service account access
-* Import [API Proxy](https://github.com/SAP-samples/btp-create-api-integrations/raw/low-code-dev-portal/DevPortal_Anonymous.zip) into your instance of SAP API Management via the **Develop** menu
-* Update the Target EndPoint to reflect your environment. The host name depends on which region you are subscribed in and can be retrieved from the service key created in the previous section.
-* [Implement SAP Cloud Foundry services policy](https://api.sap.com/policytemplate/SAPCloudFoundryXSUAAJWTToken) which is already included as part of the proxy file above
-  * TargetEndpoint > PreFlow > getcredential > client id and secret (use the credentials for the Developer portal service instance created in the previous section)
+* Import [API Proxy](https://github.com/SAP-samples/btp-create-api-integrations/raw/low-code-dev-portal/DevPortal_Anonymous.zip) into your instance of SAP API Management via the **Develop** menu > **Import API**
+* Update the Target EndPoint to reflect your environment. The host name depends on which region you are subscribed in and can be retrieved from the service keys created in the previous section.
+* [Implement SAP Cloud Foundry services policy](https://api.sap.com/policytemplate/SAPCloudFoundryXSUAAJWTToken) from the **Policies** menu, which is already included as part of the proxy file above.
+  * Update **TargetEndpoint > PreFlow > getcredential > sapapim.clientid and sapapim.clientsecret values** (use the credentials for the Developer portal service instance created in the previous section)
 
-  * TargetEndpoint > PreFlow getoauthtoken > HTTPTargetConnection > URL to token URL of XSUAA
-  * Scripts > setTarget.js > set targetHost and datacenter to base of your BHE endpoint (e.g. us20devportal and us20)
+  * Update **TargetEndpoint > PreFlow getoauthtoken > HTTPTargetConnection > URL** to the tokenUrl property of the service key
+  * Update **Scripts > setTarget.js > targetHost** to the url property of the service key (e.g. https://eu10devportal.cfapps.eu10.hana.ondemand.com or https://us20devportal.cfapps.us20.hana.ondemand.com)
+  * Click Update, Save, and Redeploy the modified proxy.
 * Create an API Product and associate the DevPortal_Anonymous API with it
 * Register an application and generate API Key for service account
   * Access the Business Hub Enterprise via the URL you saved in the previous step, or by selecting the subscription link from the Integration Suite launchpad
