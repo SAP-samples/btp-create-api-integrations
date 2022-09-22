@@ -5,7 +5,7 @@
   * TargetEndpoint > PreFlow > getcredential > client id and secret
   * TargetEndpoint > PreFlow getoauthtoken > HTTPTargetConnection > URL to token URL of XSUAA
   * Scripts > setTarget.js > set targetHost and datacenter to base of your BHE endpoint (e.g. us20devportal and us20)
-* Create an API Product and associate the DevPortal_Guest API with it
+* Create an API Product and associate the DevPortal_Anonymous API with it
 * Register an application and generate API Key for service account
   * Access the Business Hub Enterprise via the URL you saved in the previous step, or by selecting the subscription link from the BTP cockpit
   * Click My Workspace > Applications > Create
