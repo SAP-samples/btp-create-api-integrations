@@ -76,5 +76,6 @@ A new destination using the **API Portal API access** service key details can be
     - ProxyType=Internet
     - URL=https://apiportal.cfapps.hana.ondemand.com
     - tokenServiceURLType=Dedicated
-  * A sample destination looks like this
+  * A sample destination looks like this. You may receive a 401 when testing the destination due to accessing the server root. This is ok and you can proceed with the next steps.
     ![API Portal destination](img/API_Destination.png)
+    
