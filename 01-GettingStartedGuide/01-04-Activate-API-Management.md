@@ -7,8 +7,7 @@
 * Click **Activate** to initiate the process
 
 Activation can take a few minutes, so wait until the status is marked Active before proceeding. Make note of the API Portal and Business Hub Enterprise URL for reference.
-
-![API Management activation](img/IS_APIActivation.png)
+<br><img src="img/IS_APIActivation.png" width="70%">
 
 You can refer to the [help documentation](https://help.sap.com/docs/SAP_CLOUD_PLATFORM_API_MANAGEMENT/66d066d903c2473f81ec33acfe2ccdb4/f6eb4332cd5144ef91f4a84cc614ba1c.html?locale=en*US) for the complete process.
 
