@@ -3,13 +3,37 @@
 ## Setup phase
 All SAP BTP services in this use case have free tier service plans. Please remember to select these service plans when activating a subscriptions in your subaccount to prevent unexpected charges. [Discover other free services](https://help.sap.com/docs/BTP/65de2977205c403bbc107264b8eccf4b/524e1081d8dc4b0f9d055a6bec383ec3.html) on the [SAP Discovery Center](https://discovery-center.cloud.sap/#/viewServices?provider=all&regions=all&category=freetierservices).
 
+## Prerequisites
+The required systems and components are:
+
+- SAP BTP account
+
+Entitlements/Quota required in your SAP Business Technology Platform Account:
+
+| Service                           | Plan        | Number of instances |
+| --------------------------------- | ----------- | ------------------- |
+| SAP Integration Suite             | free        | 1                   |
+| SAP Process Automation            | free        | 1                   |
+| Authorization & Trust Management  | application | 1                   |
+| Destination                       | lite        | 1                   |
+| SAP AppGyver                      | free        | 1                   |
+| SAP BTP, Kyma runtime             | free        | 1                   |
+
+Subscriptions required in your SAP Business Technology Platform Account:
+
+| Subscription                      | Plan             |
+| --------------------------------- | ---------------- |
+| SAP Integration Suite             | standard         |
+| SAP AppGyver                      | standard         |
+| SAP Process Automation            | standard         |
+
 * [Setup SAP low code solutions using BTP boosters](https://github.com/SAP-docs/btp-cloud-platform/blob/main/docs/30-development/boosters-fb1b561.md) - In this section, you can learn how to use BTP boosters and automate the setup of SAP BTP low code SaaS applications by executing the SAP Process Automation and SAP AppGyver boosters in your subaccount
 * [Subscribe to SAP Integration Suite](./01-02-Subscribe-Integration-Suite.md)
 * [Deploy SAP BTP, Kyma runtime](https://github.com/SAP-docs/btp-cloud-platform/blob/main/docs/50-administration-and-ops/create-the-kyma-environment-instance-09dd313.md) - If you're interested in API federation and monetization, you will need an instance of Kyma runtime. Follow these instructions to get started with Kyma.
 * [Activate the API Management capability in SAP Integration Suite](01-04-Activate-API-Management.md)
 * [Create service instances for API access](01-05-Create-service-instances.md) 
 
-## Pre-requisites for for Stripe
+## Prerequisites for for Stripe
 As part of the mission scope, you can deploy an API billing service that utilizes [Stripe](https://stripe.com) invoicing. The following resources will help you create a Stripe developer account and get you started with their Node.js SDK.
   * Register a free [Stripe developer](https://dashboard.stripe.com/register) account.
   * Get started with the [Stripe Node.js SDK](https://stripe.com/docs/development/quickstart/node).
@@ -28,7 +52,7 @@ As part of the mission scope, you can deploy an API billing service that utilize
 
   ![API Monetization with Stripe - Solution Diagram](../images/api_monetization_solution_diagram.png)
 
-## Pre-requisites for API Gateway federation (Future scope item)
+## Prerequisites for API Gateway federation (Future scope item)
 This part of the use case scope demonstrates federation of API from different gateway providers. The sample provided here shows how you can integrate Microsoft Azure API Management with SAP Integration Suite, but it can be applied to any 3rd party API gateway that supports eventing with the [CloudEvents](https://cloudevents.io/) standard and can provide an OpenAPI specification for it's resources.
   * Get an instance of [Azure API Management](https://docs.microsoft.com/en-us/azure/api-management/get-started-create-service-instance)
   * Activate [Azure Event Grid](https://docs.microsoft.com/en-us/azure/event-grid/)
