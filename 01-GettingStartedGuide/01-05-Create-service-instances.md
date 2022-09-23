@@ -3,6 +3,7 @@ The following steps allow you to create a service account for unregistered users
 
 ## Create a service account for Business Hub Enterprise guest access
 
+  * Assign yourself the **AuthGroup.SelfService.Admin** role
   * Access the Business Hub Enterprise URL and select **Manage**
   * Select **Manage Users** > **Registered Users** and click the plus sign to add a new user
   * Enter details for a generic user account and assign it the **Developer** role
@@ -75,5 +76,6 @@ A new destination using the **API Portal API access** service key details can be
     - ProxyType=Internet
     - URL=https://apiportal.cfapps.hana.ondemand.com
     - tokenServiceURLType=Dedicated
-  * A sample destination looks like this
+  * A sample destination looks like this. You may receive a 401 when testing the destination due to accessing the server root. This is ok and you can proceed with the next steps.
     ![API Portal destination](img/API_Destination.png)
+    
