@@ -13,6 +13,8 @@ Entitlements/Quota required in your SAP Business Technology Platform Account:
 | Service                           | Plan        | Number of instances |
 | --------------------------------- | ----------- | ------------------- |
 | SAP Integration Suite             | free        | 1                   |
+|API Management, API Portal         | apiportal-apiaccess | 1           |
+|API Management, API Business Hub Enterprise | devportal-apiaccess | 1  |
 | SAP Process Automation            | free        | 1                   |
 | Authorization & Trust Management  | application | 1                   |
 | Destination                       | lite        | 1                   |
