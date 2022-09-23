@@ -3,9 +3,9 @@
 #Tue Aug 30 23:22:14 UTC 2022
 Type=HTTP
 Authentication=BasicAuthentication
-DynamicDestination=true
+HTML5.DynamicDestination=true
 Name=LCDevPortal
-WebIDEEnabled=true
+AppgyverEnabled=true
 ProxyType=Internet
 URL=https\://vhost.prod.apimanagement.datacenter.hana.ondemand.com/sapapimanagementguest/odata/1.0/data.svc
-User=APIKey
+User=<Enter APIKey>
