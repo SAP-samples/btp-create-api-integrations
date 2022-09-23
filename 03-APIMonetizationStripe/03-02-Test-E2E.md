@@ -27,7 +27,7 @@ As a final step in this mission scope, you will test the invoicing flow end-to-e
     ```
 
   * Check in your Stripe account whether invoices have been created similar to the following (click to enlarge):
-  
+
     [<img src="./img/STRIPE_Invoice.png" width="300"/>](./img/STRIPE_Invoice.png)
     [<img src="./img/STRIPE_PdfInvoice.png" width="330"/>](./img/STRIPE_PdfInvoice.png)
 
