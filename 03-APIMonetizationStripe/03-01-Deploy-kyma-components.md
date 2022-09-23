@@ -7,6 +7,8 @@
 * Download the **kubeconfig.yaml** file of your Kyma cluster and make sure the KUBECONFIG environment variable is set correctly as described in the [Kubernetes documentation](https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/#set-the-kubeconfig-environment-variable)
 * In Windows PowerShell the command to set the environment variable looks like e.g. `$ENV:KUBECONFIG="C:\path\to\kubeconfig.yaml"`
 
+>**Important** - Please keep in mind, that in a Trial environment, your Kyma instance will expire after 14 days. To test the solution after 14 days, please delete your Kyma instance, setup a new one and redeploy the solution.
+
 # Add the Stripe API Key as a secret to your Kyma environment
 ### Option 1: Using _kubectl_
 Run the following command in your terminal:
