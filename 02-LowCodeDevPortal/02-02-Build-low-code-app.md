@@ -2,9 +2,9 @@
 In this section, you will build a low code app in SAP AppGyver. Unlike previous walkthroughs such as the [Custom mobile HR app](https://github.com/SAP-samples/successfactors-extension-calculate-employee-seniority/tree/mission-sfsf-mobile-appgyver/04-CreateSAPAppGyverProject) and [Covid certificate checker](https://github.com/SAP-samples/cap-appgyver-covid-certcheck/tree/main/tutorials/4_AppGyverApp) we won't provide exhaustive steps for recreating this application. You can find all the key steps listed below, but in a leaner fashion.
 
 ## API Product Home
-* Access SAP AppGyver from the BTP cockpit under **Subscriptions and Instances** and create a new application
-* Enable BTP authentication
-* Create a new integration and select the LCDevPortal destination from the previous step
+* Access SAP AppGyver from the BTP cockpit under **Subscriptions and Instances** and create a new SAP Appgyver project from the list
+* Activate Auth > Enable Authentication > BTP authentication
+* Create a new integration under Data > Add Integration > Destination and select the LCDevPortal destination from the previous step
 * Enable the Applications, APIProducts, and APIProxies entities and save (use the browse data feature to make sure everything is working)
 * Open the default empty page and rename it to **Home**. Create 2 more pages and name them **Applications Detail** and **API Product Detail**
 * On the **Home** page install and add a Basic card list component to the canvas
