@@ -42,10 +42,10 @@ As part of the mission scope, you can deploy an API billing service that utilize
   * Setup a Sample API based on the ES5 Demo system (incl. a Rate Plan, API Key verification aso.) as described in the **Develop** scope of the the mission [Get Started with Integration Suite - API Management](https://discovery-center.cloud.sap/missiondetail/3062/3072/). This is an **essential requirement** for the related mission scope. Following the **Getting Started** mission, please create the respective API Product in **API Business Hub Enterprise** and test your application as described. This will create some charges for your Stripe invoices and allows a proper end-to-end test. While doing the Getting Started mission, please consider the following notes:
     - Before deploying your API Proxy, please reload the page to prevent errors.
     - The required policy template in step **Applying Policies** is called **SAP API Management Security Best Practices**. In case the search does not return the correct policy select it manually.
-    - Make sure to set the correct value for the **Verify API Key** policy. Please use the value in the screenshot which is **request.header.APIKey**.
+    - Set the correct value for the **Verify API Key** policy. Please use the value in the screenshot which is **request.header.APIKey**.
     - If you face issues with publication of your API Product to API Business Hub Enterprise, please assign the missing **AuthGroup.SelfService.Admin** & **AuthGroup.API.ApplicationDeveloper** role collections to your user and **re-login**.
-    - Even if you're signed-in automatically to API Business Hub Enterprise, make sure to **Register** once again as a **Developer**. Make sure you **Logout** and **Login** before creating a new **Application** in API Business Hub Enterprise
-    - Make sure to register a new **Application** (like StoreSilver) in API Business Hub Enterprise after you created and assigned the **Rate Plan** to your API Product. Your first application **Store** will not have a Rate Plan assigned! 
+    - Even if you're signed-in automatically to API Business Hub Enterprise, make sure to **Register** as a **Developer**. **Logout** and **Login** before creating a new **Application** in API Business Hub Enterprise for the first time.
+    - Register a new **Application** (like StoreSilver) in API Business Hub Enterprise after you created and assigned the **Rate Plan** to your API Product. Your first application **Store** will not have a Rate Plan assigned. 
     - Your API Portal Bill section should look similar to the following after triggering a first call of your **StoreSilver** application: 
 
       ![API_Bill](./img/API_Portal_Bill.png)
