@@ -1,5 +1,5 @@
 # Prepare SAP API Management for service account access
-1. Import [API Proxy](https://github.com/SAP-samples/btp-create-api-integrations/raw/low-code-dev-portal/DevPortal_Anonymous.zip) into your instance of SAP API Management via the **Develop** menu > **Import API**.
+1. Import the [API Proxy](https://github.com/SAP-samples/btp-create-api-integrations/raw/low-code-dev-portal/DevPortal_Anonymous.zip) into your instance of SAP API Management via the **Develop** menu > **Import API**.
 2. Update the Target EndPoint to reflect your environment. The host name depends on which region you are subscribed in and can be retrieved from the service keys created in the previous section.
 3. [Implement the SAP Cloud Foundry services policy](https://api.sap.com/policytemplate/SAPCloudFoundryXSUAAJWTToken) from the **Policies** menu, which is already included as part of the proxy file above.
   * Update **TargetEndpoint > PreFlow > getcredential > sapapim.clientid and sapapim.clientsecret values** using the credentials for the Developer portal service instance created in the previous section.
