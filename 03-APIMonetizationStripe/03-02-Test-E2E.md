@@ -29,7 +29,7 @@ As a final step in this mission scope, you will test the invoicing flow end-to-e
   4. Check in your Stripe account whether invoices have been created similar to the following (click to enlarge):
 
       <br>[<img src="./img/STRIPE_Invoice.png" width="50%"/>](./img/STRIPE_Invoice.png)
-      <br>[<img src="./img/STRIPE_PdfInvoice.png" width="50%"/>](./img/STRIPE_PdfInvoice.png)
+      <br><br>[<img src="./img/STRIPE_PdfInvoice.png" width="50%"/>](./img/STRIPE_PdfInvoice.png)
 
   5. In case you want to re-access the curl container for further tests, please run the following command in your terminal:
     ```bash
