@@ -1,10 +1,10 @@
 # Activate SAP Integration Suite, API Management capability
 
-* Access the SAP Integration Suite link from your BTP subaccount under Instances and Subscriptions
-* Select **Add Capabilities**
-* Check the **Design, Develop and Manage APIs** option and click Next.
-* Check the **Enable API Business Hub Enterprise** option and click Next.
-* Click **Activate** to initiate the process.
+1. Access the SAP Integration Suite link from your BTP subaccount under Instances and Subscriptions
+2. Select **Add Capabilities**
+3. Check the **Design, Develop and Manage APIs** option and click Next.
+4. Check the **Enable API Business Hub Enterprise** option and click Next.
+5. Click **Activate** to initiate the process.
 
 The activation can take a few minutes, so wait until the status has changed to **Active** before proceeding. Note down the URL of the API Portal and Business Hub Enterprise.
 <br><img src="img/IS_APIActivation.png" width="70%">
