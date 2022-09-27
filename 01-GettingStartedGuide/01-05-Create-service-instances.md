@@ -70,17 +70,16 @@ A new destination using the **API Portal API access** service key details can be
   2. Select **Destinations**.
   3. Create a new destination called **api-portal**.
   4. Provide the details of your API Portal API access service key, which will look something like this:
-    - Description=Destination for APIM platform API
-    - Type=HTTP
-    - name=api-portal
-    - clientId=sb-apiaccess|api-portal-xsuaa
-    - clientSecret=secret
-    - Authentication=OAuth2ClientCredentials
-    - tokenServiceURL=https://tenant.authentication.hana.ondemand.com/oauth/token
-    - ProxyType=Internet
-    - URL=https://apiportal.cfapps.hana.ondemand.com
-    - tokenServiceURLType=Dedicated
-  5. Once you have added the destination, it will look something like this:
-    ![API Portal destination](img/API_Destination.png)
-  6. You may receive a 401 error when testing the destination due to accessing the server root. This is ok and you can proceed with the next steps.
+  * Description=Destination for APIM platform API
+  * Type=HTTP
+  * name=api-portal
+  * clientId=sb-apiaccess|api-portal-xsuaa
+  * clientSecret=secret
+  * Authentication=OAuth2ClientCredentials
+  * tokenServiceURL=https://tenant.authentication.hana.ondemand.com/oauth/token
+  * ProxyType=Internet
+  * URL=https://apiportal.cfapps.hana.ondemand.com
+  * tokenServiceURLType=Dedicated
+      ![API Portal destination](img/API_Destination.png)
+  5. You may receive a 401 error when testing the destination due to accessing the server root. This is ok and you can proceed with the next steps.
     
