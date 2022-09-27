@@ -5,7 +5,7 @@ Now that the portal is functional, we can provide an onboarding experience for u
     * Import the process from the [provided mtar](https://github.com/SAP-samples/btp-create-api-integrations/blob/low-code-dev-portal/Developer_Onboarding.mtar).
     * Open the process and ensure that there are no errors or warnings in the designer.
     * Update the **Recipients** property by typing your account email address into the Users field. Delete the **btp-admin** entry which is provided as part of a sample integration with SAP Cloud Identity Authentication Service for a future mission scope.
-    ![Update recipients](./img/recipientGroups.png)
+      ![Update recipients](./img/recipientGroups.png)
     
 2. Implement and actions projects for outbound API calls:
     * Create an SAP BTP destination from the [provided template](https://github.com/SAP-samples/btp-create-api-integrations/blob/low-code-dev-portal/LCDevPortal_Reg.destination.txt) and ensure the correct properties are set. See: [Manage Destinations](https://help.sap.com/docs/PROCESS_AUTOMATION/a331c4ef0a9d48a89c779fd449c022e7/0fb074dff1644f2abb047175a9dfd0c1.html?q=destination&locale=en-US) are set
