@@ -1,30 +1,31 @@
 # Enable access to Integration Suite platform API
-The following steps allow you to create a service account for unregistered users to browse your API catalog. Please make sure the Cloud Foundry environment is enabled in your subaccount to create the service instances. 
+Create a service account for unregistered users to browse your API catalog. Please make sure the Cloud Foundry environment is enabled in your subaccount to create the service instances. Also ensure you have added the necessary entitlements as indicated in the [prerequisites](https://github.com/SAP-samples/btp-create-api-integrations/blob/main/01-GettingStartedGuide/README.md). 
 
 ## Create a service account for Business Hub Enterprise guest access
 
-  * Assign yourself the **AuthGroup.SelfService.Admin** role
-  * Access the Business Hub Enterprise URL and select **Manage**
-  * Select **Manage Users** > **Registered Users** and click the plus sign to add a new user
-  * Enter details for a generic user account and assign it the **Developer** role
+  1. Assign yourself the **AuthGroup.SelfService.Admin** role.
+  2. Access the Business Hub Enterprise URL and select **Manage**.
+  3. Select **Manage Users** > **Registered Users** and click the plus sign to add a new user.
+  4. Enter details for a generic user account and assign it the **Developer** role.
      ![System user details](img/SystemAccount.png)
 
 ## Create a service instance for Developer Portal API access
-A service instance lets us build a UI that retrieves data from Business Hub Enterprise as the service account. The details are located in the [SAP API Management help](https://help.sap.com/docs/SAP_CLOUD_PLATFORM_API_MANAGEMENT/66d066d903c2473f81ec33acfe2ccdb4/dabee6e347f645a6805ec5b29f5d578c.html?locale=en-US)
+A service instance lets you build a UI that retrieves data from Business Hub Enterprise as the service account. See: [API Access Plan for API Business Hub Enterprise](https://help.sap.com/docs/SAP_CLOUD_PLATFORM_API_MANAGEMENT/66d066d903c2473f81ec33acfe2ccdb4/dabee6e347f645a6805ec5b29f5d578c.html?locale=en-US) for more details.
 
-  * Navigate to the subaccount in the BTP cockpit
-  * Click **Instances and Subscriptions** and select **Create**
-  * Select **API Management, developer portal** from the Service list and fill out the remaining fields as below
+  1. Navigate to your subaccount in the BTP cockpit.
+  2. Select **Instances and Subscriptions**.
+  3. Select **Create**.
+  4. Select **API Management, developer portal** from the Service list and fill out the remaining fields.
      ![Service instance details](img/BHE_ServiceInstance.png)
-  * On the next tab, add the JSON parameters to provide access as the system user, providing the user id from the previous step
+  5. On the next tab, add the JSON parameters to provide access as the system user, providing the user id from the previous step.
       ```
       {
       "role": "AuthGroup.API.ApplicationDeveloper",
       "developerId": "SYSTEM"
       }
       ```
-  * Complete the process and confirm the successful creation of the service instance
-  * Locate the service instance and create a service key. Make note of the JSON values which will look something like this
+  6. Complete the process and confirm the successful creation of the service instance.
+  7. Locate the service instance and create a service key. Save the JSON values, which will look something like this:
       ```
       {
       "url": "https://devportal.cfapps.hana.ondemand.com",
@@ -34,24 +35,25 @@ A service instance lets us build a UI that retrieves data from Business Hub Ente
       "clientSecret": "secret"
       }
       ```
-  * Create a service instance of SAP Process Automation along with a service key. Note the URL and credentials.
+  8. Create a service instance of SAP Process Automation along with a service key. Follow the same steps as above, but select **SAP Process Automation** as the service. Save the URL and credentials for later.
 
-## Create a Service Instance for API Portal API access
+## Create a Service Instance for API Portal API Access
+
 A service instance lets you interact with the API Management, API portal service to retrieve bills for the invoicing scope of the mission. See: [SAP API Management, API portal as a Service](https://help.sap.com/docs/SAP_CLOUD_PLATFORM_API_MANAGEMENT/66d066d903c2473f81ec33acfe2ccdb4/e0646630540d440aa1177b389f512afa.html?locale=en-US)
 
-  * Navigate to the subaccount in SAP BTP cockpit.
-  * Click **Instances and Subscriptions** and select **Create**.
-  * Select **API Management, API portal** from the Service list and fill out the remaining fields as described below.
+  1. Navigate to the subaccount in SAP BTP cockpit.
+  2. Click **Instances and Subscriptions** and select **Create**.
+  3. Select **API Management, API portal** from the Service list and fill out the remaining fields.
      ![Service instance details](img/API_ServiceInstance.png)
-  * If the service is not available in the Service list, please assign it to your subaccount from your global account.
-  * On the next tab, add the JSON parameters to provide administrator access using this service instance.
+  4. If the service is not available in the Service list, please double check the assigned entitlements from your global account.
+  5. On the next tab, add the JSON parameters to provide administrator access using this service instance.
       ```
       {
           "role": "APIPortal.Administrator"
       }
       ```
-  * Complete the process and confirm the successful creation of the service instance.
-  * Locate the service instance and create a service key. Save the JSON values for later which will look something like this:
+  6. Complete the process and confirm the successful creation of the service instance.
+  7. Locate the service instance and create a service key. Save the JSON values for later which will look something like this:
       ```
       {
       "url": "https://apiportal.cfapps.hana.ondemand.com",
@@ -61,12 +63,13 @@ A service instance lets you interact with the API Management, API portal service
       }
       ```
 ## Create a Destination for API Portal API access
+
 A new destination using the **API Portal API access** service key details can be used by Kyma to retrieve billing information from API Portal for the invoicing scope of the mission.
 
-  * Navigate to the subaccount in SAP BTP cockpit.
-  * Select **Destinations**.
-  * Create a new destination called **api-portal**.
-  * For the destination details use the service key  created in the last step:
+  1. Navigate to the subaccount in SAP BTP cockpit.
+  2. Select **Destinations**.
+  3. Create a new destination called **api-portal**.
+  4. Provide the details of your API Portal API access service key, which will look something like this:
     - Description=Destination for APIM platform API
     - Type=HTTP
     - name=api-portal
@@ -77,7 +80,7 @@ A new destination using the **API Portal API access** service key details can be
     - ProxyType=Internet
     - URL=https://apiportal.cfapps.hana.ondemand.com
     - tokenServiceURLType=Dedicated
-  * A sample destination will look something like this:
+  5. Once you have added the destination, it will look something like this:
     ![API Portal destination](img/API_Destination.png)
-  * You may receive a 401 error when testing the destination due to accessing the server root. This is ok and you can proceed with the next steps.
+  6. You may receive a 401 error when testing the destination due to accessing the server root. This is ok and you can proceed with the next steps.
     
