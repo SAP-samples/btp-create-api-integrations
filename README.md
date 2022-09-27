@@ -3,15 +3,15 @@
 # Create simple, connected digital experiences with API-based integration
 
 ## Description
-Realize a unified catalog and developer portal for all API, wherever they’re managed. Build your own digital experiences with SAP low code solutions, SAP Integration Suite, and SAP BTP, Kyma runtime to operationalize access requests, federate API from disparate gateways, and monetize their use.
+Build a unified catalog and a developer portal for all APIs, regardless of where they're managed. Create your own digital experiences with SAP AppGyver, SAP Integration Suite, and SAP Process Automation to operationalize access requests, federate API from disparate gateways, and monetize their use.
 
 In an API-first economy, the new business opportunities created from transactional and analytical systems are invaluable. Ensure governance, agility, and a clean line of sight into consumption help you make the most of them.
 
 ## Challenge
-While consumption of API is a standard function of software development, API providers face a number of unique challenges. These include securing access to sensitive data in cloud and on-premise systems, managing API across a heterogenous landscape, and creating revenue opportunities from internal and external usage.
+While the consumption of APIs is a standard function of software development, API providers face several unique challenges. These include securing access to sensitive data in the cloud and on-premise systems, managing APIs across a heterogeneous landscape, and creating revenue opportunities from internal and external usage.
 
 ## Solution
-A single point of access to all API for all developers, powered by workflows and event-based integration with third party API management. This unified catalog consists of a tailored UX, an API key approval process, and automated billing based on rate plans.
+A single point of access to all APIs for all developers, powered by workflows and event-based integration with non-SAP API management software. This unified catalog consists of a tailored UX, a developer onboarding process, and an automated billing process based on rate plans.
 
 ![Low Code Developer Portal - Solution Diagram](./images/dev_portal_solution_diagram.png)
 
