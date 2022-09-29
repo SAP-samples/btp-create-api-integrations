@@ -62,8 +62,9 @@ Now that your low code portal is built and request API access process deployed, 
     ![Email and User ID](./img/emailUserid.png)
 
   32. Add logic to the submit button, starting with an **If condition**. Set the value to ```IF(IS_NULLY(pageVars.processContext), false, true)```. Note that we really need to check every field to ensure they aren't blank but for simplicity sake we'll check the entire object.
-  33. For Output 1, attach a Create Record node and configure the record properties as a custom object, mapping the page parameter values to it. You can retrieve the values from the 2 dropdown menus directy by using **Component Properties > Another component's property or output value** option.
-    ![Process context application](./img/processContext.png)
+  33. For Output 1, attach a Create Record node and configure the record properties as a custom object, mapping the page parameter values to it. You can retrieve the values from the 2 dropdown menus directly by using **Component Properties > Another component's property or output value** option.
+
+      ![Process context application](./img/processContext.png)
 
   34. For Output 2, attach a Toast dialog and set the message to **Please complete all fields**.
   35. Add an additional toast dialog to the outputs of the **Create record** node to notify of success or failure. Fill out the dialog options:
