@@ -6,7 +6,7 @@ Create a service account for unregistered users to browse your API catalog. Plea
   1. Assign yourself the **AuthGroup.SelfService.Admin** role.
   2. Access the Business Hub Enterprise URL and select **Manage**.
   3. Select **Manage Users** > **Registered Users** and click the plus sign to add a new user.
-  4. Enter details for a generic user account and assign it the **Developer** role.
+  4. Enter details for a generic user account and assign it the **Developer** role. This could be a service account defined in your company domain or a personal email address.
      ![System user details](img/SystemAccount.png)
 
 ## Create a service instance for Developer Portal API access
