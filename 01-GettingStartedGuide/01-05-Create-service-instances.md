@@ -1,4 +1,4 @@
-# Enable access to Integration Suite platform API
+# Enable access to Platform API
 Create a service account for unregistered users to browse your API catalog. Please make sure the Cloud Foundry environment is enabled in your subaccount to create the service instances. Also ensure you have added the necessary entitlements as indicated in the [prerequisites](https://github.com/SAP-samples/btp-create-api-integrations/blob/main/01-GettingStartedGuide/README.md). 
 
 ## Create a service account for Business Hub Enterprise guest access
@@ -35,8 +35,6 @@ A service instance lets you build a UI that retrieves data from Business Hub Ent
       "clientSecret": "secret"
       }
       ```
-  8. Create a service instance of SAP Process Automation along with a service key. Follow the same steps as above, but select **SAP Process Automation** as the service. Save the URL and credentials for later.
-
 ## Create a Service Instance for API Portal API Access
 
 A service instance lets you interact with the API Management, API portal service to retrieve bills for the invoicing scope of the mission. See: [SAP API Management, API portal as a Service](https://help.sap.com/docs/SAP_CLOUD_PLATFORM_API_MANAGEMENT/66d066d903c2473f81ec33acfe2ccdb4/e0646630540d440aa1177b389f512afa.html?locale=en-US)
@@ -62,6 +60,9 @@ A service instance lets you interact with the API Management, API portal service
       "clientSecret": "secret"
       }
       ```
+## Create a Service Insance for SAP Process Automation
+  1. Create a service instance of SAP Process Automation along with a service key. Follow the same steps as above, but select **SAP Process Automation** as the service. Save the URL and credentials for later.
+
 ## Create a Destination for API Portal API access
 
 A new destination using the **API Portal API access** service key details can be used by Kyma to retrieve billing information from API Portal for the invoicing scope of the mission.
