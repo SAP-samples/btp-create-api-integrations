@@ -12,13 +12,13 @@ Now that your low code portal is built and request API access process deployed, 
      ![Create app variable](img/SetPageVar.png)
 
   10. Modify the outputs of the Basic Card list on the Home page to store the list of API Products during the initial refresh.
-     ![Component Editor](img/ComponentEditor.png)
+     <br><br>[<img src="./img/ComponentEditor.png" width="70%">](./img/ComponentEditor.png)
 
   11. Select **PROPERTIES** and add  a list of objects to output values with 2 properties (save the property key name for later).
-     ![Output value](img/OutputValues.png)
+     <br><br>[<img src="./img/OutputValues.png" width="70%">](./img/OutputValues.png)
 
   12. Return to **VIEW**, select **BASIC CARD LIST 1** from the tree, add a **Set output value** node, and connect it to the output of **Set private data variable**.
-     ![Set output value](img/SetOutputValue.png)
+     <br><br>[<img src="./img/SetOutputValue.png" width="70%">](./img/SetOutputValue.png)
 
   13. Set the output value to **idDesc** and configure the value as a mapping.
   14. Set the map values to **ID** and **Description**.
@@ -30,7 +30,7 @@ Now that your low code portal is built and request API access process deployed, 
      ![List of ids](img/SetAppVariable.png)
 
   18. Return to **API request form** page and set the option list and selected value properties of the **API Product** dropdown.
-      ![Option list](img/RequestForm.png)
+      <br><br>[<img src="./img/RequestForm.png" width="70%">](./img/RequestForm.png)
 
   19. Use the following formula for the option list:
    ```MAP<item>(appVars.APIList, { label: LOOKUP(item, "title"), value: LOOKUP(item, "id") })```
@@ -38,10 +38,10 @@ Now that your low code portal is built and request API access process deployed, 
       ![App preview](img/PopulatedForm.png)
 
   21. Add a REST integration under **Data** and point to the API Proxy for the Workflow Instance endpoint. Enable the POST method and add a basic authentication header.
-    ![REST properties](img/RESTprops.png)
+    <br><br>[<img src="./img/RESTprops.png" width="70%">](./img/RESTprops.png)
 
   22. Set a custom schema for the POST and enter the input structure from the process.
-    ![POST custom schema](img/RESTcustomschema.png)
+    <br><br>[<img src="./img/RESTcustomschema.png" width="70%">](./img/RESTcustomschema.png)
 
   23. Install the **REST countries** data component from the flow function component market.
   24. Configure the REST entity with a query parameter
@@ -53,18 +53,17 @@ Now that your low code portal is built and request API access process deployed, 
   27. Set the option list to a mapping, select the data variable for RestCountries, and set the label and value fields to name and alpha2Code respectively.
   28. Set the **selected value** property of the dropdown to No Value.
   29. Add a page variable with type object, name it **processContext**, and repeat the field names for the process inputs.
-    ![Process context variable](./img/processContextSetup.png)
+    <br><br>[<img src="./img/processContextSetup.png" width="70%">](./img/processContextSetup.png)
 
   30. Set the **Component onChange** event for each input field in the request form to the corresponding named property of the processContext variable. Set the value to a formula ```STRING(self.value)```
-    ![Input field settings](./img/selfValue.png)
+    <br><br>[<img src="./img/selfValue.png" width="70%">](./img/selfValue.png)
 
   31. Use the email field for user id as well, so apply two consecutive **Set page variable** nodes attached to each other.
-    ![Email and User ID](./img/emailUserid.png)
+    <br><br>[<img src="./img/emailUserid.png" width="70%">](./img/emailUserid.png)
 
   32. Add logic to the submit button, starting with an **If condition**. Set the value to ```IF(IS_NULLY(pageVars.processContext), false, true)```. Note that we really need to check every field to ensure they aren't blank but for simplicity sake we'll check the entire object.
   33. For Output 1, attach a Create Record node and configure the record properties as a custom object, mapping the page parameter values to it. You can retrieve the values from the 2 dropdown menus directly by using **Component Properties > Another component's property or output value** option. Make sure you add the workflow definition id retrieved in the previous section.
-
-      ![Process context application](./img/processContext.png)
+    <br><br>[<img src="./img/processContext.png" width="70%">](./img/processContext.png)
 
   34. For Output 2, attach a Toast dialog and set the message to **Please complete all fields**.
   35. Add an additional toast dialog to the outputs of the **Create record** node to notify of success or failure. Fill out the dialog options:
