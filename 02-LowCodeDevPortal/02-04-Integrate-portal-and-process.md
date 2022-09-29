@@ -62,7 +62,7 @@ Now that your low code portal is built and request API access process deployed, 
     ![Email and User ID](./img/emailUserid.png)
 
   32. Add logic to the submit button, starting with an **If condition**. Set the value to ```IF(IS_NULLY(pageVars.processContext), false, true)```. Note that we really need to check every field to ensure they aren't blank but for simplicity sake we'll check the entire object.
-  33. For Output 1, attach a Create Record node and configure the record properties as a custom object, mapping the page parameter values to it. You can retrieve the values from the 2 dropdown menus directly by using **Component Properties > Another component's property or output value** option.
+  33. For Output 1, attach a Create Record node and configure the record properties as a custom object, mapping the page parameter values to it. You can retrieve the values from the 2 dropdown menus directly by using **Component Properties > Another component's property or output value** option. Make sure you add the workflow definition id retrieved in the previous section.
 
       ![Process context application](./img/processContext.png)
 
