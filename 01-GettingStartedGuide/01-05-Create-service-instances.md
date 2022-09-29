@@ -7,7 +7,7 @@ Create a service account for unregistered users to browse your API catalog. Plea
   2. Access the Business Hub Enterprise URL and select **Manage**.
   3. Select **Manage Users** > **Registered Users** and click the plus sign to add a new user.
   4. Enter details for a generic user account and assign it the **Developer** role. This could be a service account defined in your company domain or a personal email address.
-     ![System user details](img/SystemAccount.png)
+     <br><br>[<img src="./img/SystemAccount.png" width="50%">](./img/SystemAccount.png)
 
 ## Create a service instance for Developer Portal API access
 A service instance lets you build a UI that retrieves data from Business Hub Enterprise as the service account. See: [API Access Plan for API Business Hub Enterprise](https://help.sap.com/docs/SAP_CLOUD_PLATFORM_API_MANAGEMENT/66d066d903c2473f81ec33acfe2ccdb4/dabee6e347f645a6805ec5b29f5d578c.html?locale=en-US) for more details. You must also create an XSUAA instance and destination as described in the prerequisites section of the same document for administrative token exchange. This allows you to implement the developer onboarding process later in the mission.
@@ -16,7 +16,7 @@ A service instance lets you build a UI that retrieves data from Business Hub Ent
   2. Select **Instances and Subscriptions**.
   3. Select **Create**.
   4. Select **API Management, developer portal** from the Service list and fill out the remaining fields.
-     ![Service instance details](img/BHE_ServiceInstance.png)
+          <br><br>[<img src="./img/BHE_ServiceInstance.png" width="50%">](./img/BHE_ServiceInstance.png)
   5. On the next tab, add the JSON parameters to provide access as the system user, providing the user id from the previous step.
       ```
       {
@@ -44,7 +44,7 @@ A service instance lets you interact with the API Management, API portal service
   1. Navigate to the subaccount in SAP BTP cockpit.
   2. Click **Instances and Subscriptions** and select **Create**.
   3. Select **API Management, API portal** from the Service list and fill out the remaining fields.
-     ![Service instance details](img/API_ServiceInstance.png)
+     <br><br>[<img src="./img/API_ServiceInstance.png" width="50%">](./img/API_ServiceInstance.png)
   4. If the service is not available in the Service list, please double check the assigned entitlements from your global account.
   5. On the next tab, add the JSON parameters to provide administrator access using this service instance.
       ```
@@ -80,6 +80,6 @@ A new destination using the **API Portal API access** service key details can be
   * ProxyType=Internet
   * URL=https://apiportal.cfapps.hana.ondemand.com
   * tokenServiceURLType=Dedicated
-      ![API Portal destination](img/API_Destination.png)
+      <br><br>[<img src="./img/API_Destination.png" width="50%">](./img/API_Destination.png)
   5. You may receive a 401 error when testing the destination due to accessing the server root. This is ok and you can proceed with the next steps.
     
