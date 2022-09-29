@@ -14,7 +14,7 @@
   * Select **My Workspace > Applications > Create**.
   * Provide an application name, check **Create this application on behalf of someone else** and select the SYSTEM USER you registered previously, and add the API Product you created in the prior step. Save the Application.
 
-    ![Create application details](./img/CreateApplication.png)
+    <br><br>[<img src="./img/CreateApplication.png" width="50%">](./img/CreateApplication.png)
 
   * Copy the Application Key and Secret and navigate to the Test Console
   * Select the Guest Access product you created in the previous step and the **APIMgmt.APIProducts** resource
@@ -22,7 +22,7 @@
   * Enable Basic Authentication and enter the API Key and Secret in the user and password fields, respectively. The URL rewrite is needed to handle the [entity container](https://docs.microsoft.com/en-us/dotnet/framework/data/adonet/entity-container) that the platform API are inside of. The EntityContainer.EntitySet syntax is not widely used in SAP applications. Without the rewrite, the URL is created with only the EntitySet being added, resulting in a 404 error.
   * Test the request and confirm you can see the API Products in your API management instance.
 
-    ![Test API](./img/TestConsole.png)
+    <br><br>[<img src="./img/TestConsole.png" width="50%">](./img/TestConsole.png)
 
 # Create a Destination to Use in Your Low Code App
 1. Access your subaccount in the SAP BTP cockpit. 
