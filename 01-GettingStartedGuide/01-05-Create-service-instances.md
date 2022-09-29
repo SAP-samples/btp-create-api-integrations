@@ -3,15 +3,14 @@ Create a service account for unregistered users to browse your API catalog. Plea
 
 ## Create a service account for Business Hub Enterprise guest access
 
-  1. Create an XSUAA instance and a destination for administrative token exchange. See: [API Access Plan for API Business Hub Enterprise > Prerequisites](https://help.sap.com/docs/SAP_CLOUD_PLATFORM_API_MANAGEMENT/66d066d903c2473f81ec33acfe2ccdb4/dabee6e347f645a6805ec5b29f5d578c.html?locale=en-US).
-  2. Assign yourself the **AuthGroup.SelfService.Admin** role.
-  3. Access the Business Hub Enterprise URL and select **Manage**.
-  4. Select **Manage Users** > **Registered Users** and click the plus sign to add a new user.
-  5. Enter details for a generic user account and assign it the **Developer** role.
+  1. Assign yourself the **AuthGroup.SelfService.Admin** role.
+  2. Access the Business Hub Enterprise URL and select **Manage**.
+  3. Select **Manage Users** > **Registered Users** and click the plus sign to add a new user.
+  4. Enter details for a generic user account and assign it the **Developer** role.
      ![System user details](img/SystemAccount.png)
 
 ## Create a service instance for Developer Portal API access
-A service instance lets you build a UI that retrieves data from Business Hub Enterprise as the service account. See: [API Access Plan for API Business Hub Enterprise](https://help.sap.com/docs/SAP_CLOUD_PLATFORM_API_MANAGEMENT/66d066d903c2473f81ec33acfe2ccdb4/dabee6e347f645a6805ec5b29f5d578c.html?locale=en-US) for more details.
+A service instance lets you build a UI that retrieves data from Business Hub Enterprise as the service account. See: [API Access Plan for API Business Hub Enterprise](https://help.sap.com/docs/SAP_CLOUD_PLATFORM_API_MANAGEMENT/66d066d903c2473f81ec33acfe2ccdb4/dabee6e347f645a6805ec5b29f5d578c.html?locale=en-US) for more details. You must also create an XSUAA instance and destination as described in the prerequisites section of the same document for administrative token exchange. This allows you to implement the developer onboarding process later in the mission.
 
   1. Navigate to your subaccount in the BTP cockpit.
   2. Select **Instances and Subscriptions**.
