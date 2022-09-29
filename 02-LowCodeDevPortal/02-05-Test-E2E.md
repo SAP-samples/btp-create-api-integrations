@@ -4,19 +4,19 @@ As a final step in this mission scope, browse the developer portal as a guest, i
   3. Check out the Swagger documentation for the **Guest Access for Developer Portal** proxy by selecting it from the card list if you completed the optional scope item.
   4. Click the **Request Access to this API** button.
   5. Complete the form with some relevant values and click submit.
-    ![Filled out form](img/FilledForm.png)
+    <br><br>[<img src="./img/FilledForm.png" width="70%">](./img/FilledForm.png)
 
   6. If any of the requests fail to complete, check the network tab of your Chrome Developer tools for details on the failing request.
   7. Access the **Application Development Lobby** and select the inbox icon.
-    ![Application development lobby inbox](./img/inbox.png)
+    <br><br>[<img src="./img/inbox.png" width="50%">](./img/inbox.png)
 
   8. Fill out the form and approve the request
-    ![Approve request](./img/TestInboxApproval.png)
+    <br><br>[<img src="./img/TestInboxApproval.png" width="70%">](./img/TestInboxApproval.png)
 
   9. If everything works, the new user will now be registered in the Business Hub Enterprise under **Manage**.
-    ![Registered Users](./img/RegisteredUsers.png)
+    <br><br>[<img src="./img/RegisteredUsers.png" width="70%">](./img/RegisteredUsers.png)
 
   10. If any of the process steps failed, you can find the details under the **Monitor** > **Process and Workflow Instances** section of the Application Development UI.
-    ![Monitor workflow instance](./img/MonitorError.png)
+    <br><br>[<img src="./img/MonitorError.png" width="70%">](./img/MonitorError.png)
 
 Congratulations on completing the Low Code Developer Portal mission scope!
