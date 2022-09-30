@@ -7,8 +7,8 @@ In this section, you will build a low code app in SAP AppGyver. For reference, s
 3. Create a new integration under **Data > Add Integration > BTP Destinations** and select the LCDevPortal destination from the previous step.
 4. Enable the Applications, APIProducts, and APIProxies entities and save (use the browse data feature to make sure everything is working).
 5. Open the default empty page and rename it to **Home**. Create two more pages and name them **Applications Detail** and **API Product Detail**.
-6. On the **Home** page install and add a Basic card list component to the canvas.
-7. Edit the configuration and select the APIProducts data source. 
+6. On the **Home** page install and add a Basic card list component to the canvas. Install the component from the marketplace if needed.
+7. Select Configuration and select the APIProducts data source. 
 8. Set content, id, label, and title to the formulas below and save the component.
    * LOOKUP(source.record, "name")
    * LOOKUP(source.record, "name")
