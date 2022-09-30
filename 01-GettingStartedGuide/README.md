@@ -15,7 +15,7 @@ Entitlements/Quota required in your SAP Business Technology Platform Account:
 | SAP Integration Suite             | free        | 1                   |
 |API Management, API Portal         | apiportal-apiaccess | 1           |
 |API Management, developer portal   | devportal-apiaccess | 1           |
-| SAP Process Automation            | free        | 1                   |
+| SAP Process Automation            | standard    | 1                   |
 | Authorization & Trust Management  | application | 1                   |
 | Destination                       | lite        | 1                   |
 | SAP AppGyver                      | free        | 1                   |
@@ -27,7 +27,7 @@ Subscriptions required in your SAP Business Technology Platform Account:
 | --------------------------------- | ---------------- |
 | SAP Integration Suite             | standard         |
 | SAP AppGyver                      | standard         |
-| SAP Process Automation            | standard         |
+| SAP Process Automation            | free             |
 
 * [Setup SAP low code solutions using BTP boosters](https://github.com/SAP-docs/btp-cloud-platform/blob/main/docs/30-development/boosters-fb1b561.md) - In this section, you can learn how to use BTP boosters and automate the setup of SAP BTP low code SaaS applications by executing the SAP Process Automation and SAP AppGyver boosters in your subaccount
 * [Subscribe to SAP Integration Suite](./01-02-Subscribe-Integration-Suite.md)
