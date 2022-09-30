@@ -5,9 +5,9 @@
 
 
 3. [Implement the SAP Cloud Foundry services policy](https://api.sap.com/policytemplate/SAPCloudFoundryXSUAAJWTToken) from the **Policies** menu, which is already included as part of the proxy file above.
-  * Update **TargetEndpoint > PreFlow > getcredential > sapapim.clientid and sapapim.clientsecret values** using the credentials for the Developer portal service instance created in the previous section.
+  * Update **ProxyEndpoint > PreFlow > getcredential > sapapim.clientid and sapapim.clientsecret values** using the credentials for the Developer portal service instance created in the previous section.
 
-  * Update **TargetEndpoint > PreFlow getoauthtoken > HTTPTargetConnection > URL** to the tokenUrl property of the service key.
+  * Update **ProxyEndpoint > PreFlow getoauthtoken > HTTPTargetConnection > URL** to the tokenUrl property of the service key.
   * Update **Scripts > setTarget.js > targetHost** to the url property of the service key (e.g. https://eu10devportal.cfapps.eu10.hana.ondemand.com or https://us20devportal.cfapps.us20.hana.ondemand.com)
   * Click Update, Save, and Redeploy the modified proxy.
 4. Create an API Product from the **Develop > Products > Create** menu and add the newly created DevPortal_Anonymous API to it (all methods).
