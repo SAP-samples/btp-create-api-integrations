@@ -33,7 +33,7 @@ You will now make some HTTP calls directly to the underlying API gateway using t
 
   ![Home navigation](img/HomeNav.png)
 
-7. On the **API Product Detail** page, customize the headers and add a centered text field. Set the value to the APIProduct page parameter.
+7. On the **API Product Detail** page, customize the headers and add a centered text field by setting the layout properties **Width and Height** to **Fit content** and the **Position > Align Self > To Center**. Set the value to the APIProduct page parameter.
 8. Add a basic card and set Repeat with to be **pv_APIProxies**.
 9. Bind the title and content to the title and name fields of the current data item in repeat.
 
