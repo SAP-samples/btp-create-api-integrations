@@ -9,7 +9,7 @@ Now that your low code portal is built and request API access process deployed, 
   7. Create a page parameter called **APIProduct** (just like the API Product Detail page).
   8. Add logic to the Request access button to open the request form and pass the page parameter.
   9. Create an App Variable called **APIList** as a list of objects with 2 properties.
-     ![Create app variable](img/SetPageVar.png)
+     ![App Variable](https://user-images.githubusercontent.com/6976027/193349093-9cd52512-8813-4158-90cd-5bb57b2b085b.png)
 
   10. Modify the outputs of the Basic Card list on the Home page to store the list of API Products during the initial refresh.
      <br><br>[<img src="./img/ComponentEditor.png" width="70%">](./img/ComponentEditor.png)
