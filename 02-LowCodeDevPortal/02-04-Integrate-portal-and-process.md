@@ -25,7 +25,8 @@ Now that your low code portal is built and request API access process deployed, 
   15. Exit the editor and save the application.
   16. Add a **Set app variable** node to the Basic card list and connect it to component tap event
   17. Set the assigned value of **APIList** to the selected component value **List of ids and descriptions**
-     ![App Variable](https://user-images.githubusercontent.com/6976027/193348849-1cd17903-0eb0-4d1e-a7d7-641c7379743c.png)
+      ![Set APIList from Basic Card](https://user-images.githubusercontent.com/6976027/193351932-2795561c-91d0-4469-9e1b-b13799975f57.png)
+
 
   18. Return to **API request form** page and set the option list and selected value properties of the **API Product** dropdown.
       <br><br>[<img src="./img/RequestForm.png" width="70%">](./img/RequestForm.png)
