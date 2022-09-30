@@ -12,7 +12,7 @@ Now that the portal is functional, we can provide an onboarding experience for u
     * Add the destination in the **Settings** section of the SAP Process Automation lobby. See: [Configure BTP Destinations in SAP Process Automation
 ](https://developers.sap.com/tutorials/spa-create-destination.html).
     * Download the [provided Open API specification](https://github.com/SAP-samples/btp-create-api-integrations/blob/low-code-dev-portal/Mission_DevPortal_RegisteringUsers_CF.json) and modify the servers.url property to match your environment. This is a simplified version of the [API Business Hub Enterprise - Registering Users](https://api.sap.com/api/DevPortal_RegisteringUsers_CF/overview) scoped for the POST operation.
-    * Import the JSON as a new API Proxy in the API Portal.
+    * Import the JSON as a new API Proxy in the API Portal using the default options.
 3. Configure API proxies for action handling:
     * Import the provided [API proxy](https://github.com/SAP-samples/btp-create-api-integrations/blob/low-code-dev-portal/Workflow_Instance_API.zip) to your instance of SAP API Management.
     * Update the Target EndPoint URL to match your environment.
