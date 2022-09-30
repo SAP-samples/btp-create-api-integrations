@@ -17,7 +17,10 @@ Now that the portal is functional, we can provide an onboarding experience for u
     * Import the provided [API proxy](https://github.com/SAP-samples/btp-create-api-integrations/blob/low-code-dev-portal/Workflow_Instance_API.zip) to your instance of SAP API Management.
     * Update the Target EndPoint URL to match your environment.
     * You can apply similar Basic Authentication and/or API Key verification to protect the endpoint but the provided policy does not contain them.
-    * Configure the Client ID, Client Secret (maintained in config.js like the previous step), and Token endpoint properties in the policy from the values in the SAP Process Automation service key you saved previously.  
+    * Configure the Client ID, Client Secret (maintained in config.js like the previous step), and Token endpoint properties in the policy from the values in the SAP Process Automation service key you saved previously.
+    * Add the v1_workflow-instances method to the Guest Access API Product you created earlier.
+        ![Add APIs](https://user-images.githubusercontent.com/6976027/193324224-4cc82519-f7c6-4952-a733-a06eab44d4b7.png)
+ 
 4. Release process and retrieve definition id
     * Release and deploy the process, selecting the newly configured destination at deploy time.
     * Retrieve the definition id of the newly released process for use in the developer portal.
