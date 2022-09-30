@@ -7,7 +7,7 @@ Now that your low code portal is built and request API access process deployed, 
   5. Add a dropdown field component and set the label to **API Product**..
   6. Add a button and name it **Submit**.
   7. Create a page parameter called **APIProduct** (just like the API Product Detail page).
-  8. Add logic to the Request access button to open the request form and pass the page parameter.
+  8. Add logic to the Request access button back on the **API Product Detail** page to open the request form and pass the page parameter.
   9. Create an App Variable called **APIList** as a list of objects with 2 properties.
      ![App Variable](https://user-images.githubusercontent.com/6976027/193349093-9cd52512-8813-4158-90cd-5bb57b2b085b.png)
 
