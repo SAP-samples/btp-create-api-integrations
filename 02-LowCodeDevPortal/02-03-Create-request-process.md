@@ -12,7 +12,7 @@ Now that the portal is functional, we can provide an onboarding experience for u
     * Add the destination in the **Settings** section of the SAP Process Automation lobby. See: [Configure BTP Destinations in SAP Process Automation
 ](https://developers.sap.com/tutorials/spa-create-destination.html).
     * Download and import the [provided API Proxy](https://github.com/SAP-samples/btp-create-api-integrations/blob/low-code-dev-portal/DevPortal_RegisteringUsers_CF.zip) and configure the Target EndPoint and Cloud Foundry policy to use the client credentials of your Developer Portal admin instance. This is a simplified version of the [API Business Hub Enterprise - Registering Users](https://api.sap.com/api/DevPortal_RegisteringUsers_CF/overview) scoped for the POST operation.
-    * Import the JSON as a new API Proxy in the API Portal using the default options.
+    * You should secure this destination with similar BasicAuth and Verify API Key policies as in the previous example. They are omitted here for convenience.
 3. Configure API proxies for action handling:
     * Import the provided [API proxy](https://github.com/SAP-samples/btp-create-api-integrations/blob/low-code-dev-portal/Workflow_Instance_API.zip) to your instance of SAP API Management.
     * Update the Target EndPoint URL to match your environment.
