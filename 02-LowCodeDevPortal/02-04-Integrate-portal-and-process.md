@@ -18,9 +18,8 @@ Now that your low code portal is built and request API access process deployed, 
      <br><br>[<img src="./img/OutputValues.png" width="70%">](./img/OutputValues.png)
 
   12. Return to **VIEW**, select **BASIC CARD LIST 1** from the tree, add a **Set output value** node, and connect it to the output of **Set private data variable**.
-     <br><br>[<img src="./img/SetOutputValue.png" width="70%">](./img/SetOutputValue.png)
-
-  13. Set the output value to **idDesc** and configure the value as a mapping.
+  13. Set the output value to **idDesc** and configure the value as a mapping. Select the output from the get record collection node as the source data.
+       <br><br>[<img src="./img/SetOutputValue.png" width="70%">](./img/SetOutputValue.png)
   14. Set the map values to **ID** and **Description**.
      ![Configure mapping](img/BasicCardLogic.png)
 
