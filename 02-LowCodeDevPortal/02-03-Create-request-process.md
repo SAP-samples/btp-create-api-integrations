@@ -20,4 +20,4 @@ Now that the portal is functional, we can provide an onboarding experience for u
 4. Release process and retrieve definition id
     * Release and deploy the process, selecting the newly configured destination at deploy time.
     * Retrieve the definition id of the newly released process for use in the developer portal.
-    * This can be done either through the SAP Process Automation lobby under **Manage > Processes and Workflows** or through the [Workflow definitions](https://api.sap.com/api/SAP_CP_Workflow_CF/resource) API.
+    * This can be done either through the SAP Process Automation lobby under **Monitor > Manage > Processes and Workflows** or through the [Workflow definitions](https://api.sap.com/api/SAP_CP_Workflow_CF/resource) API.
