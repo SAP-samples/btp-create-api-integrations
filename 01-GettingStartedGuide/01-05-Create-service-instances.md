@@ -35,6 +35,13 @@ A service instance lets you build a UI that retrieves data from Business Hub Ent
       "clientSecret": "secret"
       }
       ```
+  8. Repeat the process and create an instance for admin access using the following JSON. Save the service key credentials for later use.
+     ```
+     {
+     "role": "AuthGroup.API.Admin"
+     }
+     ```
+
 ## Create a Service Instance for API Portal API Access
 
 A service instance lets you interact with the API Management, API portal service to retrieve bills for the invoicing scope of the mission. See: [SAP API Management, API portal as a Service](https://help.sap.com/docs/SAP_CLOUD_PLATFORM_API_MANAGEMENT/66d066d903c2473f81ec33acfe2ccdb4/e0646630540d440aa1177b389f512afa.html?locale=en-US)
