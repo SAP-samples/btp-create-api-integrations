@@ -47,7 +47,7 @@ stripe-key                                     Opaque                           
   - image_name - Name of the image incl. your docker account like **<your_docker_account>/btp-invoicing**
   - namespace - Name of the Kyma namespace like **trial** or **default** (Kyma namespace needs to be created before deployment)
 
-7. Go to the **cron-job** directory.
+7. In your terminal window change to the **cron-job** directory.
 8. If your target Kyma namespace is not named **trial**, go to **cron-job/chart/templates/deployment.yaml** and update the **INVOICING_SERVICE_NAMESPACE** environment variable value accordingly.
 9. Execute the npm command **deploy:kyma** with the following parameter
 
