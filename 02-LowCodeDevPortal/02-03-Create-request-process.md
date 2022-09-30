@@ -1,5 +1,5 @@
 ## Create a process to onboard and provision new developers with access
-Now that the portal is functional, we can provide an onboarding experience for users who browse the API catalog and want to gain access. With SAP Process Automation, we'll receive an inbound API request from the low-code portal, and initiate an approval request for a portal administrator. Once access is granted, the developer will automatically be registered with the Business Hub Enterprise, assigned roles, and provisioned with an application and API Key. 
+Now that the portal is functional, we can provide an onboarding experience for users who browse the API catalog and want to gain access. With SAP Process Automation, we'll receive an inbound API request from the low-code portal, and initiate an approval request for a portal administrator. Once access is granted, the developer will automatically be registered with the Business Hub Enterprise and assigned roles. It can be further extended to provision an application and API Key if desired. 
 
 1. Create a process and configure API trigger:
     * Import the process from the [provided mtar](https://github.com/SAP-samples/btp-create-api-integrations/blob/low-code-dev-portal/Developer_Onboarding.mtar).
