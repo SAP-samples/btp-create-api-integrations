@@ -99,7 +99,7 @@ See the tutorial: [Develop a Node.js Application in the SAP BTP, Kyma runtime](h
 4. Set the following properties and update the URL to match your environment.
   * URL (text): https://swagger-ui-express.kyma-cluster-info.com/api-spec/
   * Method: POST
-  * Request Body (formula): ```{"content":SELECT_BY_KEY(outputs["HTTP request"].resBodyParsed.d.ToProxyEndPoints.results[0].ToAPIResources.results, "title", "SWAGGER_JSON")[0].ToAPIResourceDocumentation.results[0].content}```
+  * Request Body (formula): ```{"content":SELECT_BY_KEY(outputs["HTTP request"].resBodyParsed.d.ToProxyEndPoints.results[0].ToAPIResources.results, "resource_path", "/SWAGGER_JSON")[0].ToAPIResourceDocumentation.results[0].content}```
 5. Install the **Open web browser** component and attach one to the last POST request. 
 6. Set the URL to https://swagger-ui-express.kyma-cluster-info.com/api-docs/
 7. Attach **Toast** components to the failure nodes of the HTTP requests with messages like **No documentation available** and **Swagger POST failed**
