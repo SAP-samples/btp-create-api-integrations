@@ -39,8 +39,9 @@ You will now make some HTTP calls directly to the underlying API gateway using t
 
   ![Basic card](img/DetailCard.png)
 
-10. Add logic to the Page mounted event to send an HTTP request. You may need to install the **HTTP Request** component from the flow function market.
-11. Set the URL to the following formula, updating the virtual-host and datacenter pieces to match your environment:
+10. Add logic to the Page mounted event of the page layout component by expanding the **Add logic to** menu. 
+11. Install the **HTTP Request** component from the flow function market.
+12. Set the URL to the following formula, updating the virtual-host and datacenter pieces to match your environment:
 
 "https://virtual-host.prod.apimanagement.datacenter.hana.ondemand.com/sapapimanagementguest/odata/1.0/data.svc/APIProducts('"+params.APIProduct+"')?$format=json&$expand=ToAPIProxies,ToAPIResources,ToRatePlans"
 
