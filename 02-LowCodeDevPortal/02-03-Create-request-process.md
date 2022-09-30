@@ -12,13 +12,13 @@ Now that the portal is functional, we can provide an onboarding experience for u
     * Add the destination in the **Settings** section of the SAP Process Automation lobby. See: [Configure BTP Destinations in SAP Process Automation
 ](https://developers.sap.com/tutorials/spa-create-destination.html).
     * Download and import the [provided API Proxy](https://github.com/SAP-samples/btp-create-api-integrations/blob/low-code-dev-portal/DevPortal_RegisteringUsers_CF.zip) and configure the Target EndPoint and Cloud Foundry policy to use the client credentials of your [Developer Portal admin instance](https://github.com/SAP-samples/btp-create-api-integrations/blob/main/01-GettingStartedGuide/01-05-Create-service-instances.md#create-a-service-instance-for-developer-portal-api-access). Client credentials are maintained in the config.js script. This is a simplified version of the [API Business Hub Enterprise - Registering Users](https://api.sap.com/api/DevPortal_RegisteringUsers_CF/overview) scoped for the POST operation.
-    * You should secure this destination with similar BasicAuth and Verify API Key policies as in the previous example. They are omitted here for convenience.
+    * You should secure this proxy and destination with similar BasicAuth and Verify API Key policies as in the previous example. They are omitted here for convenience.
 3. Configure API proxies for action handling:
     * Import the provided [API proxy](https://github.com/SAP-samples/btp-create-api-integrations/blob/low-code-dev-portal/Workflow_Instance_API.zip) to your instance of SAP API Management.
     * Update the Target EndPoint URL to match your environment.
     * You can apply similar Basic Authentication and/or API Key verification to protect the endpoint but the provided policy does not contain them.
     * Configure the Client ID, Client Secret (maintained in config.js like the previous step), and Token endpoint properties in the policy from the values in the SAP Process Automation service key you saved previously.
-    * Add the v1_workflow-instances method to the Guest Access API Product you created earlier.
+    * If you added security to the Workflow Instance API, add the v1_workflow-instances method to the Guest Access API Product you created earlier. If you experience any problems, try [recreating the system application](https://github.com/SAP-samples/btp-create-api-integrations/blob/main/02-LowCodeDevPortal/02-01-Prepare-api-proxy.md#prepare-sap-api-management-for-service-account-access) from the previous step.
         ![Add APIs](https://user-images.githubusercontent.com/6976027/193324224-4cc82519-f7c6-4952-a733-a06eab44d4b7.png)
  
 4. Release process and retrieve definition id
