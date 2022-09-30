@@ -4,7 +4,7 @@ In this section, you will build a low code app in SAP AppGyver. For reference, s
 ## API Product Home
 1. Access SAP AppGyver from the SAP BTP cockpit under **Subscriptions and Instances** and create a new SAP Appgyver project from the dropdown list.
 2. Activate **Auth > Enable Authentication > BTP authentication**.
-3. Create a new integration under **Data > Add Integration > Destination** and select the LCDevPortal destination from the previous step.
+3. Create a new integration under **Data > Add Integration > BTP Destinations** and select the LCDevPortal destination from the previous step.
 4. Enable the Applications, APIProducts, and APIProxies entities and save (use the browse data feature to make sure everything is working).
 5. Open the default empty page and rename it to **Home**. Create two more pages and name them **Applications Detail** and **API Product Detail**.
 6. On the **Home** page install and add a Basic card list component to the canvas.
