@@ -11,7 +11,7 @@ Now that your low code portal is built and request API access process deployed, 
   9. Create an App Variable called **APIList** as a list of objects with 2 properties.
      ![App Variable](https://user-images.githubusercontent.com/6976027/193349093-9cd52512-8813-4158-90cd-5bb57b2b085b.png)
 
-  10. Open the home page, select the basic card list and click **Open in component template editor** to modify the outputs of the component to store the list of API Products during the initial refresh.
+  10. Open the **Home** page, select the basic card list and click **Open in component template editor** to modify the outputs of the component to store the list of API Products during the initial refresh.
      <br><br>[<img src="./img/ComponentEditor.png" width="70%">](./img/ComponentEditor.png)
 
   11. Select **PROPERTIES** and add  a list of objects to output values with 2 properties (save the property key name for later).
