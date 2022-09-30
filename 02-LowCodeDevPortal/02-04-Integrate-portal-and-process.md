@@ -7,11 +7,11 @@ Now that your low code portal is built and request API access process deployed, 
   5. Add a dropdown field component and set the label to **API Product**..
   6. Add a button and name it **Submit**.
   7. Create a page parameter called **APIProduct** (just like the API Product Detail page).
-  8. Add logic to the Request access button back on the **API Product Detail** page to open the request form and pass the page parameter.
+  8. Add logic to the Request access button back on the **API Product Detail** page to open the request form and pass the page parameter. You will implement the logic to populate this value in the subsequent steps.
   9. Create an App Variable called **APIList** as a list of objects with 2 properties.
      ![App Variable](https://user-images.githubusercontent.com/6976027/193349093-9cd52512-8813-4158-90cd-5bb57b2b085b.png)
 
-  10. Modify the outputs of the Basic Card list on the Home page to store the list of API Products during the initial refresh.
+  10. Open the home page, select the basic card list and click **Open in component template editor** to modify the outputs of the component to store the list of API Products during the initial refresh.
      <br><br>[<img src="./img/ComponentEditor.png" width="70%">](./img/ComponentEditor.png)
 
   11. Select **PROPERTIES** and add  a list of objects to output values with 2 properties (save the property key name for later).
