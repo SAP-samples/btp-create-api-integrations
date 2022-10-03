@@ -6,30 +6,31 @@ In this section, you will build a low code app in SAP AppGyver. For reference, s
 2. Activate **Auth > Enable Authentication > BTP authentication**.
 3. Create a new integration under **Data > Add Integration > BTP Destinations** and select the LCDevPortal destination from the previous step.
 4. Enable the Applications, APIProducts, and APIProxies entities and save (use the browse data feature to make sure everything is working).
-5. Open the default empty page and rename it to **Home**. Create two more pages and name them **Applications Detail** and **API Product Detail**.
-6. On the **Home** page install and add a Basic card list component to the canvas. Install the component from the marketplace if needed.
-7. Select Configuration and select the APIProducts data source. 
-8. Set content, id, label, and title to the formulas below and save the component.
+5. Open the default empty page and rename it to **Home**. 
+6. Create two more pages, by selecting **Add new page** from the pages screen, and name them **Applications Detail** and **API Product Detail**.
+7. On the **Home** page install the Basic card list component from the marketplace, and add it to the canvas.
+8. Select the Basic Card component > Properties > Edit configuration and select the APIProducts data source. 
+9. Set content, id, label, and title to the formulas below and save the component.
    * LOOKUP(source.record, "name")
    * LOOKUP(source.record, "name")
    * "Published on " + FORMAT_DATETIME_LOCAL(DATETIME(NUMBER(SUBSTRING(LOOKUP(source.record, "published_at"), 6, 19))), "MM-DD-YYYY")
    * LOOKUP(source.record, "title")
   
-9. Preview the home screen to see the products available in your tenant:
+10. Preview the home screen from **Launch > Web Apps > Open App Preview Portal** to see the products available in your tenant:
   ![Home screen preview](img/PreviewHomeScreen.png)
 
 ## API Product Detail
 You will now make some HTTP calls directly to the underlying API gateway using the same credentials. This is done to take advantage of OData navigation capabilities such as $expand.
 
-1. Create an app variable called **selectedProduct** and set the value type to text.
+1. Select the **API Product Detail ** page and create an app variable called **selectedProduct** under **Variables > App Variables** and set the value type to text.
 2. Open **API Product Detail** and add a page parameter called **APIProduct** with type text.
 3. Create a page variable called **pv_APIProxies** to store information about the proxies inside an API Product. 
 4. Set pv_APIProxies to a list and the item type to be an object before adding the named properties **name**, **service_code**, and **title**.
 
   ![Page variable](img/PageVariable.png)
 
-5. Return to the home screen and add a navigation to the component tap event of the basic list. 
-6. Set the page parameter to a formula ```self.tappedItem.id```.
+5. Return to the home screen and add navigation logic to the component tap event of the basic list. 
+6. Bind the page parameter to **APIProduct** and populate with a formula ```self.tappedItem.id```.
 
   ![Home navigation](img/HomeNav.png)
 
