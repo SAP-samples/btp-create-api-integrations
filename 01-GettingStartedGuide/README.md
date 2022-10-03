@@ -37,7 +37,8 @@ Subscriptions required in your SAP Business Technology Platform Account:
 
 ## Prerequisites for for Stripe
 As part of the mission scope, you can deploy an API billing service that utilizes [Stripe](https://stripe.com) invoicing. The following resources will help you create a Stripe developer account and get you started with their Node.js SDK.
-  * Register a free [Stripe developer](https://dashboard.stripe.com/register) account.
+  * Register a free [Stripe developer](https://dashboard.stripe.com/register) account. 
+    > **Important** - For this mission please select any country except **India**, as a required search feature is currently not available in India ([see here](https://stripe.com/docs/search#regional-availability)).
   * Get started with the [Stripe Node.js SDK](https://stripe.com/docs/development/quickstart/node).
   * Setup a Sample API based on the ES5 Demo system (incl. a Rate Plan, API Key verification aso.) as described in the **Develop** scope of the the mission [Get Started with Integration Suite - API Management](https://discovery-center.cloud.sap/missiondetail/3062/3072/). This is an **essential requirement** for the related mission scope. Following the **Getting Started** mission, please create the respective API Product in **API Business Hub Enterprise** and test your application as described. This will create some charges for your Stripe invoices and allows a proper end-to-end test. While doing the Getting Started mission, please consider the following notes:
     - Before deploying your API Proxy, please reload the page to prevent errors.
@@ -48,7 +49,7 @@ As part of the mission scope, you can deploy an API billing service that utilize
     - Register a new **Application** (like StoreSilver) in API Business Hub Enterprise after you created and assigned the **Rate Plan** to your API Product. Your first application **Store** will not have a Rate Plan assigned. 
     - Your API Portal Bill section should look similar to the following after triggering a first call of your **StoreSilver** application: 
 
-      ![API_Bill](./img/API_Portal_Bill.png)
+      [<img src="./img/API_Portal_Bill.png" width="600" />](./img/API_Portal_Bill.png)
 
   * Here you can see the detailed architecture diagram of the API Monetization with Stripe mission scope. 
 
