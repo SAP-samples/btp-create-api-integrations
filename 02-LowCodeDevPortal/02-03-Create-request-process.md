@@ -1,7 +1,8 @@
 ## Create a process to onboard and provision new developers with access
 Now that the portal is functional, we can provide an onboarding experience for users who browse the API catalog and want to gain access. With SAP Process Automation, we'll receive an inbound API request from the low-code portal, and initiate an approval request for a portal administrator. Once access is granted, the developer will automatically be registered with the Business Hub Enterprise and assigned roles. It can be further extended to provision an application and API Key if desired. 
 
-1. Create a process and configure API trigger:
+1. Access the Application Development by selecting SAP Process Automation from your SAP BTP cockpit under **Instances and Subscriptions**.
+2. Create a process and configure API trigger:
     * Import the process from the [provided mtar](https://github.com/SAP-samples/btp-create-api-integrations/blob/low-code-dev-portal/Developer_Onboarding.mtar).
     * Open the process and ensure that there are no errors or warnings in the designer.
     * Update the **Recipients** property by typing your account email address into the Users field. Delete the **btp-admin** entry which is provided as part of a sample integration with SAP Cloud Identity Authentication Service for a future mission scope.
@@ -23,5 +24,4 @@ Now that the portal is functional, we can provide an onboarding experience for u
  
 4. Release process and retrieve definition id
     * Release and deploy the process, selecting the newly configured destination at deploy time.
-    * Retrieve the definition id of the newly released process for use in the developer portal.
-    * This can be done either through the SAP Process Automation lobby under **Monitor > Manage > Processes and Workflows** or through the [Workflow definitions](https://api.sap.com/api/SAP_CP_Workflow_CF/resource) API.
+    * Retrieve the definition id of the newly released process for use in the developer portal. This can be done either through the SAP Process Automation lobby under **Monitor > Manage > Processes and Workflows** or through the [Workflow definitions](https://api.sap.com/api/SAP_CP_Workflow_CF/resource) API.
