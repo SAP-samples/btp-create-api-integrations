@@ -7,27 +7,26 @@ Now that your low code portal is built and request API access process deployed, 
   5. Add a dropdown field component and set the label to **API Product**..
   6. Add a button and name it **Submit**.
   7. Create a page parameter called **APIProduct** (just like the API Product Detail page).
-  8. Add logic to the Request access button to open the request form and pass the page parameter.
+  8. Add logic to the Request access button back on the **API Product Detail** page to open the request form and pass the page parameter **APIProduct**.
   9. Create an App Variable called **APIList** as a list of objects with 2 properties.
-     ![Create app variable](img/SetPageVar.png)
+     ![App Variable](https://user-images.githubusercontent.com/6976027/193349093-9cd52512-8813-4158-90cd-5bb57b2b085b.png)
 
-  10. Modify the outputs of the Basic Card list on the Home page to store the list of API Products during the initial refresh.
+  10. Open the **Home** page, select the Basic Card list and **Open in component template editor** to modify the outputs of the component to store the list of API Products during the initial refresh.
      <br><br>[<img src="./img/ComponentEditor.png" width="70%">](./img/ComponentEditor.png)
 
   11. Select **PROPERTIES** and add  a list of objects to output values with 2 properties (save the property key name for later).
      <br><br>[<img src="./img/OutputValues.png" width="70%">](./img/OutputValues.png)
 
   12. Return to **VIEW**, select **BASIC CARD LIST 1** from the tree, add a **Set output value** node, and connect it to the output of **Set private data variable**.
-     <br><br>[<img src="./img/SetOutputValue.png" width="70%">](./img/SetOutputValue.png)
-
-  13. Set the output value to **idDesc** and configure the value as a mapping.
+       ![Configure mapping](img/BasicCardLogic.png)
+  13. Set the output value to **idDesc** and configure the value as a mapping. Select the output from the get record collection node as the source data.
+       <br><br>[<img src="./img/SetOutputValue.png" width="70%">](./img/SetOutputValue.png)
   14. Set the map values to **ID** and **Description**.
-     ![Configure mapping](img/BasicCardLogic.png)
-
   15. Exit the editor and save the application.
   16. Add a **Set app variable** node to the Basic card list and connect it to component tap event
   17. Set the assigned value of **APIList** to the selected component value **List of ids and descriptions**
-     ![List of ids](img/SetAppVariable.png)
+      ![Set APIList from Basic Card](https://user-images.githubusercontent.com/6976027/193351932-2795561c-91d0-4469-9e1b-b13799975f57.png)
+
 
   18. Return to **API request form** page and set the option list and selected value properties of the **API Product** dropdown.
       <br><br>[<img src="./img/RequestForm.png" width="70%">](./img/RequestForm.png)
