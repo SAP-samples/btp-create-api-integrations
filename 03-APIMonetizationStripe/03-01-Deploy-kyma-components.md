@@ -2,12 +2,12 @@
 
 # Prepare the Kyma deployment prerequisites
 1. Create a [**Docker Hub**](https://hub.docker.com/) account for yourself if not available yet.
-2. Make sure that the latest versions of **Node.js**, **npm**, **docker**, **helm** and **kubectl** are installed on your local device and that you can use them from your command line.
+2. Make sure that the latest versions of [**Node.js** and **npm**](https://nodejs.org/en/), [**docker**](https://docs.docker.com/get-docker/), [**helm**](https://helm.sh/docs/intro/install/) and [**kubectl**](https://kubernetes.io/docs/tasks/tools/#kubectl) are installed on your local device and that you can use them from your command line.
 3. Install the [**pack tool**](https://buildpacks.io/docs/tools/pack/) to your local device and make sure you can use it from your command line.<br>
   Note: **pack** allows you to simplify the process of creating Docker images without the need of creating a Dockerfile yourself.
 4. Checkout the **stripe** branch of the sap-samples [GitHub repository](https://github.com/SAP-samples/btp-create-api-integrations/tree/stripe).
 5. Download the **kubeconfig.yaml** file of your Kyma cluster and make sure the KUBECONFIG environment variable is set correctly. See: [Set the KUBECONFIG environment variable](https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/#set-the-kubeconfig-environment-variable)
-6. In Windows PowerShell the command to set the environment variable looks like `$ENV:KUBECONFIG="C:\path\to\kubeconfig.yaml"`.
+6. In Windows PowerShell the command to set the temporary **KUBECONFIG** environment variable looks like `$ENV:KUBECONFIG="C:\path\to\kubeconfig.yaml"`. Please rember to run that command again whenever you restart your device. For an automated setup you can also store the config file in the ***$HOME/.kube*** directory as described on [kubernetes.io](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/). 
 
 >**Important** - Please keep in mind, that in a Trial environment, your Kyma instance will expire after 14 days. To test the solution after 14 days, please delete your Kyma instance, setup a new one and redeploy the solution.
 
@@ -48,7 +48,7 @@ stripe-key                                     Opaque                           
   - namespace - Name of the Kyma namespace like **trial** or **default** (Kyma namespace needs to be created before deployment)
 
 7. In your terminal window change to the **cron-job** directory.
-8. If your target Kyma namespace is not named **trial**, go to **cron-job/chart/templates/deployment.yaml** and update the **INVOICING_SERVICE_NAMESPACE** environment variable value accordingly.
+8. If your target Kyma namespace is not named **trial**, go to **cron-job/deploy-job.yaml** and **cron-job/chart/templates/deployment.yaml**. In both files update the **INVOICING_SERVICE_NAMESPACE** environment variable value accordingly.
 9. Execute the npm command **deploy:kyma** with the following parameter
 
   ```$ npm run deploy:kyma --namespace=<namespace>```
