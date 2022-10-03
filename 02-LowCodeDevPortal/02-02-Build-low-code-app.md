@@ -24,8 +24,8 @@ You will now make some HTTP calls directly to the underlying API gateway using t
 
 1. Select the **API Product Detail ** page and create an app variable called **selectedProduct** under **Variables > App Variables** and set the value type to text.
 2. Open **API Product Detail** and add a page parameter called **APIProduct** with type text.
-3. Create a page variable called **pv_APIProxies** to store information about the proxies inside an API Product. 
-4. Set pv_APIProxies to a list and the item type to be an object before adding the named properties **name**, **service_code**, and **title**.
+3. Create a **Page Variable** called **pv_APIProxies** to store information about the proxies inside an API Product. 
+4. Set pv_APIProxies to a list and the item type to be an object before adding or renaming the following properties **name**, **service_code**, and **title**.
 
   ![Page variable](img/PageVariable.png)
 
