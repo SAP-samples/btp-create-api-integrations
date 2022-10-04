@@ -4,8 +4,7 @@ import Stripe from 'stripe';
 
 import { BillResponse } from './external/Billing_APIs_CF';
 import { InvoicingServiceTypes } from "./models/entities";
-import { IBill } from './models/bill';
-import { billService, billServiceUnofficial, stripeService, stripeServiceUnofficial } from "./services";
+import { billService, stripeService } from "./services";
 
 class InvoicingService extends ApplicationService {
 
@@ -17,12 +16,15 @@ class InvoicingService extends ApplicationService {
         try {
             const params = req.data as InvoicingServiceTypes.IActionCreateStripeInvoicesParams;
             const currentDate = new Date();
-            const month = params.month || String(currentDate.getMonth()).padStart(2, '0'); // e.g., "07"
-            const year = params.year || String(currentDate.getFullYear()); // e.g., "2022"
+            const month = params.month || String(currentDate.getMonth()).padStart(2, '0'); // e.g., "07"
+            const year = params.year || String(currentDate.getFullYear()); // e.g., "2022"
 
-            const bills: Array<BillResponse> = await billService.getBillableBills(month, year);
+            // Requests to API Management via Destination
+            const bills: Array<BillResponse> = await billService.getChargeableBills(month, year);
+            
             let invoicesSent = 0
             for await (const bill of bills) {
+                // Requests to Stripe APIs (Customers & Invoices)
                 const customer: Stripe.Customer = await stripeService.getOrCreateCustomer(bill);
                 const success: boolean = await stripeService.createAndSendInvoice(bill, customer);
                 if (success) {

@@ -120,7 +120,7 @@ export default class StripeService {
      * @param country country of the customer to be created
      * @returns Payload to create a customer
      */
-    private      = (email: string, name: string, developerId: string, country?: string): Stripe.CustomerCreateParams => {
+    private createCustomerPayload = (email: string, name: string, developerId: string, country?: string): Stripe.CustomerCreateParams => {
         return {
             email: email,
             name: name,
