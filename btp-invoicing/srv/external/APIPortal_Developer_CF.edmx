@@ -1,0 +1,1325 @@
+<edmx:Edmx xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" Version="1.0">
+    <edmx:DataServices xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" m:DataServiceVersion="1.0">
+        <Schema xmlns="http://schemas.microsoft.com/ado/2008/09/edm" Namespace="apiportal">
+            <EntityType Name="KeyMapEntry">
+                <Key>
+                    <PropertyRef Name="name" />
+                </Key>
+                <Property Name="encrypted" Type="Edm.Boolean" Nullable="true" />
+                <Property Name="life_cycle" Type="apiportal.History" />
+                <Property Name="name" Type="Edm.String" Nullable="false" MaxLength="255" />
+                <NavigationProperty Name="keyMapEntryValues" Relationship="apiportal.KeyMapEntry_KeyMapEntryValue_One_Many0" FromRole="KeyMapEntry" ToRole="KeyMapEntryValue" />
+            </EntityType>
+            <EntityType Name="VirtualHost">
+                <Key>
+                    <PropertyRef Name="id" />
+                </Key>
+                <Property Name="id" Type="Edm.String" Nullable="false" MaxLength="36" />
+                <Property Name="isDefault" Type="Edm.Boolean" />
+                <Property Name="isSSL" Type="Edm.Boolean" />
+                <Property Name="life_cycle" Type="apiportal.History" />
+                <Property Name="name" Type="Edm.String" Nullable="true" MaxLength="255" />
+                <Property Name="projectPath" Type="Edm.String" Nullable="true" MaxLength="255" />
+                <Property Name="virtual_host" Type="Edm.String" Nullable="true" MaxLength="2048" />
+                <Property Name="virtual_port" Type="Edm.Int32" />
+            </EntityType>
+            <EntityType Name="FlowRule">
+                <Key>
+                    <PropertyRef Name="id" />
+                </Key>
+                <Property Name="id" Type="Edm.String" Nullable="false" MaxLength="36" />
+                <Property Name="FK_REQUEST_ID" Type="Edm.String" Nullable="true" MaxLength="36" />
+                <Property Name="FK_RESPONSE_ID" Type="Edm.String" Nullable="true" MaxLength="36" />
+                <NavigationProperty Name="request" Relationship="apiportal.FlowRule_Stream_One_One0" FromRole="FlowRule" ToRole="Stream" />
+                <NavigationProperty Name="response" Relationship="apiportal.FlowRule_Stream_One_One1" FromRole="FlowRule" ToRole="Stream" />
+            </EntityType>
+            <EntityType Name="TemplateFileResource">
+                <Key>
+                    <PropertyRef Name="id" />
+                </Key>
+                <Property Name="content" Type="Edm.String" />
+                <Property Name="id" Type="Edm.String" Nullable="false" MaxLength="36" />
+                <Property Name="name" Type="Edm.String" Nullable="true" MaxLength="255" />
+                <Property Name="FK_TEMPLATE_NAME" Type="Edm.String" Nullable="true" MaxLength="255" />
+                <Property Name="scope" Type="Edm.String" Nullable="true" MaxLength="20" />
+                <Property Name="type" Type="Edm.String" Nullable="true" MaxLength="10" />
+                <NavigationProperty Name="policyTemplateContainer" Relationship="apiportal.TemplateFileResource_PolicyTemplateContainer_Many_One0" FromRole="TemplateFileResource" ToRole="PolicyTemplateContainer" />
+            </EntityType>
+            <EntityType Name="ACLProductLinkage">
+                <Key>
+                    <PropertyRef Name="ruleId" />
+                </Key>
+                <Property Name="devportalRuleId" Type="Edm.String" Nullable="true" MaxLength="255" />
+                <Property Name="entityId" Type="Edm.String" Nullable="true" MaxLength="255" />
+                <Property Name="entityType" Type="Edm.String" Nullable="true" MaxLength="64" />
+                <Property Name="isPublished" Type="Edm.Boolean" Nullable="true" />
+                <Property Name="operation" Type="Edm.String" Nullable="true" MaxLength="64" />
+                <Property Name="permissionSet" Type="Edm.String" Nullable="true" MaxLength="1024" />
+                <Property Name="ruleId" Type="Edm.String" Nullable="false" MaxLength="255" />
+            </EntityType>
+            <EntityType Name="APIProxyEndPoint">
+                <Key>
+                    <PropertyRef Name="id" />
+                </Key>
+                <Property Name="FK_API_NAME" Type="Edm.String" Nullable="true" MaxLength="255" />
+                <Property Name="base_path" Type="Edm.String" />
+                <Property Name="FK_DEFAULTFAULTRULE_ID" Type="Edm.String" Nullable="true" MaxLength="36" />
+                <Property Name="id" Type="Edm.String" Nullable="false" MaxLength="36" />
+                <Property Name="isDefault" Type="Edm.Boolean" Nullable="true" />
+                <Property Name="life_cycle" Type="apiportal.History" />
+                <Property Name="name" Type="Edm.String" Nullable="true" MaxLength="255" />
+                <Property Name="FK_POSTCLIENTFLOW_ID" Type="Edm.String" Nullable="true" MaxLength="36" />
+                <Property Name="FK_POSTFLOW_ID" Type="Edm.String" Nullable="true" MaxLength="36" />
+                <Property Name="FK_PREFLOW_ID" Type="Edm.String" Nullable="true" MaxLength="36" />
+                <Property Name="publishUrl" Type="Edm.String" />
+                <NavigationProperty Name="apiProxy" Relationship="apiportal.APIProxyEndPoint_APIProxy_Many_One0" FromRole="APIProxyEndPoint" ToRole="APIProxy" />
+                <NavigationProperty Name="apiResources" Relationship="apiportal.APIProxyEndPoint_APIResource_One_Many0" FromRole="APIProxyEndPoint" ToRole="APIResource" />
+                <NavigationProperty Name="conditionalFlows" Relationship="apiportal.APIProxyEndPoint_ConditionalFlowRule_One_Many0" FromRole="APIProxyEndPoint" ToRole="ConditionalFlowRule" />
+                <NavigationProperty Name="defaultFaultRule" Relationship="apiportal.APIProxyEndPoint_DefaultFaultRule_One_One0" FromRole="APIProxyEndPoint" ToRole="DefaultFaultRule" />
+                <NavigationProperty Name="faultRules" Relationship="apiportal.APIProxyEndPoint_FaultRule_One_Many0" FromRole="APIProxyEndPoint" ToRole="FaultRule" />
+                <NavigationProperty Name="postClientFlow" Relationship="apiportal.APIProxyEndPoint_FlowRule_One_One0" FromRole="APIProxyEndPoint" ToRole="FlowRule" />
+                <NavigationProperty Name="postFlow" Relationship="apiportal.APIProxyEndPoint_FlowRule_One_One1" FromRole="APIProxyEndPoint" ToRole="FlowRule" />
+                <NavigationProperty Name="preFlow" Relationship="apiportal.APIProxyEndPoint_FlowRule_One_One2" FromRole="APIProxyEndPoint" ToRole="FlowRule" />
+                <NavigationProperty Name="properties" Relationship="apiportal.APIProxyEndPoint_EndPointProperty_One_Many0" FromRole="APIProxyEndPoint" ToRole="EndPointProperty" />
+                <NavigationProperty Name="routeRules" Relationship="apiportal.APIProxyEndPoint_RouteRule_One_Many0" FromRole="APIProxyEndPoint" ToRole="RouteRule" />
+                <NavigationProperty Name="virtualhosts" Relationship="apiportal.APIProxyEndPoint_VirtualHost_Many_Many0" FromRole="APIProxyEndPoint" ToRole="VirtualHost" />
+            </EntityType>
+            <EntityType Name="CertificateStore">
+                <Key>
+                    <PropertyRef Name="name" />
+                </Key>
+                <Property Name="life_cycle" Type="apiportal.History" />
+                <Property Name="name" Type="Edm.String" Nullable="false" MaxLength="200" />
+                <Property Name="storeType" Type="Edm.String" Nullable="true" MaxLength="20" />
+                <NavigationProperty Name="certificates" Relationship="apiportal.CertificateStore_Certificate_One_Many0" FromRole="CertificateStore" ToRole="Certificate" />
+            </EntityType>
+            <EntityType Name="TemplatePolicy">
+                <Key>
+                    <PropertyRef Name="id" />
+                </Key>
+                <Property Name="id" Type="Edm.String" Nullable="false" MaxLength="36" />
+                <Property Name="life_cycle" Type="apiportal.History" />
+                <Property Name="name" Type="Edm.String" Nullable="true" MaxLength="255" />
+                <Property Name="FK_TEMPLATE_NAME" Type="Edm.String" Nullable="true" MaxLength="255" />
+                <Property Name="policy_content" Type="Edm.String" />
+                <Property Name="type" Type="Edm.String" Nullable="true" MaxLength="40" />
+                <NavigationProperty Name="policyTemplateContainer" Relationship="apiportal.TemplatePolicy_PolicyTemplateContainer_Many_One0" FromRole="TemplatePolicy" ToRole="PolicyTemplateContainer" />
+            </EntityType>
+            <EntityType Name="APIProxy">
+                <Key>
+                    <PropertyRef Name="name" />
+                </Key>
+                <Property Name="FK_PROVIDERNAME" Type="Edm.String" Nullable="true" MaxLength="200" />
+                <Property Name="cfBindingId" Type="Edm.String" Nullable="true" MaxLength="36" />
+                <Property Name="isCopy" Type="Edm.Boolean" Nullable="true" />
+                <Property Name="isPublished" Type="Edm.Boolean" />
+                <Property Name="life_cycle" Type="apiportal.History" />
+                <Property Name="name" Type="Edm.String" Nullable="false" MaxLength="255" />
+                <Property Name="provider_name" Type="Edm.String" Nullable="true" MaxLength="200" />
+                <Property Name="service_code" Type="Edm.String" Nullable="true" MaxLength="20" />
+                <Property Name="state" Type="Edm.String" Nullable="true" MaxLength="10" />
+                <Property Name="status_code" Type="Edm.String" Nullable="true" MaxLength="20" />
+                <Property Name="version" Type="Edm.String" Nullable="true" MaxLength="10" />
+                <Property Name="title" Type="Edm.String" MaxLength="255" />
+                <Property Name="description" Type="Edm.String" MaxLength="16000" />
+                <NavigationProperty Name="apiProducts" Relationship="apiportal.APIProxy_APIProduct_Many_Many0" FromRole="APIProxy" ToRole="APIProduct" />
+                <NavigationProperty Name="apiProvider" Relationship="apiportal.APIProxy_APIProvider_Many_One0" FromRole="APIProxy" ToRole="APIProvider" />
+                <NavigationProperty Name="contentPackage" Relationship="apiportal.APIProxy_ContentPackageMapper_One_One0" FromRole="APIProxy" ToRole="ContentPackageMapper" />
+                <NavigationProperty Name="fileResources" Relationship="apiportal.APIProxy_FileResource_Many_Many0" FromRole="APIProxy" ToRole="FileResource" />
+                <NavigationProperty Name="policies" Relationship="apiportal.APIProxy_Policy_One_Many0" FromRole="APIProxy" ToRole="Policy" />
+                <NavigationProperty Name="proxyEndPoints" Relationship="apiportal.APIProxyEndPoint_APIProxy_Many_One0" FromRole="APIProxy" ToRole="APIProxyEndPoint" />
+                <NavigationProperty Name="resources" Relationship="apiportal.APIProxy_Resource_One_Many0" FromRole="APIProxy" ToRole="Resource" />
+                <NavigationProperty Name="targetAPIProxies" Relationship="apiportal.APIProxy_APITargetEndPoint_One_Many0" FromRole="APIProxy" ToRole="APITargetEndPoint" />
+                <NavigationProperty Name="targetEndPoints" Relationship="apiportal.APIProxy_APITargetEndPoint_One_Many1" FromRole="APIProxy" ToRole="APITargetEndPoint" />
+            </EntityType>
+            <EntityType Name="EndPointProperty">
+                <Key>
+                    <PropertyRef Name="id" />
+                </Key>
+                <Property Name="id" Type="Edm.String" Nullable="false" MaxLength="36" />
+                <Property Name="name" Type="Edm.String" Nullable="true" MaxLength="512" />
+                <Property Name="FK_PROXYENDPOINT_ID" Type="Edm.String" Nullable="true" MaxLength="36" />
+                <Property Name="FK_TARGETENDPOINT_ID" Type="Edm.String" Nullable="true" MaxLength="36" />
+                <Property Name="value" Type="Edm.String" />
+                <NavigationProperty Name="proxyEndPoint" Relationship="apiportal.APIProxyEndPoint_EndPointProperty_One_Many0" FromRole="EndPointProperty" ToRole="APIProxyEndPoint" />
+                <NavigationProperty Name="targetEndPoint" Relationship="apiportal.EndPointProperty_APITargetEndPoint_Many_One0" FromRole="EndPointProperty" ToRole="APITargetEndPoint" />
+            </EntityType>
+            <EntityType Name="Application">
+                <Key>
+                    <PropertyRef Name="id" />
+                </Key>
+                <Property Name="callbackurl" Type="Edm.String" Nullable="true" MaxLength="255" />
+                <Property Name="FK_DEVELOPER_ID" Type="Edm.String" Nullable="true" MaxLength="256" />
+                <Property Name="id" Type="Edm.String" Nullable="false" MaxLength="36" />
+                <Property Name="life_cycle" Type="apiportal.History" />
+                <Property Name="status_code" Type="Edm.String" Nullable="true" MaxLength="20" />
+                <Property Name="valid_from" Type="Edm.DateTime" />
+                <Property Name="valid_to" Type="Edm.DateTime" />
+                <Property Name="version" Type="Edm.String" Nullable="true" MaxLength="10" />
+                <Property Name="title" Type="Edm.String" MaxLength="255" />
+                <Property Name="description" Type="Edm.String" MaxLength="16000" />
+                <Property Name="app_key" Type="Edm.String" MaxLength="256" />
+                <Property Name="app_secret" Type="Edm.String" MaxLength="1000" />
+                <Property Name="subscribedRatePlan" Type="Edm.String" />
+                <NavigationProperty Name="apiProducts" Relationship="apiportal.Application_APIProduct_Many_Many0" FromRole="Application" ToRole="APIProduct" />
+                <NavigationProperty Name="developer" Relationship="apiportal.Application_Developer_One_One0" FromRole="Application" ToRole="Developer" />
+                <NavigationProperty Name="resources" Relationship="apiportal.Application_Resource_One_Many0" FromRole="Application" ToRole="Resource" />
+            </EntityType>
+            <EntityType Name="Step">
+                <Key>
+                    <PropertyRef Name="id" />
+                </Key>
+                <Property Name="condition" Type="Edm.String" />
+                <Property Name="FK_DEFAULTFAULTRULE_ID" Type="Edm.String" Nullable="true" MaxLength="36" />
+                <Property Name="FK_FAULTRULE_ID" Type="Edm.String" Nullable="true" MaxLength="36" />
+                <Property Name="id" Type="Edm.String" Nullable="false" MaxLength="36" />
+                <Property Name="policy_name" Type="Edm.String" Nullable="true" MaxLength="255" />
+                <Property Name="sequence" Type="Edm.Int32" Nullable="true" />
+                <Property Name="FK_STREAM_ID" Type="Edm.String" Nullable="true" MaxLength="36" />
+                <NavigationProperty Name="defaultFaultRule" Relationship="apiportal.Step_DefaultFaultRule_Many_One0" FromRole="Step" ToRole="DefaultFaultRule" />
+                <NavigationProperty Name="faultRule" Relationship="apiportal.Step_FaultRule_Many_One0" FromRole="Step" ToRole="FaultRule" />
+                <NavigationProperty Name="stream" Relationship="apiportal.Step_Stream_Many_One0" FromRole="Step" ToRole="Stream" />
+            </EntityType>
+            <EntityType Name="APIProvider">
+                <Key>
+                    <PropertyRef Name="name" />
+                </Key>
+                <Property Name="isOnPremise" Type="Edm.Boolean" Nullable="true" />
+                <Property Name="life_cycle" Type="apiportal.History" />
+                <Property Name="name" Type="Edm.String" Nullable="false" MaxLength="200" />
+                <Property Name="rt_auth" Type="Edm.String" Nullable="true" MaxLength="255" />
+                <Property Name="sslInfo" Type="apiportal.SSLInfo" />
+                <Property Name="url" Type="Edm.String" />
+                <Property Name="title" Type="Edm.String" MaxLength="255" />
+                <Property Name="description" Type="Edm.String" MaxLength="16000" />
+                <Property Name="destType" Type="Edm.String" MaxLength="10" />
+                <Property Name="host" Type="Edm.String" MaxLength="2048" />
+                <Property Name="port" Type="Edm.Int32" />
+                <Property Name="useSSL" Type="Edm.Boolean" />
+                <Property Name="trustAll" Type="Edm.Boolean" />
+                <Property Name="userName" Type="Edm.String" MaxLength="2048" />
+                <Property Name="password" Type="Edm.String" MaxLength="126" />
+                <Property Name="authType" Type="Edm.String" MaxLength="126" />
+                <Property Name="pathPrefix" Type="Edm.String" MaxLength="2048" />
+                <Property Name="timeout" Type="Edm.Int32" />
+                <Property Name="cockpit_url" Type="Edm.String" />
+                <Property Name="cloudConnectorLocation" Type="Edm.String" MaxLength="2048" />
+                <NavigationProperty Name="apiProxies" Relationship="apiportal.APIProxy_APIProvider_Many_One0" FromRole="APIProvider" ToRole="APIProxy" />
+                <NavigationProperty Name="resources" Relationship="apiportal.APIProvider_Resource_One_Many0" FromRole="APIProvider" ToRole="Resource" />
+            </EntityType>
+            <EntityType Name="DestinationAndUrlMapping">
+                <Key>
+                    <PropertyRef Name="id" />
+                </Key>
+                <Property Name="destination" Type="Edm.String" Nullable="false" MaxLength="256" />
+                <Property Name="id" Type="Edm.String" Nullable="false" MaxLength="36" />
+                <Property Name="url" Type="Edm.String" Nullable="false" MaxLength="2048" />
+            </EntityType>
+            <EntityType Name="Resource">
+                <Key>
+                    <PropertyRef Name="locale" />
+                    <PropertyRef Name="object_id" />
+                    <PropertyRef Name="type" />
+                </Key>
+                <Property Name="locale" Type="Edm.String" Nullable="false" MaxLength="5" />
+                <Property Name="long_text" Type="Edm.String" Nullable="true" MaxLength="16000" />
+                <Property Name="medium_text" Type="Edm.String" Nullable="true" MaxLength="255" />
+                <Property Name="object_id" Type="Edm.String" Nullable="false" MaxLength="255" />
+                <Property Name="short_text" Type="Edm.String" Nullable="true" MaxLength="255" />
+                <Property Name="type" Type="Edm.String" Nullable="false" MaxLength="2" />
+            </EntityType>
+            <EntityType Name="ContentPackageMapper">
+                <Key>
+                    <PropertyRef Name="targetId" />
+                    <PropertyRef Name="targetType" />
+                </Key>
+                <Property Name="content" Type="Edm.String" Nullable="true" MaxLength="255" />
+                <Property Name="life_cycle" Type="apiportal.History" />
+                <Property Name="srcArtifactName" Type="Edm.String" Nullable="true" MaxLength="255" />
+                <Property Name="srcArtifactType" Type="Edm.String" Nullable="true" MaxLength="255" />
+                <Property Name="srcPackageID" Type="Edm.String" Nullable="true" MaxLength="255" />
+                <Property Name="srcRepo" Type="Edm.String" Nullable="true" MaxLength="255" />
+                <Property Name="targetId" Type="Edm.String" Nullable="false" MaxLength="255" />
+                <Property Name="targetType" Type="Edm.String" Nullable="false" MaxLength="255" />
+                <NavigationProperty Name="apiProxy" Relationship="apiportal.ContentPackageMapper_APIProxy_One_One1" FromRole="ContentPackageMapper" ToRole="APIProxy" />
+            </EntityType>
+            <EntityType Name="ConditionalFlowRule">
+                <Key>
+                    <PropertyRef Name="id" />
+                </Key>
+                <Property Name="conditions" Type="Edm.String" />
+                <Property Name="id" Type="Edm.String" Nullable="false" MaxLength="36" />
+                <Property Name="name" Type="Edm.String" Nullable="true" MaxLength="255" />
+                <Property Name="readOnly" Type="Edm.Boolean" Nullable="true" />
+                <Property Name="FK_REQUEST_ID" Type="Edm.String" Nullable="true" MaxLength="36" />
+                <Property Name="FK_RESPONSE_ID" Type="Edm.String" Nullable="true" MaxLength="36" />
+                <Property Name="sequence" Type="Edm.Int32" Nullable="true" />
+                <NavigationProperty Name="apiResource" Relationship="apiportal.ConditionalFlowRule_APIResource_One_One0" FromRole="ConditionalFlowRule" ToRole="APIResource" />
+                <NavigationProperty Name="proxyEndPoint" Relationship="apiportal.APIProxyEndPoint_ConditionalFlowRule_One_Many0" FromRole="ConditionalFlowRule" ToRole="APIProxyEndPoint" />
+                <NavigationProperty Name="request" Relationship="apiportal.ConditionalFlowRule_Stream_One_One0" FromRole="ConditionalFlowRule" ToRole="Stream" />
+                <NavigationProperty Name="response" Relationship="apiportal.ConditionalFlowRule_Stream_One_One1" FromRole="ConditionalFlowRule" ToRole="Stream" />
+                <NavigationProperty Name="targetEndPoint" Relationship="apiportal.ConditionalFlowRule_APITargetEndPoint_Many_One0" FromRole="ConditionalFlowRule" ToRole="APITargetEndPoint" />
+            </EntityType>
+            <EntityType Name="DefaultFaultRule">
+                <Key>
+                    <PropertyRef Name="id" />
+                </Key>
+                <Property Name="alwaysEnforce" Type="Edm.Boolean" Nullable="true" />
+                <Property Name="id" Type="Edm.String" Nullable="false" MaxLength="36" />
+                <Property Name="name" Type="Edm.String" Nullable="true" MaxLength="255" />
+                <Property Name="FK_PROXYENDPOINT_ID" Type="Edm.String" Nullable="true" MaxLength="36" />
+                <Property Name="FK_TARGETENDPOINT_ID" Type="Edm.String" Nullable="true" MaxLength="36" />
+                <NavigationProperty Name="proxyEndPoint" Relationship="apiportal.DefaultFaultRule_APIProxyEndPoint_Many_One0" FromRole="DefaultFaultRule" ToRole="APIProxyEndPoint" />
+                <NavigationProperty Name="steps" Relationship="apiportal.Step_DefaultFaultRule_Many_One0" FromRole="DefaultFaultRule" ToRole="Step" />
+                <NavigationProperty Name="targetEndPoint" Relationship="apiportal.DefaultFaultRule_APITargetEndPoint_Many_One0" FromRole="DefaultFaultRule" ToRole="APITargetEndPoint" />
+            </EntityType>
+            <EntityType Name="APIResource">
+                <Key>
+                    <PropertyRef Name="id" />
+                </Key>
+                <Property Name="FK_PROXYENDPOINT_ID" Type="Edm.String" Nullable="true" MaxLength="36" />
+                <Property Name="canShowDelete" Type="Edm.Boolean" />
+                <Property Name="canShowGet" Type="Edm.Boolean" />
+                <Property Name="canShowHead" Type="Edm.Boolean" Nullable="true" />
+                <Property Name="canShowOption" Type="Edm.Boolean" Nullable="true" />
+                <Property Name="canShowPatch" Type="Edm.Boolean" Nullable="true" />
+                <Property Name="canShowPost" Type="Edm.Boolean" />
+                <Property Name="canShowPut" Type="Edm.Boolean" />
+                <Property Name="id" Type="Edm.String" Nullable="false" MaxLength="36" />
+                <Property Name="isDeleteChecked" Type="Edm.Boolean" />
+                <Property Name="isGetChecked" Type="Edm.Boolean" />
+                <Property Name="isHeadChecked" Type="Edm.Boolean" Nullable="true" />
+                <Property Name="isOptionChecked" Type="Edm.Boolean" Nullable="true" />
+                <Property Name="isPatchChecked" Type="Edm.Boolean" Nullable="true" />
+                <Property Name="isPostChecked" Type="Edm.Boolean" />
+                <Property Name="isPutChecked" Type="Edm.Boolean" />
+                <Property Name="life_cycle" Type="apiportal.History" />
+                <Property Name="name" Type="Edm.String" Nullable="true" MaxLength="1024" />
+                <Property Name="proxyEndPointName" Type="Edm.String" />
+                <Property Name="resource_path" Type="Edm.String" />
+                <Property Name="title" Type="Edm.String" MaxLength="255" />
+                <Property Name="description" Type="Edm.String" MaxLength="16000" />
+                <NavigationProperty Name="apiProxyEndPoint" Relationship="apiportal.APIProxyEndPoint_APIResource_One_Many0" FromRole="APIResource" ToRole="APIProxyEndPoint" />
+                <NavigationProperty Name="documentations" Relationship="apiportal.APIResource_Documentation_One_Many0" FromRole="APIResource" ToRole="Documentation" />
+                <NavigationProperty Name="resources" Relationship="apiportal.APIResource_Resource_One_Many0" FromRole="APIResource" ToRole="Resource" />
+            </EntityType>
+            <EntityType Name="APITargetEndPoint">
+                <Key>
+                    <PropertyRef Name="id" />
+                </Key>
+                <Property Name="FK_API_NAME" Type="Edm.String" Nullable="true" MaxLength="255" />
+                <Property Name="FK_DEFAULTFAULTRULE_ID" Type="Edm.String" Nullable="true" MaxLength="36" />
+                <Property Name="id" Type="Edm.String" Nullable="false" MaxLength="36" />
+                <Property Name="isDefault" Type="Edm.Boolean" />
+                <Property Name="life_cycle" Type="apiportal.History" />
+                <Property Name="name" Type="Edm.String" Nullable="true" MaxLength="255" />
+                <Property Name="FK_POSTFLOW_ID" Type="Edm.String" Nullable="true" MaxLength="36" />
+                <Property Name="FK_PREFLOW_ID" Type="Edm.String" Nullable="true" MaxLength="36" />
+                <Property Name="provider_id" Type="Edm.String" Nullable="true" MaxLength="200" />
+                <Property Name="relativePath" Type="Edm.String" Nullable="true" MaxLength="255" />
+                <Property Name="FK_TARGET_API_PROXY" Type="Edm.String" Nullable="true" MaxLength="255" />
+                <Property Name="targetAPIProxyName" Type="Edm.String" Nullable="true" MaxLength="255" />
+                <Property Name="url" Type="Edm.String" Nullable="true" MaxLength="2083" />
+                <NavigationProperty Name="apiProxy" Relationship="apiportal.APIProxy_APITargetEndPoint_One_Many1" FromRole="APITargetEndPoint" ToRole="APIProxy" />
+                <NavigationProperty Name="conditionalFlows" Relationship="apiportal.ConditionalFlowRule_APITargetEndPoint_Many_One0" FromRole="APITargetEndPoint" ToRole="ConditionalFlowRule" />
+                <NavigationProperty Name="defaultFaultRule" Relationship="apiportal.APITargetEndPoint_DefaultFaultRule_One_One0" FromRole="APITargetEndPoint" ToRole="DefaultFaultRule" />
+                <NavigationProperty Name="faultRules" Relationship="apiportal.APITargetEndPoint_FaultRule_One_Many0" FromRole="APITargetEndPoint" ToRole="FaultRule" />
+                <NavigationProperty Name="postFlow" Relationship="apiportal.APITargetEndPoint_FlowRule_One_One0" FromRole="APITargetEndPoint" ToRole="FlowRule" />
+                <NavigationProperty Name="preFlow" Relationship="apiportal.APITargetEndPoint_FlowRule_One_One1" FromRole="APITargetEndPoint" ToRole="FlowRule" />
+                <NavigationProperty Name="properties" Relationship="apiportal.EndPointProperty_APITargetEndPoint_Many_One0" FromRole="APITargetEndPoint" ToRole="EndPointProperty" />
+                <NavigationProperty Name="targetAPIProxy" Relationship="apiportal.APITargetEndPoint_APIProxy_One_One0" FromRole="APITargetEndPoint" ToRole="APIProxy" />
+            </EntityType>
+            <EntityType Name="FaultRule">
+                <Key>
+                    <PropertyRef Name="id" />
+                </Key>
+                <Property Name="condition" Type="Edm.String" />
+                <Property Name="id" Type="Edm.String" Nullable="false" MaxLength="36" />
+                <Property Name="name" Type="Edm.String" Nullable="true" MaxLength="255" />
+                <Property Name="FK_PROXYENDPOINT_ID" Type="Edm.String" Nullable="true" MaxLength="36" />
+                <Property Name="FK_ROUTERULE_ID" Type="Edm.String" Nullable="true" MaxLength="36" />
+                <Property Name="FK_TARGETENDPOINT_ID" Type="Edm.String" Nullable="true" MaxLength="36" />
+                <NavigationProperty Name="proxyEndPoint" Relationship="apiportal.APIProxyEndPoint_FaultRule_One_Many0" FromRole="FaultRule" ToRole="APIProxyEndPoint" />
+                <NavigationProperty Name="routeRule" Relationship="apiportal.FaultRule_RouteRule_Many_One0" FromRole="FaultRule" ToRole="RouteRule" />
+                <NavigationProperty Name="steps" Relationship="apiportal.Step_FaultRule_Many_One0" FromRole="FaultRule" ToRole="Step" />
+                <NavigationProperty Name="targetEndPoint" Relationship="apiportal.APITargetEndPoint_FaultRule_One_Many0" FromRole="FaultRule" ToRole="APITargetEndPoint" />
+            </EntityType>
+            <EntityType Name="APIProduct">
+                <Key>
+                    <PropertyRef Name="name" />
+                </Key>
+                <Property Name="isPublished" Type="Edm.Boolean" />
+                <Property Name="isRestricted" Type="Edm.Boolean" Nullable="true" />
+                <Property Name="life_cycle" Type="apiportal.History" />
+                <Property Name="name" Type="Edm.String" Nullable="false" MaxLength="255" />
+                <Property Name="published_at" Type="Edm.DateTime" />
+                <Property Name="published_by" Type="Edm.String" Nullable="true" MaxLength="256" />
+                <Property Name="quotaCount" Type="Edm.Int32" Nullable="true" />
+                <Property Name="quotaInterval" Type="Edm.Int32" Nullable="true" />
+                <Property Name="quotaTimeUnit" Type="Edm.String" Nullable="true" MaxLength="10" />
+                <Property Name="scope" Type="Edm.String" Nullable="true" MaxLength="255" />
+                <Property Name="status_code" Type="Edm.String" Nullable="true" MaxLength="20" />
+                <Property Name="version" Type="Edm.String" Nullable="true" MaxLength="10" />
+                <Property Name="title" Type="Edm.String" MaxLength="255" />
+                <Property Name="description" Type="Edm.String" MaxLength="16000" />
+                <NavigationProperty Name="apiProxies" Relationship="apiportal.APIProxy_APIProduct_Many_Many0" FromRole="APIProduct" ToRole="APIProxy" />
+                <NavigationProperty Name="apiResources" Relationship="apiportal.APIProduct_APIResource_One_Many0" FromRole="APIProduct" ToRole="APIResource" />
+                <NavigationProperty Name="applications" Relationship="apiportal.Application_APIProduct_Many_Many0" FromRole="APIProduct" ToRole="Application" />
+                <NavigationProperty Name="ratePlans" Relationship="apiportal.APIProduct_RatePlan_Many_Many0" FromRole="APIProduct" ToRole="RatePlan" />
+                <NavigationProperty Name="resources" Relationship="apiportal.APIProduct_Resource_One_Many0" FromRole="APIProduct" ToRole="Resource" />
+            </EntityType>
+            <EntityType Name="Documentation">
+                <Key>
+                    <PropertyRef Name="id" />
+                    <PropertyRef Name="locale" />
+                </Key>
+                <Property Name="FK_APIRESOURCE_ID" Type="Edm.String" Nullable="true" MaxLength="36" />
+                <Property Name="apiResourceName" Type="Edm.String" />
+                <Property Name="content" Type="Edm.String" />
+                <Property Name="id" Type="Edm.String" Nullable="false" MaxLength="36" />
+                <Property Name="life_cycle" Type="apiportal.History" />
+                <Property Name="locale" Type="Edm.String" Nullable="false" MaxLength="5" />
+                <Property Name="mime_type" Type="Edm.String" Nullable="true" MaxLength="256" />
+                <NavigationProperty Name="apiResource" Relationship="apiportal.APIResource_Documentation_One_Many0" FromRole="Documentation" ToRole="APIResource" />
+            </EntityType>
+            <EntityType Name="Certificate">
+                <Key>
+                    <PropertyRef Name="name" />
+                    <PropertyRef Name="storeName" />
+                </Key>
+                <Property Name="certName" Type="Edm.String" Nullable="true" MaxLength="256" />
+                <Property Name="description" Type="Edm.String" Nullable="true" MaxLength="2048" />
+                <Property Name="life_cycle" Type="apiportal.History" />
+                <Property Name="name" Type="Edm.String" Nullable="false" MaxLength="200" />
+                <Property Name="storeName" Type="Edm.String" Nullable="false" MaxLength="200" />
+                <Property Name="password" Type="Edm.String" MaxLength="256" />
+                <Property Name="storeType" Type="Edm.String" MaxLength="256" />
+                <Property Name="expiryDate" Type="Edm.String" MaxLength="256" />
+                <Property Name="issuerEmail" Type="Edm.String" MaxLength="2048" />
+                <Property Name="subjectEmail" Type="Edm.String" MaxLength="2048" />
+                <Property Name="signAlgName" Type="Edm.String" MaxLength="256" />
+                <Property Name="isValid" Type="Edm.String" MaxLength="256" />
+                <Property Name="validFrom" Type="Edm.String" MaxLength="256" />
+                <Property Name="version" Type="Edm.String" MaxLength="256" />
+                <Property Name="content" Type="Edm.Binary" />
+                <NavigationProperty Name="certificateStore" Relationship="apiportal.CertificateStore_Certificate_One_Many0" FromRole="Certificate" ToRole="CertificateStore" />
+            </EntityType>
+            <EntityType Name="RatePlan">
+                <Key>
+                    <PropertyRef Name="id" />
+                </Key>
+                <Property Name="currency" Type="Edm.String" Nullable="false" MaxLength="50" />
+                <Property Name="frequency" Type="Edm.String" Nullable="false" MaxLength="255" />
+                <Property Name="id" Type="Edm.String" Nullable="false" />
+                <Property Name="isActive" Type="Edm.Boolean" Nullable="false" />
+                <Property Name="isPublished" Type="Edm.Boolean" Nullable="false" />
+                <Property Name="isSeasonal" Type="Edm.Boolean" Nullable="true" />
+                <Property Name="life_cycle" Type="apiportal.History" />
+                <Property Name="name" Type="Edm.String" Nullable="false" MaxLength="255" />
+                <Property Name="rate" Type="Edm.String" />
+                <Property Name="type" Type="Edm.String" Nullable="true" MaxLength="255" />
+                <Property Name="validFrom" Type="Edm.DateTime" />
+                <Property Name="validTo" Type="Edm.DateTime" />
+                <Property Name="description" Type="Edm.String" MaxLength="16000" />
+                <NavigationProperty Name="apiProducts" Relationship="apiportal.APIProduct_RatePlan_Many_Many0" FromRole="RatePlan" ToRole="APIProduct" />
+                <NavigationProperty Name="resources" Relationship="apiportal.RatePlan_Resource_One_Many0" FromRole="RatePlan" ToRole="Resource" />
+            </EntityType>
+            <EntityType Name="PolicyTemplateContainer">
+                <Key>
+                    <PropertyRef Name="name" />
+                </Key>
+                <Property Name="description" Type="Edm.String" Nullable="true" MaxLength="4096" />
+                <Property Name="life_cycle" Type="apiportal.History" />
+                <Property Name="name" Type="Edm.String" Nullable="false" MaxLength="255" />
+                <Property Name="proxyEndPointxml" Type="Edm.String" />
+                <Property Name="targetEndPointxml" Type="Edm.String" />
+                <Property Name="title" Type="Edm.String" Nullable="true" MaxLength="255" />
+                <Property Name="version" Type="Edm.String" Nullable="true" MaxLength="10" />
+                <NavigationProperty Name="fileResources" Relationship="apiportal.TemplateFileResource_PolicyTemplateContainer_Many_One0" FromRole="PolicyTemplateContainer" ToRole="TemplateFileResource" />
+                <NavigationProperty Name="policies" Relationship="apiportal.TemplatePolicy_PolicyTemplateContainer_Many_One0" FromRole="PolicyTemplateContainer" ToRole="TemplatePolicy" />
+            </EntityType>
+            <EntityType Name="Bill">
+                <Key>
+                    <PropertyRef Name="entityId" />
+                    <PropertyRef Name="entityType" />
+                    <PropertyRef Name="fromDate" />
+                    <PropertyRef Name="toDate" />
+                </Key>
+                <Property Name="billDetails" Type="Edm.String" />
+                <Property Name="billGeneratedAt" Type="Edm.DateTime" Nullable="true" />
+                <Property Name="billGeneratedBy" Type="Edm.String" Nullable="true" MaxLength="255" />
+                <Property Name="billId" Type="Edm.String" Nullable="true" MaxLength="64" />
+                <Property Name="currency" Type="Edm.String" Nullable="true" MaxLength="32" />
+                <Property Name="description" Type="Edm.String" Nullable="true" MaxLength="2048" />
+                <Property Name="emailId" Type="Edm.String" Nullable="true" MaxLength="255" />
+                <Property Name="entityId" Type="Edm.String" Nullable="false" MaxLength="256" />
+                <Property Name="entityName" Type="Edm.String" Nullable="true" MaxLength="256" />
+                <Property Name="entityType" Type="Edm.String" Nullable="false" MaxLength="32" />
+                <Property Name="firstName" Type="Edm.String" Nullable="true" MaxLength="255" />
+                <Property Name="fromDate" Type="Edm.DateTime" Nullable="false" />
+                <Property Name="isoffboarded" Type="Edm.Boolean" Nullable="true" />
+                <Property Name="lastName" Type="Edm.String" Nullable="true" MaxLength="255" />
+                <Property Name="offboardedDate" Type="Edm.DateTime" Nullable="true" />
+                <Property Name="status" Type="Edm.String" Nullable="true" MaxLength="64" />
+                <Property Name="toDate" Type="Edm.DateTime" Nullable="false" />
+                <Property Name="total" Type="Edm.Double" Nullable="true" />
+            </EntityType>
+            <EntityType Name="RouteRule">
+                <Key>
+                    <PropertyRef Name="id" />
+                </Key>
+                <Property Name="conditions" Type="Edm.String" />
+                <Property Name="id" Type="Edm.String" Nullable="false" MaxLength="36" />
+                <Property Name="name" Type="Edm.String" Nullable="true" MaxLength="255" />
+                <Property Name="FK_PROXYENDPOINT_ID" Type="Edm.String" Nullable="true" MaxLength="36" />
+                <Property Name="sequence" Type="Edm.Int32" />
+                <Property Name="targetEndPointName" Type="Edm.String" Nullable="true" MaxLength="255" />
+                <Property Name="url" Type="Edm.String" />
+                <NavigationProperty Name="faultRules" Relationship="apiportal.FaultRule_RouteRule_Many_One0" FromRole="RouteRule" ToRole="FaultRule" />
+                <NavigationProperty Name="proxyEndPoint" Relationship="apiportal.APIProxyEndPoint_RouteRule_One_Many0" FromRole="RouteRule" ToRole="APIProxyEndPoint" />
+            </EntityType>
+            <EntityType Name="KeyMapEntryValue">
+                <Key>
+                    <PropertyRef Name="map_name" />
+                    <PropertyRef Name="name" />
+                </Key>
+                <Property Name="map_name" Type="Edm.String" Nullable="false" MaxLength="255" />
+                <Property Name="name" Type="Edm.String" Nullable="false" MaxLength="255" />
+                <Property Name="value" Type="Edm.String" Nullable="true" MaxLength="4096" />
+                <NavigationProperty Name="keyMapEntry" Relationship="apiportal.KeyMapEntry_KeyMapEntryValue_One_Many0" FromRole="KeyMapEntryValue" ToRole="KeyMapEntry" />
+            </EntityType>
+            <EntityType Name="FileResource">
+                <Key>
+                    <PropertyRef Name="id" />
+                </Key>
+                <Property Name="content" Type="Edm.String" />
+                <Property Name="id" Type="Edm.String" Nullable="false" MaxLength="36" />
+                <Property Name="name" Type="Edm.String" Nullable="true" MaxLength="255" />
+                <Property Name="scope" Type="Edm.String" Nullable="true" MaxLength="20" />
+                <Property Name="type" Type="Edm.String" Nullable="true" MaxLength="10" />
+                <NavigationProperty Name="apiProxies" Relationship="apiportal.APIProxy_FileResource_Many_Many0" FromRole="FileResource" ToRole="APIProxy" />
+            </EntityType>
+            <EntityType Name="CacheResource">
+                <Key>
+                    <PropertyRef Name="name" />
+                </Key>
+                <Property Name="compression_enabled" Type="Edm.Boolean" Nullable="true" />
+                <Property Name="disk_size" Type="Edm.Int32" Nullable="true" />
+                <Property Name="expirySettings" Type="apiportal.ExpirySettings" />
+                <Property Name="in_memory_size" Type="Edm.Int32" Nullable="true" />
+                <Property Name="life_cycle" Type="apiportal.History" />
+                <Property Name="max_element_disk" Type="Edm.Int32" Nullable="true" />
+                <Property Name="max_element_memory" Type="Edm.Int32" Nullable="true" />
+                <Property Name="min_compression_size" Type="Edm.Int32" Nullable="true" />
+                <Property Name="name" Type="Edm.String" Nullable="false" MaxLength="255" />
+                <Property Name="over_flow_to_disk" Type="Edm.Boolean" Nullable="true" />
+                <Property Name="persistent_cache" Type="Edm.Boolean" Nullable="true" />
+                <Property Name="skip_cache_element_size" Type="Edm.Int32" Nullable="true" />
+            </EntityType>
+            <EntityType Name="Developer">
+                <Key>
+                    <PropertyRef Name="id" />
+                </Key>
+                <Property Name="country" Type="Edm.String" />
+                <Property Name="emailId" Type="Edm.String" Nullable="false" MaxLength="255" />
+                <Property Name="firstName" Type="Edm.String" Nullable="false" MaxLength="255" />
+                <Property Name="id" Type="Edm.String" Nullable="false" MaxLength="256" />
+                <Property Name="lastName" Type="Edm.String" Nullable="false" MaxLength="255" />
+                <Property Name="life_cycle" Type="apiportal.History" />
+                <NavigationProperty Name="applications" Relationship="apiportal.Developer_Application_One_Many0" FromRole="Developer" ToRole="Application" />
+            </EntityType>
+            <EntityType Name="Stream">
+                <Key>
+                    <PropertyRef Name="id" />
+                </Key>
+                <Property Name="FK_FLOW_ID" Type="Edm.String" Nullable="true" MaxLength="36" />
+                <Property Name="id" Type="Edm.String" Nullable="false" MaxLength="36" />
+                <Property Name="isRequest" Type="Edm.Boolean" />
+                <NavigationProperty Name="flow" Relationship="apiportal.Stream_FlowRule_One_One2" FromRole="Stream" ToRole="FlowRule" />
+                <NavigationProperty Name="steps" Relationship="apiportal.Step_Stream_Many_One0" FromRole="Stream" ToRole="Step" />
+            </EntityType>
+            <EntityType Name="Policy">
+                <Key>
+                    <PropertyRef Name="id" />
+                </Key>
+                <Property Name="FK_API_NAME" Type="Edm.String" Nullable="true" MaxLength="255" />
+                <Property Name="id" Type="Edm.String" Nullable="false" MaxLength="36" />
+                <Property Name="life_cycle" Type="apiportal.History" />
+                <Property Name="name" Type="Edm.String" Nullable="true" MaxLength="255" />
+                <Property Name="policy_content" Type="Edm.String" />
+                <Property Name="type" Type="Edm.String" Nullable="true" MaxLength="40" />
+                <NavigationProperty Name="apiProxy" Relationship="apiportal.APIProxy_Policy_One_Many0" FromRole="Policy" ToRole="APIProxy" />
+            </EntityType>
+            <ComplexType Name="History">
+                <Property Name="changed_at" Type="Edm.DateTime" />
+                <Property Name="changed_by" Type="Edm.String" Nullable="true" MaxLength="255" />
+                <Property Name="created_at" Type="Edm.DateTime" />
+                <Property Name="created_by" Type="Edm.String" Nullable="true" MaxLength="255" />
+            </ComplexType>
+            <ComplexType Name="SSLInfo">
+                <Property Name="ciphers" Type="Edm.String" Nullable="true" MaxLength="255" />
+                <Property Name="clientAuthEnabled" Type="Edm.Boolean" Nullable="true" />
+                <Property Name="enabled" Type="Edm.Boolean" Nullable="true" />
+                <Property Name="ignoreValidationErrors" Type="Edm.Boolean" Nullable="true" />
+                <Property Name="keyAlias" Type="Edm.String" Nullable="true" MaxLength="255" />
+                <Property Name="keyStore" Type="Edm.String" Nullable="true" MaxLength="255" />
+                <Property Name="protocols" Type="Edm.String" Nullable="true" MaxLength="255" />
+                <Property Name="trustStore" Type="Edm.String" Nullable="true" MaxLength="255" />
+            </ComplexType>
+            <ComplexType Name="ExpirySettings">
+                <Property Name="expiry_date" Type="Edm.DateTime" Nullable="true" />
+                <Property Name="expiry_settings_override_disabled" Type="Edm.Boolean" Nullable="true" />
+                <Property Name="time_out" Type="Edm.Int32" Nullable="true" />
+                <Property Name="time_out_day" Type="Edm.String" Nullable="true" MaxLength="255" />
+            </ComplexType>
+            <Association Name="FlowRule_Stream_One_One0">
+                <End Type="apiportal.FlowRule" Multiplicity="1" Role="FlowRule" />
+                <End Type="apiportal.Stream" Multiplicity="1" Role="Stream" />
+                <ReferentialConstraint>
+                    <Principal Role="Stream">
+                        <PropertyRef Name="id" />
+                    </Principal>
+                    <Dependent Role="FlowRule">
+                        <PropertyRef Name="FK_REQUEST_ID" />
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="FlowRule_Stream_One_One1">
+                <End Type="apiportal.FlowRule" Multiplicity="1" Role="FlowRule" />
+                <End Type="apiportal.Stream" Multiplicity="1" Role="Stream" />
+                <ReferentialConstraint>
+                    <Principal Role="Stream">
+                        <PropertyRef Name="id" />
+                    </Principal>
+                    <Dependent Role="FlowRule">
+                        <PropertyRef Name="FK_RESPONSE_ID" />
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="TemplateFileResource_PolicyTemplateContainer_Many_One0">
+                <End Type="apiportal.TemplateFileResource" Multiplicity="*" Role="TemplateFileResource" />
+                <End Type="apiportal.PolicyTemplateContainer" Multiplicity="1" Role="PolicyTemplateContainer" />
+                <ReferentialConstraint>
+                    <Principal Role="PolicyTemplateContainer">
+                        <PropertyRef Name="name" />
+                    </Principal>
+                    <Dependent Role="TemplateFileResource">
+                        <PropertyRef Name="FK_TEMPLATE_NAME" />
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="APIProxyEndPoint_APIProxy_Many_One0">
+                <End Type="apiportal.APIProxyEndPoint" Multiplicity="*" Role="APIProxyEndPoint" />
+                <End Type="apiportal.APIProxy" Multiplicity="1" Role="APIProxy" />
+                <ReferentialConstraint>
+                    <Principal Role="APIProxy">
+                        <PropertyRef Name="name" />
+                    </Principal>
+                    <Dependent Role="APIProxyEndPoint">
+                        <PropertyRef Name="FK_API_NAME" />
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="APIProxyEndPoint_DefaultFaultRule_One_One0">
+                <End Type="apiportal.APIProxyEndPoint" Multiplicity="1" Role="APIProxyEndPoint" />
+                <End Type="apiportal.DefaultFaultRule" Multiplicity="1" Role="DefaultFaultRule" />
+                <ReferentialConstraint>
+                    <Principal Role="DefaultFaultRule">
+                        <PropertyRef Name="id" />
+                    </Principal>
+                    <Dependent Role="APIProxyEndPoint">
+                        <PropertyRef Name="FK_DEFAULTFAULTRULE_ID" />
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="APIProxyEndPoint_FlowRule_One_One0">
+                <End Type="apiportal.APIProxyEndPoint" Multiplicity="1" Role="APIProxyEndPoint" />
+                <End Type="apiportal.FlowRule" Multiplicity="1" Role="FlowRule" />
+                <ReferentialConstraint>
+                    <Principal Role="FlowRule">
+                        <PropertyRef Name="id" />
+                    </Principal>
+                    <Dependent Role="APIProxyEndPoint">
+                        <PropertyRef Name="FK_POSTCLIENTFLOW_ID" />
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="APIProxyEndPoint_FlowRule_One_One1">
+                <End Type="apiportal.APIProxyEndPoint" Multiplicity="1" Role="APIProxyEndPoint" />
+                <End Type="apiportal.FlowRule" Multiplicity="1" Role="FlowRule" />
+                <ReferentialConstraint>
+                    <Principal Role="FlowRule">
+                        <PropertyRef Name="id" />
+                    </Principal>
+                    <Dependent Role="APIProxyEndPoint">
+                        <PropertyRef Name="FK_POSTFLOW_ID" />
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="APIProxyEndPoint_FlowRule_One_One2">
+                <End Type="apiportal.APIProxyEndPoint" Multiplicity="1" Role="APIProxyEndPoint" />
+                <End Type="apiportal.FlowRule" Multiplicity="1" Role="FlowRule" />
+                <ReferentialConstraint>
+                    <Principal Role="FlowRule">
+                        <PropertyRef Name="id" />
+                    </Principal>
+                    <Dependent Role="APIProxyEndPoint">
+                        <PropertyRef Name="FK_PREFLOW_ID" />
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="TemplatePolicy_PolicyTemplateContainer_Many_One0">
+                <End Type="apiportal.TemplatePolicy" Multiplicity="*" Role="TemplatePolicy" />
+                <End Type="apiportal.PolicyTemplateContainer" Multiplicity="1" Role="PolicyTemplateContainer" />
+                <ReferentialConstraint>
+                    <Principal Role="PolicyTemplateContainer">
+                        <PropertyRef Name="name" />
+                    </Principal>
+                    <Dependent Role="TemplatePolicy">
+                        <PropertyRef Name="FK_TEMPLATE_NAME" />
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="APIProxy_APIProvider_Many_One0">
+                <End Type="apiportal.APIProxy" Multiplicity="*" Role="APIProxy" />
+                <End Type="apiportal.APIProvider" Multiplicity="1" Role="APIProvider" />
+                <ReferentialConstraint>
+                    <Principal Role="APIProvider">
+                        <PropertyRef Name="name" />
+                    </Principal>
+                    <Dependent Role="APIProxy">
+                        <PropertyRef Name="FK_PROVIDERNAME" />
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="APIProxyEndPoint_EndPointProperty_One_Many0">
+                <End Type="apiportal.APIProxyEndPoint" Multiplicity="1" Role="APIProxyEndPoint" />
+                <End Type="apiportal.EndPointProperty" Multiplicity="*" Role="EndPointProperty" />
+                <ReferentialConstraint>
+                    <Principal Role="APIProxyEndPoint">
+                        <PropertyRef Name="id" />
+                    </Principal>
+                    <Dependent Role="EndPointProperty">
+                        <PropertyRef Name="FK_PROXYENDPOINT_ID" />
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="EndPointProperty_APITargetEndPoint_Many_One0">
+                <End Type="apiportal.EndPointProperty" Multiplicity="*" Role="EndPointProperty" />
+                <End Type="apiportal.APITargetEndPoint" Multiplicity="1" Role="APITargetEndPoint" />
+                <ReferentialConstraint>
+                    <Principal Role="APITargetEndPoint">
+                        <PropertyRef Name="id" />
+                    </Principal>
+                    <Dependent Role="EndPointProperty">
+                        <PropertyRef Name="FK_TARGETENDPOINT_ID" />
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="Application_Developer_One_One0">
+                <End Type="apiportal.Application" Multiplicity="1" Role="Application" />
+                <End Type="apiportal.Developer" Multiplicity="1" Role="Developer" />
+                <ReferentialConstraint>
+                    <Principal Role="Developer">
+                        <PropertyRef Name="id" />
+                    </Principal>
+                    <Dependent Role="Application">
+                        <PropertyRef Name="FK_DEVELOPER_ID" />
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="Step_DefaultFaultRule_Many_One0">
+                <End Type="apiportal.Step" Multiplicity="*" Role="Step" />
+                <End Type="apiportal.DefaultFaultRule" Multiplicity="1" Role="DefaultFaultRule" />
+                <ReferentialConstraint>
+                    <Principal Role="DefaultFaultRule">
+                        <PropertyRef Name="id" />
+                    </Principal>
+                    <Dependent Role="Step">
+                        <PropertyRef Name="FK_DEFAULTFAULTRULE_ID" />
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="Step_FaultRule_Many_One0">
+                <End Type="apiportal.Step" Multiplicity="*" Role="Step" />
+                <End Type="apiportal.FaultRule" Multiplicity="1" Role="FaultRule" />
+                <ReferentialConstraint>
+                    <Principal Role="FaultRule">
+                        <PropertyRef Name="id" />
+                    </Principal>
+                    <Dependent Role="Step">
+                        <PropertyRef Name="FK_FAULTRULE_ID" />
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="Step_Stream_Many_One0">
+                <End Type="apiportal.Step" Multiplicity="*" Role="Step" />
+                <End Type="apiportal.Stream" Multiplicity="1" Role="Stream" />
+                <ReferentialConstraint>
+                    <Principal Role="Stream">
+                        <PropertyRef Name="id" />
+                    </Principal>
+                    <Dependent Role="Step">
+                        <PropertyRef Name="FK_STREAM_ID" />
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="ConditionalFlowRule_Stream_One_One0">
+                <End Type="apiportal.ConditionalFlowRule" Multiplicity="1" Role="ConditionalFlowRule" />
+                <End Type="apiportal.Stream" Multiplicity="1" Role="Stream" />
+                <ReferentialConstraint>
+                    <Principal Role="Stream">
+                        <PropertyRef Name="id" />
+                    </Principal>
+                    <Dependent Role="ConditionalFlowRule">
+                        <PropertyRef Name="FK_REQUEST_ID" />
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="ConditionalFlowRule_Stream_One_One1">
+                <End Type="apiportal.ConditionalFlowRule" Multiplicity="1" Role="ConditionalFlowRule" />
+                <End Type="apiportal.Stream" Multiplicity="1" Role="Stream" />
+                <ReferentialConstraint>
+                    <Principal Role="Stream">
+                        <PropertyRef Name="id" />
+                    </Principal>
+                    <Dependent Role="ConditionalFlowRule">
+                        <PropertyRef Name="FK_RESPONSE_ID" />
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="DefaultFaultRule_APIProxyEndPoint_Many_One0">
+                <End Type="apiportal.DefaultFaultRule" Multiplicity="*" Role="DefaultFaultRule" />
+                <End Type="apiportal.APIProxyEndPoint" Multiplicity="1" Role="APIProxyEndPoint" />
+                <ReferentialConstraint>
+                    <Principal Role="APIProxyEndPoint">
+                        <PropertyRef Name="id" />
+                    </Principal>
+                    <Dependent Role="DefaultFaultRule">
+                        <PropertyRef Name="FK_PROXYENDPOINT_ID" />
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="DefaultFaultRule_APITargetEndPoint_Many_One0">
+                <End Type="apiportal.DefaultFaultRule" Multiplicity="*" Role="DefaultFaultRule" />
+                <End Type="apiportal.APITargetEndPoint" Multiplicity="1" Role="APITargetEndPoint" />
+                <ReferentialConstraint>
+                    <Principal Role="APITargetEndPoint">
+                        <PropertyRef Name="id" />
+                    </Principal>
+                    <Dependent Role="DefaultFaultRule">
+                        <PropertyRef Name="FK_TARGETENDPOINT_ID" />
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="APIProxyEndPoint_APIResource_One_Many0">
+                <End Type="apiportal.APIProxyEndPoint" Multiplicity="1" Role="APIProxyEndPoint" />
+                <End Type="apiportal.APIResource" Multiplicity="*" Role="APIResource" />
+                <ReferentialConstraint>
+                    <Principal Role="APIProxyEndPoint">
+                        <PropertyRef Name="id" />
+                    </Principal>
+                    <Dependent Role="APIResource">
+                        <PropertyRef Name="FK_PROXYENDPOINT_ID" />
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="APIProxy_APITargetEndPoint_One_Many1">
+                <End Type="apiportal.APIProxy" Multiplicity="1" Role="APIProxy" />
+                <End Type="apiportal.APITargetEndPoint" Multiplicity="*" Role="APITargetEndPoint" />
+                <ReferentialConstraint>
+                    <Principal Role="APIProxy">
+                        <PropertyRef Name="name" />
+                    </Principal>
+                    <Dependent Role="APITargetEndPoint">
+                        <PropertyRef Name="FK_API_NAME" />
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="APITargetEndPoint_DefaultFaultRule_One_One0">
+                <End Type="apiportal.APITargetEndPoint" Multiplicity="1" Role="APITargetEndPoint" />
+                <End Type="apiportal.DefaultFaultRule" Multiplicity="1" Role="DefaultFaultRule" />
+                <ReferentialConstraint>
+                    <Principal Role="DefaultFaultRule">
+                        <PropertyRef Name="id" />
+                    </Principal>
+                    <Dependent Role="APITargetEndPoint">
+                        <PropertyRef Name="FK_DEFAULTFAULTRULE_ID" />
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="APITargetEndPoint_FlowRule_One_One0">
+                <End Type="apiportal.APITargetEndPoint" Multiplicity="1" Role="APITargetEndPoint" />
+                <End Type="apiportal.FlowRule" Multiplicity="1" Role="FlowRule" />
+                <ReferentialConstraint>
+                    <Principal Role="FlowRule">
+                        <PropertyRef Name="id" />
+                    </Principal>
+                    <Dependent Role="APITargetEndPoint">
+                        <PropertyRef Name="FK_POSTFLOW_ID" />
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="APITargetEndPoint_FlowRule_One_One1">
+                <End Type="apiportal.APITargetEndPoint" Multiplicity="1" Role="APITargetEndPoint" />
+                <End Type="apiportal.FlowRule" Multiplicity="1" Role="FlowRule" />
+                <ReferentialConstraint>
+                    <Principal Role="FlowRule">
+                        <PropertyRef Name="id" />
+                    </Principal>
+                    <Dependent Role="APITargetEndPoint">
+                        <PropertyRef Name="FK_PREFLOW_ID" />
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="APITargetEndPoint_APIProxy_One_One0">
+                <End Type="apiportal.APITargetEndPoint" Multiplicity="1" Role="APITargetEndPoint" />
+                <End Type="apiportal.APIProxy" Multiplicity="1" Role="APIProxy" />
+                <ReferentialConstraint>
+                    <Principal Role="APIProxy">
+                        <PropertyRef Name="name" />
+                    </Principal>
+                    <Dependent Role="APITargetEndPoint">
+                        <PropertyRef Name="FK_TARGET_API_PROXY" />
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="APIProxyEndPoint_FaultRule_One_Many0">
+                <End Type="apiportal.APIProxyEndPoint" Multiplicity="1" Role="APIProxyEndPoint" />
+                <End Type="apiportal.FaultRule" Multiplicity="*" Role="FaultRule" />
+                <ReferentialConstraint>
+                    <Principal Role="APIProxyEndPoint">
+                        <PropertyRef Name="id" />
+                    </Principal>
+                    <Dependent Role="FaultRule">
+                        <PropertyRef Name="FK_PROXYENDPOINT_ID" />
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="FaultRule_RouteRule_Many_One0">
+                <End Type="apiportal.FaultRule" Multiplicity="*" Role="FaultRule" />
+                <End Type="apiportal.RouteRule" Multiplicity="1" Role="RouteRule" />
+                <ReferentialConstraint>
+                    <Principal Role="RouteRule">
+                        <PropertyRef Name="id" />
+                    </Principal>
+                    <Dependent Role="FaultRule">
+                        <PropertyRef Name="FK_ROUTERULE_ID" />
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="APITargetEndPoint_FaultRule_One_Many0">
+                <End Type="apiportal.APITargetEndPoint" Multiplicity="1" Role="APITargetEndPoint" />
+                <End Type="apiportal.FaultRule" Multiplicity="*" Role="FaultRule" />
+                <ReferentialConstraint>
+                    <Principal Role="APITargetEndPoint">
+                        <PropertyRef Name="id" />
+                    </Principal>
+                    <Dependent Role="FaultRule">
+                        <PropertyRef Name="FK_TARGETENDPOINT_ID" />
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="APIResource_Documentation_One_Many0">
+                <End Type="apiportal.APIResource" Multiplicity="1" Role="APIResource" />
+                <End Type="apiportal.Documentation" Multiplicity="*" Role="Documentation" />
+                <ReferentialConstraint>
+                    <Principal Role="APIResource">
+                        <PropertyRef Name="id" />
+                    </Principal>
+                    <Dependent Role="Documentation">
+                        <PropertyRef Name="FK_APIRESOURCE_ID" />
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="CertificateStore_Certificate_One_Many0">
+                <End Type="apiportal.CertificateStore" Multiplicity="1" Role="CertificateStore" />
+                <End Type="apiportal.Certificate" Multiplicity="*" Role="Certificate" />
+                <ReferentialConstraint>
+                    <Principal Role="CertificateStore">
+                        <PropertyRef Name="name" />
+                    </Principal>
+                    <Dependent Role="Certificate">
+                        <PropertyRef Name="storeName" />
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="APIProxyEndPoint_RouteRule_One_Many0">
+                <End Type="apiportal.APIProxyEndPoint" Multiplicity="1" Role="APIProxyEndPoint" />
+                <End Type="apiportal.RouteRule" Multiplicity="*" Role="RouteRule" />
+                <ReferentialConstraint>
+                    <Principal Role="APIProxyEndPoint">
+                        <PropertyRef Name="id" />
+                    </Principal>
+                    <Dependent Role="RouteRule">
+                        <PropertyRef Name="FK_PROXYENDPOINT_ID" />
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="KeyMapEntry_KeyMapEntryValue_One_Many0">
+                <End Type="apiportal.KeyMapEntry" Multiplicity="1" Role="KeyMapEntry" />
+                <End Type="apiportal.KeyMapEntryValue" Multiplicity="*" Role="KeyMapEntryValue" />
+                <ReferentialConstraint>
+                    <Principal Role="KeyMapEntry">
+                        <PropertyRef Name="name" />
+                    </Principal>
+                    <Dependent Role="KeyMapEntryValue">
+                        <PropertyRef Name="map_name" />
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="Stream_FlowRule_One_One2">
+                <End Type="apiportal.Stream" Multiplicity="1" Role="Stream" />
+                <End Type="apiportal.FlowRule" Multiplicity="1" Role="FlowRule" />
+                <ReferentialConstraint>
+                    <Principal Role="FlowRule">
+                        <PropertyRef Name="id" />
+                    </Principal>
+                    <Dependent Role="Stream">
+                        <PropertyRef Name="FK_FLOW_ID" />
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="APIProxy_Policy_One_Many0">
+                <End Type="apiportal.APIProxy" Multiplicity="1" Role="APIProxy" />
+                <End Type="apiportal.Policy" Multiplicity="*" Role="Policy" />
+                <ReferentialConstraint>
+                    <Principal Role="APIProxy">
+                        <PropertyRef Name="name" />
+                    </Principal>
+                    <Dependent Role="Policy">
+                        <PropertyRef Name="FK_API_NAME" />
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="APIProxyEndPoint_VirtualHost_Many_Many0">
+                <End Type="apiportal.APIProxyEndPoint" Multiplicity="*" Role="APIProxyEndPoint" />
+                <End Type="apiportal.VirtualHost" Multiplicity="*" Role="VirtualHost" />
+            </Association>
+            <Association Name="ContentPackageMapper_APIProxy_One_One1">
+                <End Type="apiportal.ContentPackageMapper" Multiplicity="1" Role="ContentPackageMapper" />
+                <End Type="apiportal.APIProxy" Multiplicity="1" Role="APIProxy" />
+            </Association>
+            <Association Name="APIProduct_RatePlan_Many_Many0">
+                <End Type="apiportal.APIProduct" Multiplicity="*" Role="APIProduct" />
+                <End Type="apiportal.RatePlan" Multiplicity="*" Role="RatePlan" />
+            </Association>
+            <Association Name="ConditionalFlowRule_APITargetEndPoint_Many_One0">
+                <End Type="apiportal.ConditionalFlowRule" Multiplicity="*" Role="ConditionalFlowRule" />
+                <End Type="apiportal.APITargetEndPoint" Multiplicity="1" Role="APITargetEndPoint" />
+            </Association>
+            <Association Name="APIProxy_APIProduct_Many_Many0">
+                <End Type="apiportal.APIProxy" Multiplicity="*" Role="APIProxy" />
+                <End Type="apiportal.APIProduct" Multiplicity="*" Role="APIProduct" />
+            </Association>
+            <Association Name="Application_Resource_One_Many0">
+                <End Type="apiportal.Application" Multiplicity="1" Role="Application" />
+                <End Type="apiportal.Resource" Multiplicity="*" Role="Resource" />
+            </Association>
+            <Association Name="RatePlan_Resource_One_Many0">
+                <End Type="apiportal.RatePlan" Multiplicity="1" Role="RatePlan" />
+                <End Type="apiportal.Resource" Multiplicity="*" Role="Resource" />
+            </Association>
+            <Association Name="APIProxy_APITargetEndPoint_One_Many0">
+                <End Type="apiportal.APIProxy" Multiplicity="1" Role="APIProxy" />
+                <End Type="apiportal.APITargetEndPoint" Multiplicity="*" Role="APITargetEndPoint" />
+            </Association>
+            <Association Name="Developer_Application_One_Many0">
+                <End Type="apiportal.Developer" Multiplicity="1" Role="Developer" />
+                <End Type="apiportal.Application" Multiplicity="*" Role="Application" />
+            </Association>
+            <Association Name="APIProduct_APIResource_One_Many0">
+                <End Type="apiportal.APIProduct" Multiplicity="1" Role="APIProduct" />
+                <End Type="apiportal.APIResource" Multiplicity="*" Role="APIResource" />
+            </Association>
+            <Association Name="APIProduct_Resource_One_Many0">
+                <End Type="apiportal.APIProduct" Multiplicity="1" Role="APIProduct" />
+                <End Type="apiportal.Resource" Multiplicity="*" Role="Resource" />
+            </Association>
+            <Association Name="APIProxy_Resource_One_Many0">
+                <End Type="apiportal.APIProxy" Multiplicity="1" Role="APIProxy" />
+                <End Type="apiportal.Resource" Multiplicity="*" Role="Resource" />
+            </Association>
+            <Association Name="ConditionalFlowRule_APIResource_One_One0">
+                <End Type="apiportal.ConditionalFlowRule" Multiplicity="1" Role="ConditionalFlowRule" />
+                <End Type="apiportal.APIResource" Multiplicity="1" Role="APIResource" />
+            </Association>
+            <Association Name="APIResource_Resource_One_Many0">
+                <End Type="apiportal.APIResource" Multiplicity="1" Role="APIResource" />
+                <End Type="apiportal.Resource" Multiplicity="*" Role="Resource" />
+            </Association>
+            <Association Name="Application_APIProduct_Many_Many0">
+                <End Type="apiportal.Application" Multiplicity="*" Role="Application" />
+                <End Type="apiportal.APIProduct" Multiplicity="*" Role="APIProduct" />
+            </Association>
+            <Association Name="APIProxyEndPoint_ConditionalFlowRule_One_Many0">
+                <End Type="apiportal.APIProxyEndPoint" Multiplicity="1" Role="APIProxyEndPoint" />
+                <End Type="apiportal.ConditionalFlowRule" Multiplicity="*" Role="ConditionalFlowRule" />
+            </Association>
+            <Association Name="APIProxy_ContentPackageMapper_One_One0">
+                <End Type="apiportal.APIProxy" Multiplicity="1" Role="APIProxy" />
+                <End Type="apiportal.ContentPackageMapper" Multiplicity="1" Role="ContentPackageMapper" />
+            </Association>
+            <Association Name="APIProvider_Resource_One_Many0">
+                <End Type="apiportal.APIProvider" Multiplicity="1" Role="APIProvider" />
+                <End Type="apiportal.Resource" Multiplicity="*" Role="Resource" />
+            </Association>
+            <Association Name="APIProxy_FileResource_Many_Many0">
+                <End Type="apiportal.APIProxy" Multiplicity="*" Role="APIProxy" />
+                <End Type="apiportal.FileResource" Multiplicity="*" Role="FileResource" />
+            </Association>
+            <EntityContainer Name="apiportalContainer" m:IsDefaultEntityContainer="true">
+                <EntitySet Name="KeyMapEntries" EntityType="apiportal.KeyMapEntry" />
+                <EntitySet Name="VirtualHosts" EntityType="apiportal.VirtualHost" />
+                <EntitySet Name="FlowRules" EntityType="apiportal.FlowRule" />
+                <EntitySet Name="TemplateFileResources" EntityType="apiportal.TemplateFileResource" />
+                <EntitySet Name="ACLProductLinkages" EntityType="apiportal.ACLProductLinkage" />
+                <EntitySet Name="APIProxyEndPoints" EntityType="apiportal.APIProxyEndPoint" />
+                <EntitySet Name="CertificateStores" EntityType="apiportal.CertificateStore" />
+                <EntitySet Name="TemplatePolicys" EntityType="apiportal.TemplatePolicy" />
+                <EntitySet Name="APIProxies" EntityType="apiportal.APIProxy" />
+                <EntitySet Name="EndPointProperties" EntityType="apiportal.EndPointProperty" />
+                <EntitySet Name="Applications" EntityType="apiportal.Application" />
+                <EntitySet Name="Steps" EntityType="apiportal.Step" />
+                <EntitySet Name="APIProviders" EntityType="apiportal.APIProvider" />
+                <EntitySet Name="DestinationAndUrlMappings" EntityType="apiportal.DestinationAndUrlMapping" />
+                <EntitySet Name="Resources" EntityType="apiportal.Resource" />
+                <EntitySet Name="ContentPackageMappers" EntityType="apiportal.ContentPackageMapper" />
+                <EntitySet Name="ConditionalFlowRules" EntityType="apiportal.ConditionalFlowRule" />
+                <EntitySet Name="DefaultFaultRules" EntityType="apiportal.DefaultFaultRule" />
+                <EntitySet Name="APIResources" EntityType="apiportal.APIResource" />
+                <EntitySet Name="APITargetEndPoints" EntityType="apiportal.APITargetEndPoint" />
+                <EntitySet Name="FaultRules" EntityType="apiportal.FaultRule" />
+                <EntitySet Name="APIProducts" EntityType="apiportal.APIProduct" />
+                <EntitySet Name="Documentations" EntityType="apiportal.Documentation" />
+                <EntitySet Name="Certificates" EntityType="apiportal.Certificate" />
+                <EntitySet Name="RatePlans" EntityType="apiportal.RatePlan" />
+                <EntitySet Name="PolicyTemplateContainers" EntityType="apiportal.PolicyTemplateContainer" />
+                <EntitySet Name="Bills" EntityType="apiportal.Bill" />
+                <EntitySet Name="RouteRules" EntityType="apiportal.RouteRule" />
+                <EntitySet Name="KeyMapEntryValues" EntityType="apiportal.KeyMapEntryValue" />
+                <EntitySet Name="FileResources" EntityType="apiportal.FileResource" />
+                <EntitySet Name="CacheResources" EntityType="apiportal.CacheResource" />
+                <EntitySet Name="Developers" EntityType="apiportal.Developer" />
+                <EntitySet Name="Streams" EntityType="apiportal.Stream" />
+                <EntitySet Name="Policies" EntityType="apiportal.Policy" />
+                <AssociationSet Name="FlowRule_Stream_One_One0Set" Association="apiportal.FlowRule_Stream_One_One0">
+                    <End EntitySet="FlowRules" Role="FlowRule" />
+                    <End EntitySet="Streams" Role="Stream" />
+                </AssociationSet>
+                <AssociationSet Name="FlowRule_Stream_One_One1Set" Association="apiportal.FlowRule_Stream_One_One1">
+                    <End EntitySet="FlowRules" Role="FlowRule" />
+                    <End EntitySet="Streams" Role="Stream" />
+                </AssociationSet>
+                <AssociationSet Name="TemplateFileResource_PolicyTemplateContainer_Many_One0Set" Association="apiportal.TemplateFileResource_PolicyTemplateContainer_Many_One0">
+                    <End EntitySet="TemplateFileResources" Role="TemplateFileResource" />
+                    <End EntitySet="PolicyTemplateContainers" Role="PolicyTemplateContainer" />
+                </AssociationSet>
+                <AssociationSet Name="APIProxyEndPoint_APIProxy_Many_One0Set" Association="apiportal.APIProxyEndPoint_APIProxy_Many_One0">
+                    <End EntitySet="APIProxyEndPoints" Role="APIProxyEndPoint" />
+                    <End EntitySet="APIProxies" Role="APIProxy" />
+                </AssociationSet>
+                <AssociationSet Name="APIProxyEndPoint_DefaultFaultRule_One_One0Set" Association="apiportal.APIProxyEndPoint_DefaultFaultRule_One_One0">
+                    <End EntitySet="APIProxyEndPoints" Role="APIProxyEndPoint" />
+                    <End EntitySet="DefaultFaultRules" Role="DefaultFaultRule" />
+                </AssociationSet>
+                <AssociationSet Name="APIProxyEndPoint_FlowRule_One_One0Set" Association="apiportal.APIProxyEndPoint_FlowRule_One_One0">
+                    <End EntitySet="APIProxyEndPoints" Role="APIProxyEndPoint" />
+                    <End EntitySet="FlowRules" Role="FlowRule" />
+                </AssociationSet>
+                <AssociationSet Name="APIProxyEndPoint_FlowRule_One_One1Set" Association="apiportal.APIProxyEndPoint_FlowRule_One_One1">
+                    <End EntitySet="APIProxyEndPoints" Role="APIProxyEndPoint" />
+                    <End EntitySet="FlowRules" Role="FlowRule" />
+                </AssociationSet>
+                <AssociationSet Name="APIProxyEndPoint_FlowRule_One_One2Set" Association="apiportal.APIProxyEndPoint_FlowRule_One_One2">
+                    <End EntitySet="APIProxyEndPoints" Role="APIProxyEndPoint" />
+                    <End EntitySet="FlowRules" Role="FlowRule" />
+                </AssociationSet>
+                <AssociationSet Name="TemplatePolicy_PolicyTemplateContainer_Many_One0Set" Association="apiportal.TemplatePolicy_PolicyTemplateContainer_Many_One0">
+                    <End EntitySet="TemplatePolicys" Role="TemplatePolicy" />
+                    <End EntitySet="PolicyTemplateContainers" Role="PolicyTemplateContainer" />
+                </AssociationSet>
+                <AssociationSet Name="APIProxy_APIProvider_Many_One0Set" Association="apiportal.APIProxy_APIProvider_Many_One0">
+                    <End EntitySet="APIProxies" Role="APIProxy" />
+                    <End EntitySet="APIProviders" Role="APIProvider" />
+                </AssociationSet>
+                <AssociationSet Name="APIProxyEndPoint_EndPointProperty_One_Many0Set" Association="apiportal.APIProxyEndPoint_EndPointProperty_One_Many0">
+                    <End EntitySet="APIProxyEndPoints" Role="APIProxyEndPoint" />
+                    <End EntitySet="EndPointProperties" Role="EndPointProperty" />
+                </AssociationSet>
+                <AssociationSet Name="EndPointProperty_APITargetEndPoint_Many_One0Set" Association="apiportal.EndPointProperty_APITargetEndPoint_Many_One0">
+                    <End EntitySet="EndPointProperties" Role="EndPointProperty" />
+                    <End EntitySet="APITargetEndPoints" Role="APITargetEndPoint" />
+                </AssociationSet>
+                <AssociationSet Name="Application_Developer_One_One0Set" Association="apiportal.Application_Developer_One_One0">
+                    <End EntitySet="Applications" Role="Application" />
+                    <End EntitySet="Developers" Role="Developer" />
+                </AssociationSet>
+                <AssociationSet Name="Step_DefaultFaultRule_Many_One0Set" Association="apiportal.Step_DefaultFaultRule_Many_One0">
+                    <End EntitySet="Steps" Role="Step" />
+                    <End EntitySet="DefaultFaultRules" Role="DefaultFaultRule" />
+                </AssociationSet>
+                <AssociationSet Name="Step_FaultRule_Many_One0Set" Association="apiportal.Step_FaultRule_Many_One0">
+                    <End EntitySet="Steps" Role="Step" />
+                    <End EntitySet="FaultRules" Role="FaultRule" />
+                </AssociationSet>
+                <AssociationSet Name="Step_Stream_Many_One0Set" Association="apiportal.Step_Stream_Many_One0">
+                    <End EntitySet="Steps" Role="Step" />
+                    <End EntitySet="Streams" Role="Stream" />
+                </AssociationSet>
+                <AssociationSet Name="ConditionalFlowRule_Stream_One_One0Set" Association="apiportal.ConditionalFlowRule_Stream_One_One0">
+                    <End EntitySet="ConditionalFlowRules" Role="ConditionalFlowRule" />
+                    <End EntitySet="Streams" Role="Stream" />
+                </AssociationSet>
+                <AssociationSet Name="ConditionalFlowRule_Stream_One_One1Set" Association="apiportal.ConditionalFlowRule_Stream_One_One1">
+                    <End EntitySet="ConditionalFlowRules" Role="ConditionalFlowRule" />
+                    <End EntitySet="Streams" Role="Stream" />
+                </AssociationSet>
+                <AssociationSet Name="DefaultFaultRule_APIProxyEndPoint_Many_One0Set" Association="apiportal.DefaultFaultRule_APIProxyEndPoint_Many_One0">
+                    <End EntitySet="DefaultFaultRules" Role="DefaultFaultRule" />
+                    <End EntitySet="APIProxyEndPoints" Role="APIProxyEndPoint" />
+                </AssociationSet>
+                <AssociationSet Name="DefaultFaultRule_APITargetEndPoint_Many_One0Set" Association="apiportal.DefaultFaultRule_APITargetEndPoint_Many_One0">
+                    <End EntitySet="DefaultFaultRules" Role="DefaultFaultRule" />
+                    <End EntitySet="APITargetEndPoints" Role="APITargetEndPoint" />
+                </AssociationSet>
+                <AssociationSet Name="APIProxyEndPoint_APIResource_One_Many0Set" Association="apiportal.APIProxyEndPoint_APIResource_One_Many0">
+                    <End EntitySet="APIProxyEndPoints" Role="APIProxyEndPoint" />
+                    <End EntitySet="APIResources" Role="APIResource" />
+                </AssociationSet>
+                <AssociationSet Name="APIProxy_APITargetEndPoint_One_Many1Set" Association="apiportal.APIProxy_APITargetEndPoint_One_Many1">
+                    <End EntitySet="APIProxies" Role="APIProxy" />
+                    <End EntitySet="APITargetEndPoints" Role="APITargetEndPoint" />
+                </AssociationSet>
+                <AssociationSet Name="APITargetEndPoint_DefaultFaultRule_One_One0Set" Association="apiportal.APITargetEndPoint_DefaultFaultRule_One_One0">
+                    <End EntitySet="APITargetEndPoints" Role="APITargetEndPoint" />
+                    <End EntitySet="DefaultFaultRules" Role="DefaultFaultRule" />
+                </AssociationSet>
+                <AssociationSet Name="APITargetEndPoint_FlowRule_One_One0Set" Association="apiportal.APITargetEndPoint_FlowRule_One_One0">
+                    <End EntitySet="APITargetEndPoints" Role="APITargetEndPoint" />
+                    <End EntitySet="FlowRules" Role="FlowRule" />
+                </AssociationSet>
+                <AssociationSet Name="APITargetEndPoint_FlowRule_One_One1Set" Association="apiportal.APITargetEndPoint_FlowRule_One_One1">
+                    <End EntitySet="APITargetEndPoints" Role="APITargetEndPoint" />
+                    <End EntitySet="FlowRules" Role="FlowRule" />
+                </AssociationSet>
+                <AssociationSet Name="APITargetEndPoint_APIProxy_One_One0Set" Association="apiportal.APITargetEndPoint_APIProxy_One_One0">
+                    <End EntitySet="APITargetEndPoints" Role="APITargetEndPoint" />
+                    <End EntitySet="APIProxies" Role="APIProxy" />
+                </AssociationSet>
+                <AssociationSet Name="APIProxyEndPoint_FaultRule_One_Many0Set" Association="apiportal.APIProxyEndPoint_FaultRule_One_Many0">
+                    <End EntitySet="APIProxyEndPoints" Role="APIProxyEndPoint" />
+                    <End EntitySet="FaultRules" Role="FaultRule" />
+                </AssociationSet>
+                <AssociationSet Name="FaultRule_RouteRule_Many_One0Set" Association="apiportal.FaultRule_RouteRule_Many_One0">
+                    <End EntitySet="FaultRules" Role="FaultRule" />
+                    <End EntitySet="RouteRules" Role="RouteRule" />
+                </AssociationSet>
+                <AssociationSet Name="APITargetEndPoint_FaultRule_One_Many0Set" Association="apiportal.APITargetEndPoint_FaultRule_One_Many0">
+                    <End EntitySet="APITargetEndPoints" Role="APITargetEndPoint" />
+                    <End EntitySet="FaultRules" Role="FaultRule" />
+                </AssociationSet>
+                <AssociationSet Name="APIResource_Documentation_One_Many0Set" Association="apiportal.APIResource_Documentation_One_Many0">
+                    <End EntitySet="APIResources" Role="APIResource" />
+                    <End EntitySet="Documentations" Role="Documentation" />
+                </AssociationSet>
+                <AssociationSet Name="CertificateStore_Certificate_One_Many0Set" Association="apiportal.CertificateStore_Certificate_One_Many0">
+                    <End EntitySet="CertificateStores" Role="CertificateStore" />
+                    <End EntitySet="Certificates" Role="Certificate" />
+                </AssociationSet>
+                <AssociationSet Name="APIProxyEndPoint_RouteRule_One_Many0Set" Association="apiportal.APIProxyEndPoint_RouteRule_One_Many0">
+                    <End EntitySet="APIProxyEndPoints" Role="APIProxyEndPoint" />
+                    <End EntitySet="RouteRules" Role="RouteRule" />
+                </AssociationSet>
+                <AssociationSet Name="KeyMapEntry_KeyMapEntryValue_One_Many0Set" Association="apiportal.KeyMapEntry_KeyMapEntryValue_One_Many0">
+                    <End EntitySet="KeyMapEntries" Role="KeyMapEntry" />
+                    <End EntitySet="KeyMapEntryValues" Role="KeyMapEntryValue" />
+                </AssociationSet>
+                <AssociationSet Name="Stream_FlowRule_One_One2Set" Association="apiportal.Stream_FlowRule_One_One2">
+                    <End EntitySet="Streams" Role="Stream" />
+                    <End EntitySet="FlowRules" Role="FlowRule" />
+                </AssociationSet>
+                <AssociationSet Name="APIProxy_Policy_One_Many0Set" Association="apiportal.APIProxy_Policy_One_Many0">
+                    <End EntitySet="APIProxies" Role="APIProxy" />
+                    <End EntitySet="Policies" Role="Policy" />
+                </AssociationSet>
+                <AssociationSet Name="APIProxyEndPoint_VirtualHost_Many_Many0Set" Association="apiportal.APIProxyEndPoint_VirtualHost_Many_Many0">
+                    <End EntitySet="APIProxyEndPoints" Role="APIProxyEndPoint" />
+                    <End EntitySet="VirtualHosts" Role="VirtualHost" />
+                </AssociationSet>
+                <AssociationSet Name="ContentPackageMapper_APIProxy_One_One1Set" Association="apiportal.ContentPackageMapper_APIProxy_One_One1">
+                    <End EntitySet="ContentPackageMappers" Role="ContentPackageMapper" />
+                    <End EntitySet="APIProxies" Role="APIProxy" />
+                </AssociationSet>
+                <AssociationSet Name="APIProduct_RatePlan_Many_Many0Set" Association="apiportal.APIProduct_RatePlan_Many_Many0">
+                    <End EntitySet="APIProducts" Role="APIProduct" />
+                    <End EntitySet="RatePlans" Role="RatePlan" />
+                </AssociationSet>
+                <AssociationSet Name="ConditionalFlowRule_APITargetEndPoint_Many_One0Set" Association="apiportal.ConditionalFlowRule_APITargetEndPoint_Many_One0">
+                    <End EntitySet="ConditionalFlowRules" Role="ConditionalFlowRule" />
+                    <End EntitySet="APITargetEndPoints" Role="APITargetEndPoint" />
+                </AssociationSet>
+                <AssociationSet Name="APIProxy_APIProduct_Many_Many0Set" Association="apiportal.APIProxy_APIProduct_Many_Many0">
+                    <End EntitySet="APIProxies" Role="APIProxy" />
+                    <End EntitySet="APIProducts" Role="APIProduct" />
+                </AssociationSet>
+                <AssociationSet Name="Application_Resource_One_Many0Set" Association="apiportal.Application_Resource_One_Many0">
+                    <End EntitySet="Applications" Role="Application" />
+                    <End EntitySet="Resources" Role="Resource" />
+                </AssociationSet>
+                <AssociationSet Name="RatePlan_Resource_One_Many0Set" Association="apiportal.RatePlan_Resource_One_Many0">
+                    <End EntitySet="RatePlans" Role="RatePlan" />
+                    <End EntitySet="Resources" Role="Resource" />
+                </AssociationSet>
+                <AssociationSet Name="APIProxy_APITargetEndPoint_One_Many0Set" Association="apiportal.APIProxy_APITargetEndPoint_One_Many0">
+                    <End EntitySet="APIProxies" Role="APIProxy" />
+                    <End EntitySet="APITargetEndPoints" Role="APITargetEndPoint" />
+                </AssociationSet>
+                <AssociationSet Name="Developer_Application_One_Many0Set" Association="apiportal.Developer_Application_One_Many0">
+                    <End EntitySet="Developers" Role="Developer" />
+                    <End EntitySet="Applications" Role="Application" />
+                </AssociationSet>
+                <AssociationSet Name="APIProduct_APIResource_One_Many0Set" Association="apiportal.APIProduct_APIResource_One_Many0">
+                    <End EntitySet="APIProducts" Role="APIProduct" />
+                    <End EntitySet="APIResources" Role="APIResource" />
+                </AssociationSet>
+                <AssociationSet Name="APIProduct_Resource_One_Many0Set" Association="apiportal.APIProduct_Resource_One_Many0">
+                    <End EntitySet="APIProducts" Role="APIProduct" />
+                    <End EntitySet="Resources" Role="Resource" />
+                </AssociationSet>
+                <AssociationSet Name="APIProxy_Resource_One_Many0Set" Association="apiportal.APIProxy_Resource_One_Many0">
+                    <End EntitySet="APIProxies" Role="APIProxy" />
+                    <End EntitySet="Resources" Role="Resource" />
+                </AssociationSet>
+                <AssociationSet Name="ConditionalFlowRule_APIResource_One_One0Set" Association="apiportal.ConditionalFlowRule_APIResource_One_One0">
+                    <End EntitySet="ConditionalFlowRules" Role="ConditionalFlowRule" />
+                    <End EntitySet="APIResources" Role="APIResource" />
+                </AssociationSet>
+                <AssociationSet Name="APIResource_Resource_One_Many0Set" Association="apiportal.APIResource_Resource_One_Many0">
+                    <End EntitySet="APIResources" Role="APIResource" />
+                    <End EntitySet="Resources" Role="Resource" />
+                </AssociationSet>
+                <AssociationSet Name="Application_APIProduct_Many_Many0Set" Association="apiportal.Application_APIProduct_Many_Many0">
+                    <End EntitySet="Applications" Role="Application" />
+                    <End EntitySet="APIProducts" Role="APIProduct" />
+                </AssociationSet>
+                <AssociationSet Name="APIProxyEndPoint_ConditionalFlowRule_One_Many0Set" Association="apiportal.APIProxyEndPoint_ConditionalFlowRule_One_Many0">
+                    <End EntitySet="APIProxyEndPoints" Role="APIProxyEndPoint" />
+                    <End EntitySet="ConditionalFlowRules" Role="ConditionalFlowRule" />
+                </AssociationSet>
+                <AssociationSet Name="APIProxy_ContentPackageMapper_One_One0Set" Association="apiportal.APIProxy_ContentPackageMapper_One_One0">
+                    <End EntitySet="APIProxies" Role="APIProxy" />
+                    <End EntitySet="ContentPackageMappers" Role="ContentPackageMapper" />
+                </AssociationSet>
+                <AssociationSet Name="APIProvider_Resource_One_Many0Set" Association="apiportal.APIProvider_Resource_One_Many0">
+                    <End EntitySet="APIProviders" Role="APIProvider" />
+                    <End EntitySet="Resources" Role="Resource" />
+                </AssociationSet>
+                <AssociationSet Name="APIProxy_FileResource_Many_Many0Set" Association="apiportal.APIProxy_FileResource_Many_Many0">
+                    <End EntitySet="APIProxies" Role="APIProxy" />
+                    <End EntitySet="FileResources" Role="FileResource" />
+                </AssociationSet>
+            </EntityContainer>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

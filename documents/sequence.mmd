@@ -1,0 +1,29 @@
+sequenceDiagram
+    autonumber
+    participant CJ as BTP CronJob
+    participant BTPI as BTP Invoicing
+    participant APIM as API Management<br/>(Bills API)
+    participant STRIPE as Stripe API
+    CJ-)BTPI: Trigger monthly generation of invoices
+    BTPI->>+APIM: Request bills with expenses for particular month
+    APIM-->>-BTPI: bills
+    loop for each bill of bills
+        BTPI->>+STRIPE: Search for invoice with metadata billId of bill
+        STRIPE-->>-BTPI: Potential invoices
+        opt Potential invoices are empty
+            BTPI->>+STRIPE: Search for customer of bill
+            STRIPE-->>-BTPI: Potential customers
+            opt Potential customers are empty
+                BTPI->>+STRIPE: Create new customer for bill
+                STRIPE-->>-BTPI: customer
+            end
+            loop for each position of bill
+                BTPI->>+STRIPE: Create InvoiceItem
+                STRIPE-->>-BTPI: Success (InvoiceItem)
+            end
+            BTPI->>+STRIPE: Create Invoice
+            STRIPE-->>-BTPI: Success (Invoice)
+            BTPI->>+STRIPE: Send Invoice
+            STRIPE-->>-BTPI: Success
+        end
+    end

@@ -1,0 +1,26 @@
+{
+    // Use IntelliSense to learn about possible Node.js debug attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "command": "cd btp-invoicing && cds-ts watch",
+            "name": "BTP Invoicing: cds-ts watch --dev",
+            "request": "launch",
+            "type": "node-terminal",
+            "skipFiles": [
+                "<node_internals>/**"
+            ]
+        },
+        {
+            "command": "npm run --prefix ./btp-invoicing watch",
+            "name": "BTP Invoicing: cds-ts watch --prod",
+            "request": "launch",
+            "type": "node-terminal",
+            "skipFiles": [
+                "<node_internals>/**"
+            ]
+        }
+    ]
+}

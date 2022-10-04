@@ -1,0 +1,303 @@
+swagger: '2.0'
+info:
+  version: '1.0'
+  title: Billing (CF)
+  description: Billing APIs showcase billing data. Application developers using the API Management monetization feature, subscribe to one or more products and rate plans and are billed based on their usage and the rate plan type. You can use the Billing APIs to view and download the bill details.  In the bill details, you can view the total bill amount, bill id, bill amount corresponding to each application, and the details of all products and rate plans associated to each application.
+  x-targetEndpoint: https://us10trialapiportal.cfapps.us10.hana.ondemand.com/api/1.0/apimgmt/
+securityDefinitions:
+  OAuth2_ClientCredentials:
+    type: oauth2
+    flow: application
+    tokenUrl: https://{tokenUrl}/oauth/token?grant_type=client_credentials
+    scopes: {}
+security:
+- OAuth2_ClientCredentials: []
+externalDocs:
+  description: Business Documentation
+  url: https://help.sap.com/viewer/66d066d903c2473f81ec33acfe2ccdb4/Cloud/en-US/1e20fb575ad644399a7af8e1c4f423d0.html
+host: sandbox.api.sap.com
+x-sap-shortText: Enables you to view bill details for API Products and Applications .
+basePath: /sapapimanagement/apimgmt
+x-servers:
+- url: https://eu20apiportal.cfapps.eu20.hana.ondemand.com/api/1.0/apimgmt
+  description: API Portal EU20 API endpoint
+  templates:
+    tokenUrl:
+      description: SAP API Management API Portal EU20 tokenUrl
+- url: https://us20apiportal.cfapps.us20.hana.ondemand.com/api/1.0/apimgmt
+  description: API Portal US20 API endpoint
+  templates:
+    tokenUrl:
+      description: SAP API Management API Portal US20 tokenUrl
+- url: https://jp20apiportal.cfapps.jp20.hana.ondemand.com/api/1.0/apimgmt
+  description: API Portal jp20 API endpoint
+  templates:
+    tokenUrl:
+      description: SAP API Management API Portal jp20 tokenUrl
+- url: https://ap21apiportal.cfapps.ap21.hana.ondemand.coma/api/1.0/apimgmt
+  description: API Portal ap21 API endpoint
+  templates:
+    tokenUrl:
+      description: SAP API Management API Portal ap21 tokenUrl
+- url: https://us21apiportal.cfapps.us21.hana.ondemand.com/api/1.0/apimgmt
+  description: API Portal us21 API endpoint
+  templates:
+    tokenUrl:
+      description: SAP API Management API Portal us21 tokenUrl
+- url: https://ap10apiportal.cfapps.ap10.hana.ondemand.com/api/1.0/apimgmt
+  description: API Portal ap10 API endpoint
+  templates:
+    tokenUrl:
+      description: SAP API Management API Portal ap10 tokenUrl
+- url: https://br10apiportal.cfapps.br10.hana.ondemand.com/api/1.0/apimgmt
+  description: API Portal br10 API endpoint
+  templates:
+    tokenUrl:
+      description: SAP API Management API Portal br10 tokenUrl
+- url: https://jp10apiportal.cfapps.jp10.hana.ondemand.com/api/1.0/apimgmt
+  description: API Portal jp10 API endpoint
+  templates:
+    tokenUrl:
+      description: SAP API Management API Portal jp10 tokenUrl
+- url: https://eu10apiportal.cfapps.eu10.hana.ondemand.com/api/1.0/apimgmt
+  description: API Portal eu10 API endpoint
+  templates:
+    tokenUrl:
+      description: SAP API Management API Portal eu10 tokenUrl
+- url: https://us10apiportal.cfapps.us10.hana.ondemand.com/api/1.0/apimgmt
+  description: API Portal us10 API endpoint
+  templates:
+    tokenUrl:
+      description: SAP API Management API Portal us10 tokenUrl
+- url: https://ca10apiportal.cfapps.ca10.hana.ondemand.com/api/1.0/apimgmt
+  description: API Portal ca10 API endpoint
+  templates:
+    tokenUrl:
+      description: SAP API Management API Portal ca10 tokenUrl
+- url: https://ap11apiportal.cfapps.ap11.hana.ondemand.com/api/1.0/apimgmt
+  description: API Portal ap11 API endpoint
+  templates:
+    tokenUrl:
+      description: SAP API Management API Portal ap11 tokenUrl
+produces:
+- application/json
+consumes:
+- application/json
+schemes:
+- https
+paths:
+  /monetize/bills:
+    get:
+      tags:
+      - View Bill
+      summary: Get bill details for a specific developer or a specific application.
+      description: For the specified month, year, and developer View Bill provides the bill details. In the bill details, you can view the total bill amount, bill id, bill amount corresponding to each application, and the details of all products and rate plans associated to each application. To view bill details of a specific application, enter the application ID and view bill details specific to that application.
+      produces:
+      - application/json
+      parameters:
+      - name: month
+        in: query
+        description: month in MM format
+        required: true
+        type: string
+      - name: year
+        in: query
+        description: year in YYYY format
+        required: true
+        type: string
+      - name: developer_id
+        in: query
+        description: developer email id
+        required: true
+        type: string
+      - name: application_id
+        in: query
+        description: application id
+        required: false
+        type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/billResponse'
+        '400':
+          description: Bad Request - Missing required parameter or provided input not in the required format
+          schema:
+            $ref: '#/definitions/badRequest'
+        '500':
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/billingerror'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /monetize/bills/download:
+    get:
+      tags:
+      - Download Bill
+      summary: Download bill details for a specific developer.
+      description: For the specified month, year, and developer you can download the bill details in a .csv format. In the bill details, you can view the total bill amount, bill id, bill amount corresponding to each application, and the details of all products and rate plans associated to each application.
+      produces:
+      - application/csv
+      parameters:
+      - name: month
+        in: query
+        description: month in MM format
+        required: true
+        type: string
+      - name: year
+        in: query
+        description: year YYYY format
+        required: true
+        type: string
+      - name: developer_id
+        in: query
+        description: developer email id
+        required: true
+        type: string
+      responses:
+        '200':
+          description: OK- Bill details downloaded in csv format
+        '400':
+          description: Bad Request - Missing required parameter or provided input not in the required format
+          schema:
+            $ref: '#/definitions/badRequest'
+        '500':
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/billingerror'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /monetize/bills/{billid}:
+    get:
+      tags:
+      - Download Bill Using Bill ID
+      summary: Download bill details using bill ID
+      description: For a specific bill, using the bill ID, you can download the bill details in a .csv format. In the bill details, you can view the total bill amount, bill id, bill amount corresponding to each application, and the details of all products and rate plans associated to each application. You can obtain bill ID through View Bill resource.
+      produces:
+      - application/csv
+      parameters:
+      - name: billid
+        description: id of the bill
+        in: path
+        required: true
+        type: string
+        format: ''
+      responses:
+        '200':
+          description: OK- Bill details downloaded in csv format
+        '400':
+          description: Bad Request - Missing required parameter or provided input not in the required format
+          schema:
+            $ref: '#/definitions/badRequest'
+        '500':
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/billingerror'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+definitions:
+  badRequest:
+    type: string
+  billResponse:
+    type: object
+    properties:
+      developerId:
+        type: string
+        example: I2435AZ
+      developerName:
+        type: string
+        example: ABC
+      startDate:
+        type: string
+        example: 2017:5:1T00:00:00
+      endDate:
+        type: string
+        example: 2017:5:1T00:00:00
+      billId:
+        type: string
+        example: 120ca14-8674-494b-859d-c760f7d1a49e
+      billStatus:
+        type: string
+        example: Billed
+      bill:
+        type: object
+        properties:
+          value:
+            type: string
+            example: 100
+          currency:
+            type: string
+            example: Euro
+      apps:
+        type: object
+        properties:
+          appName:
+            type: string
+            example: TextAnalysisApp
+          appId:
+            type: string
+            example: CDFCA8BA-1DFA-4097-BB48-0D004EE05499
+          bill:
+            type: object
+            properties:
+              value:
+                type: string
+                example: 100
+              currency:
+                type: string
+                example: Euro
+          ratePlanSubscribed:
+            type: object
+            properties:
+              productName:
+                type: string
+                example: TextAnalysisProduct
+              planType:
+                type: string
+                example: Basic
+              ratePlanId:
+                type: string
+                example: C22638E5-4A52-4134-B50B-3858527F96C6
+              ratePlanName:
+                type: string
+                example: GoldPlan
+              Bill:
+                type: object
+                properties:
+                  value:
+                    type: string
+                    example: 100
+                  currency:
+                    type: string
+                    example: Euro
+  Error:
+    type: object
+    properties:
+      message:
+        type: string
+      code:
+        type: integer
+        format: int32
+      fields:
+        type: string
+  billingerror:
+    type: object
+    properties:
+      code:
+        type: string
+        description: Error code
+      message:
+        type: object
+        properties:
+          lang:
+            type: string
+            description: Language code of the error mesage
+          value:
+            type: string
+            description: Detailed error message

@@ -1,0 +1,12 @@
+{
+  "name": "btp-invoicing-cron-job",
+  "version": "1.0.0",
+  "description": "Cron Job",
+  "repository": "<Add your repository here>",
+  "license": "UNLICENSED",
+  "private": true,
+  "scripts": {
+    "deploy:kyma": "npx cross-var helm upgrade --install btp-invoicing-cron-job ./chart --namespace $npm_config_namespace",
+    "undeploy:kyma": "npx cross-var helm uninstall btp-invoicing-cron-job --namespace $npm_config_namespace"
+  }
+}

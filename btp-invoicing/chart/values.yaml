@@ -1,0 +1,38 @@
+global:
+  domain: null
+  #imagePullSecret:
+    #name: null
+srv:
+  bindings:
+    auth:
+      serviceInstanceName: xsuaa
+    destinations:
+      serviceInstanceName: destinations
+  image:
+    repository: <your_docker_account>/btp-invoicing
+    tag: latest
+  resources:
+    limits:
+      cpu: 100m
+      ephemeral-storage: 1G
+      memory: 500M
+    requests:
+      cpu: 100m
+      ephemeral-storage: 1G
+      memory: 500M
+  health_check:
+    liveness:
+      path: /
+    readiness:
+      path: /
+xsuaa:
+  serviceOfferingName: xsuaa
+  servicePlanName: application
+  parameters:
+    xsappname: btp-invoicing
+  config: xs-security.json
+destinations:
+  serviceOfferingName: destination
+  servicePlanName: lite
+  parameters:
+    version: 1.0.0

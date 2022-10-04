@@ -1,0 +1,2704 @@
+{
+  "meta": {
+    "creator": "cds-dk 6.0.4"
+  },
+  "$version": "2.0",
+  "definitions": {
+    "APIPortal_Developer_CF": {
+      "kind": "service",
+      "@cds.external": true,
+      "@m.IsDefaultEntityContainer": "true"
+    },
+    "APIPortal_Developer_CF.History": {
+      "kind": "type",
+      "elements": {
+        "changed_at": {
+          "type": "cds.DateTime",
+          "@odata.Type": "Edm.DateTime",
+          "@odata.Precision": 0
+        },
+        "changed_by": {
+          "type": "cds.String",
+          "length": 255
+        },
+        "created_at": {
+          "type": "cds.DateTime",
+          "@odata.Type": "Edm.DateTime",
+          "@odata.Precision": 0
+        },
+        "created_by": {
+          "type": "cds.String",
+          "length": 255
+        }
+      }
+    },
+    "APIPortal_Developer_CF.SSLInfo": {
+      "kind": "type",
+      "elements": {
+        "ciphers": {
+          "type": "cds.String",
+          "length": 255
+        },
+        "clientAuthEnabled": {
+          "type": "cds.Boolean"
+        },
+        "enabled": {
+          "type": "cds.Boolean"
+        },
+        "ignoreValidationErrors": {
+          "type": "cds.Boolean"
+        },
+        "keyAlias": {
+          "type": "cds.String",
+          "length": 255
+        },
+        "keyStore": {
+          "type": "cds.String",
+          "length": 255
+        },
+        "protocols": {
+          "type": "cds.String",
+          "length": 255
+        },
+        "trustStore": {
+          "type": "cds.String",
+          "length": 255
+        }
+      }
+    },
+    "APIPortal_Developer_CF.ExpirySettings": {
+      "kind": "type",
+      "elements": {
+        "expiry_date": {
+          "type": "cds.DateTime",
+          "@odata.Type": "Edm.DateTime",
+          "@odata.Precision": 0
+        },
+        "expiry_settings_override_disabled": {
+          "type": "cds.Boolean"
+        },
+        "time_out": {
+          "type": "cds.Integer"
+        },
+        "time_out_day": {
+          "type": "cds.String",
+          "length": 255
+        }
+      }
+    },
+    "APIPortal_Developer_CF.KeyMapEntries": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "elements": {
+        "name": {
+          "key": true,
+          "type": "cds.String",
+          "length": 255
+        },
+        "encrypted": {
+          "type": "cds.Boolean"
+        },
+        "life_cycle": {
+          "type": "APIPortal_Developer_CF.History"
+        },
+        "keyMapEntryValues": {
+          "@cds.ambiguous": "missing on condition?",
+          "type": "cds.Association",
+          "target": "APIPortal_Developer_CF.KeyMapEntryValues",
+          "cardinality": {
+            "max": "*"
+          },
+          "on": [
+            {
+              "ref": [
+                "keyMapEntryValues",
+                "map_name"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "name"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "APIPortal_Developer_CF.VirtualHosts": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "elements": {
+        "id": {
+          "key": true,
+          "type": "cds.String",
+          "length": 36
+        },
+        "isDefault": {
+          "type": "cds.Boolean"
+        },
+        "isSSL": {
+          "type": "cds.Boolean"
+        },
+        "life_cycle": {
+          "type": "APIPortal_Developer_CF.History"
+        },
+        "name": {
+          "type": "cds.String",
+          "length": 255
+        },
+        "projectPath": {
+          "type": "cds.String",
+          "length": 255
+        },
+        "virtual_host": {
+          "type": "cds.String",
+          "length": 2048
+        },
+        "virtual_port": {
+          "type": "cds.Integer"
+        }
+      }
+    },
+    "APIPortal_Developer_CF.FlowRules": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "elements": {
+        "id": {
+          "key": true,
+          "type": "cds.String",
+          "length": 36
+        },
+        "FK_REQUEST_ID": {
+          "type": "cds.String",
+          "length": 36
+        },
+        "FK_RESPONSE_ID": {
+          "type": "cds.String",
+          "length": 36
+        },
+        "request": {
+          "@cds.ambiguous": "missing on condition?",
+          "type": "cds.Association",
+          "target": "APIPortal_Developer_CF.Streams",
+          "on": [
+            {
+              "ref": [
+                "request",
+                "id"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "FK_REQUEST_ID"
+              ]
+            }
+          ]
+        },
+        "response": {
+          "@cds.ambiguous": "missing on condition?",
+          "type": "cds.Association",
+          "target": "APIPortal_Developer_CF.Streams",
+          "on": [
+            {
+              "ref": [
+                "response",
+                "id"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "FK_RESPONSE_ID"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "APIPortal_Developer_CF.TemplateFileResources": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "elements": {
+        "id": {
+          "key": true,
+          "type": "cds.String",
+          "length": 36
+        },
+        "content": {
+          "type": "cds.LargeString"
+        },
+        "name": {
+          "type": "cds.String",
+          "length": 255
+        },
+        "FK_TEMPLATE_NAME": {
+          "type": "cds.String",
+          "length": 255
+        },
+        "scope": {
+          "type": "cds.String",
+          "length": 20
+        },
+        "type": {
+          "type": "cds.String",
+          "length": 10
+        },
+        "policyTemplateContainer": {
+          "@cds.ambiguous": "missing on condition?",
+          "type": "cds.Association",
+          "target": "APIPortal_Developer_CF.PolicyTemplateContainers",
+          "on": [
+            {
+              "ref": [
+                "policyTemplateContainer",
+                "name"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "FK_TEMPLATE_NAME"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "APIPortal_Developer_CF.ACLProductLinkages": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "elements": {
+        "ruleId": {
+          "key": true,
+          "type": "cds.String",
+          "length": 255
+        },
+        "devportalRuleId": {
+          "type": "cds.String",
+          "length": 255
+        },
+        "entityId": {
+          "type": "cds.String",
+          "length": 255
+        },
+        "entityType": {
+          "type": "cds.String",
+          "length": 64
+        },
+        "isPublished": {
+          "type": "cds.Boolean"
+        },
+        "operation": {
+          "type": "cds.String",
+          "length": 64
+        },
+        "permissionSet": {
+          "type": "cds.String",
+          "length": 1024
+        }
+      }
+    },
+    "APIPortal_Developer_CF.APIProxyEndPoints": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "elements": {
+        "id": {
+          "key": true,
+          "type": "cds.String",
+          "length": 36
+        },
+        "FK_API_NAME": {
+          "type": "cds.String",
+          "length": 255
+        },
+        "base_path": {
+          "type": "cds.LargeString"
+        },
+        "FK_DEFAULTFAULTRULE_ID": {
+          "type": "cds.String",
+          "length": 36
+        },
+        "isDefault": {
+          "type": "cds.Boolean"
+        },
+        "life_cycle": {
+          "type": "APIPortal_Developer_CF.History"
+        },
+        "name": {
+          "type": "cds.String",
+          "length": 255
+        },
+        "FK_POSTCLIENTFLOW_ID": {
+          "type": "cds.String",
+          "length": 36
+        },
+        "FK_POSTFLOW_ID": {
+          "type": "cds.String",
+          "length": 36
+        },
+        "FK_PREFLOW_ID": {
+          "type": "cds.String",
+          "length": 36
+        },
+        "publishUrl": {
+          "type": "cds.LargeString"
+        },
+        "apiProxy": {
+          "@cds.ambiguous": "missing on condition?",
+          "type": "cds.Association",
+          "target": "APIPortal_Developer_CF.APIProxies",
+          "on": [
+            {
+              "ref": [
+                "apiProxy",
+                "name"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "FK_API_NAME"
+              ]
+            }
+          ]
+        },
+        "apiResources": {
+          "@cds.ambiguous": "missing on condition?",
+          "type": "cds.Association",
+          "target": "APIPortal_Developer_CF.APIResources",
+          "cardinality": {
+            "max": "*"
+          },
+          "on": [
+            {
+              "ref": [
+                "apiResources",
+                "FK_PROXYENDPOINT_ID"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "id"
+              ]
+            }
+          ]
+        },
+        "conditionalFlows": {
+          "@cds.ambiguous": "missing on condition?",
+          "type": "cds.Association",
+          "target": "APIPortal_Developer_CF.ConditionalFlowRules",
+          "cardinality": {
+            "max": "*"
+          },
+          "keys": []
+        },
+        "defaultFaultRule": {
+          "@cds.ambiguous": "missing on condition?",
+          "type": "cds.Association",
+          "target": "APIPortal_Developer_CF.DefaultFaultRules",
+          "on": [
+            {
+              "ref": [
+                "defaultFaultRule",
+                "id"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "FK_DEFAULTFAULTRULE_ID"
+              ]
+            }
+          ]
+        },
+        "faultRules": {
+          "@cds.ambiguous": "missing on condition?",
+          "type": "cds.Association",
+          "target": "APIPortal_Developer_CF.FaultRules",
+          "cardinality": {
+            "max": "*"
+          },
+          "on": [
+            {
+              "ref": [
+                "faultRules",
+                "FK_PROXYENDPOINT_ID"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "id"
+              ]
+            }
+          ]
+        },
+        "postClientFlow": {
+          "@cds.ambiguous": "missing on condition?",
+          "type": "cds.Association",
+          "target": "APIPortal_Developer_CF.FlowRules",
+          "on": [
+            {
+              "ref": [
+                "postClientFlow",
+                "id"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "FK_POSTCLIENTFLOW_ID"
+              ]
+            }
+          ]
+        },
+        "postFlow": {
+          "@cds.ambiguous": "missing on condition?",
+          "type": "cds.Association",
+          "target": "APIPortal_Developer_CF.FlowRules",
+          "on": [
+            {
+              "ref": [
+                "postFlow",
+                "id"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "FK_POSTFLOW_ID"
+              ]
+            }
+          ]
+        },
+        "preFlow": {
+          "@cds.ambiguous": "missing on condition?",
+          "type": "cds.Association",
+          "target": "APIPortal_Developer_CF.FlowRules",
+          "on": [
+            {
+              "ref": [
+                "preFlow",
+                "id"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "FK_PREFLOW_ID"
+              ]
+            }
+          ]
+        },
+        "properties": {
+          "@cds.ambiguous": "missing on condition?",
+          "type": "cds.Association",
+          "target": "APIPortal_Developer_CF.EndPointProperties",
+          "cardinality": {
+            "max": "*"
+          },
+          "on": [
+            {
+              "ref": [
+                "properties",
+                "FK_PROXYENDPOINT_ID"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "id"
+              ]
+            }
+          ]
+        },
+        "routeRules": {
+          "@cds.ambiguous": "missing on condition?",
+          "type": "cds.Association",
+          "target": "APIPortal_Developer_CF.RouteRules",
+          "cardinality": {
+            "max": "*"
+          },
+          "on": [
+            {
+              "ref": [
+                "routeRules",
+                "FK_PROXYENDPOINT_ID"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "id"
+              ]
+            }
+          ]
+        },
+        "virtualhosts": {
+          "@cds.ambiguous": "missing on condition?",
+          "type": "cds.Association",
+          "target": "APIPortal_Developer_CF.VirtualHosts",
+          "cardinality": {
+            "max": "*"
+          },
+          "keys": []
+        }
+      }
+    },
+    "APIPortal_Developer_CF.CertificateStores": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "elements": {
+        "name": {
+          "key": true,
+          "type": "cds.String",
+          "length": 200
+        },
+        "life_cycle": {
+          "type": "APIPortal_Developer_CF.History"
+        },
+        "storeType": {
+          "type": "cds.String",
+          "length": 20
+        },
+        "certificates": {
+          "@cds.ambiguous": "missing on condition?",
+          "type": "cds.Association",
+          "target": "APIPortal_Developer_CF.Certificates",
+          "cardinality": {
+            "max": "*"
+          },
+          "on": [
+            {
+              "ref": [
+                "certificates",
+                "storeName"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "name"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "APIPortal_Developer_CF.TemplatePolicys": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "elements": {
+        "id": {
+          "key": true,
+          "type": "cds.String",
+          "length": 36
+        },
+        "life_cycle": {
+          "type": "APIPortal_Developer_CF.History"
+        },
+        "name": {
+          "type": "cds.String",
+          "length": 255
+        },
+        "FK_TEMPLATE_NAME": {
+          "type": "cds.String",
+          "length": 255
+        },
+        "policy_content": {
+          "type": "cds.LargeString"
+        },
+        "type": {
+          "type": "cds.String",
+          "length": 40
+        },
+        "policyTemplateContainer": {
+          "@cds.ambiguous": "missing on condition?",
+          "type": "cds.Association",
+          "target": "APIPortal_Developer_CF.PolicyTemplateContainers",
+          "on": [
+            {
+              "ref": [
+                "policyTemplateContainer",
+                "name"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "FK_TEMPLATE_NAME"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "APIPortal_Developer_CF.APIProxies": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "elements": {
+        "name": {
+          "key": true,
+          "type": "cds.String",
+          "length": 255
+        },
+        "FK_PROVIDERNAME": {
+          "type": "cds.String",
+          "length": 200
+        },
+        "cfBindingId": {
+          "type": "cds.String",
+          "length": 36
+        },
+        "isCopy": {
+          "type": "cds.Boolean"
+        },
+        "isPublished": {
+          "type": "cds.Boolean"
+        },
+        "life_cycle": {
+          "type": "APIPortal_Developer_CF.History"
+        },
+        "provider_name": {
+          "type": "cds.String",
+          "length": 200
+        },
+        "service_code": {
+          "type": "cds.String",
+          "length": 20
+        },
+        "state": {
+          "type": "cds.String",
+          "length": 10
+        },
+        "status_code": {
+          "type": "cds.String",
+          "length": 20
+        },
+        "version": {
+          "type": "cds.String",
+          "length": 10
+        },
+        "title": {
+          "type": "cds.String",
+          "length": 255
+        },
+        "description": {
+          "type": "cds.String",
+          "length": 16000
+        },
+        "apiProducts": {
+          "@cds.ambiguous": "missing on condition?",
+          "type": "cds.Association",
+          "target": "APIPortal_Developer_CF.APIProducts",
+          "cardinality": {
+            "max": "*"
+          },
+          "keys": []
+        },
+        "apiProvider": {
+          "@cds.ambiguous": "missing on condition?",
+          "type": "cds.Association",
+          "target": "APIPortal_Developer_CF.APIProviders",
+          "on": [
+            {
+              "ref": [
+                "apiProvider",
+                "name"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "FK_PROVIDERNAME"
+              ]
+            }
+          ]
+        },
+        "contentPackage": {
+          "@cds.ambiguous": "missing on condition?",
+          "type": "cds.Association",
+          "target": "APIPortal_Developer_CF.ContentPackageMappers",
+          "keys": []
+        },
+        "fileResources": {
+          "@cds.ambiguous": "missing on condition?",
+          "type": "cds.Association",
+          "target": "APIPortal_Developer_CF.FileResources",
+          "cardinality": {
+            "max": "*"
+          },
+          "keys": []
+        },
+        "policies": {
+          "@cds.ambiguous": "missing on condition?",
+          "type": "cds.Association",
+          "target": "APIPortal_Developer_CF.Policies",
+          "cardinality": {
+            "max": "*"
+          },
+          "on": [
+            {
+              "ref": [
+                "policies",
+                "FK_API_NAME"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "name"
+              ]
+            }
+          ]
+        },
+        "proxyEndPoints": {
+          "@cds.ambiguous": "missing on condition?",
+          "type": "cds.Association",
+          "target": "APIPortal_Developer_CF.APIProxyEndPoints",
+          "cardinality": {
+            "max": "*"
+          },
+          "on": [
+            {
+              "ref": [
+                "proxyEndPoints",
+                "FK_API_NAME"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "name"
+              ]
+            }
+          ]
+        },
+        "resources": {
+          "@cds.ambiguous": "missing on condition?",
+          "type": "cds.Association",
+          "target": "APIPortal_Developer_CF.Resources",
+          "cardinality": {
+            "max": "*"
+          },
+          "keys": []
+        },
+        "targetAPIProxies": {
+          "@cds.ambiguous": "missing on condition?",
+          "type": "cds.Association",
+          "target": "APIPortal_Developer_CF.APITargetEndPoints",
+          "cardinality": {
+            "max": "*"
+          },
+          "keys": []
+        },
+        "targetEndPoints": {
+          "@cds.ambiguous": "missing on condition?",
+          "type": "cds.Association",
+          "target": "APIPortal_Developer_CF.APITargetEndPoints",
+          "cardinality": {
+            "max": "*"
+          },
+          "on": [
+            {
+              "ref": [
+                "targetEndPoints",
+                "FK_API_NAME"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "name"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "APIPortal_Developer_CF.EndPointProperties": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "elements": {
+        "id": {
+          "key": true,
+          "type": "cds.String",
+          "length": 36
+        },
+        "name": {
+          "type": "cds.String",
+          "length": 512
+        },
+        "FK_PROXYENDPOINT_ID": {
+          "type": "cds.String",
+          "length": 36
+        },
+        "FK_TARGETENDPOINT_ID": {
+          "type": "cds.String",
+          "length": 36
+        },
+        "value": {
+          "type": "cds.LargeString"
+        },
+        "proxyEndPoint": {
+          "@cds.ambiguous": "missing on condition?",
+          "type": "cds.Association",
+          "target": "APIPortal_Developer_CF.APIProxyEndPoints",
+          "on": [
+            {
+              "ref": [
+                "proxyEndPoint",
+                "id"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "FK_PROXYENDPOINT_ID"
+              ]
+            }
+          ]
+        },
+        "targetEndPoint": {
+          "@cds.ambiguous": "missing on condition?",
+          "type": "cds.Association",
+          "target": "APIPortal_Developer_CF.APITargetEndPoints",
+          "on": [
+            {
+              "ref": [
+                "targetEndPoint",
+                "id"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "FK_TARGETENDPOINT_ID"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "APIPortal_Developer_CF.Applications": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "elements": {
+        "id": {
+          "key": true,
+          "type": "cds.String",
+          "length": 36
+        },
+        "callbackurl": {
+          "type": "cds.String",
+          "length": 255
+        },
+        "FK_DEVELOPER_ID": {
+          "type": "cds.String",
+          "length": 256
+        },
+        "life_cycle": {
+          "type": "APIPortal_Developer_CF.History"
+        },
+        "status_code": {
+          "type": "cds.String",
+          "length": 20
+        },
+        "valid_from": {
+          "type": "cds.DateTime",
+          "@odata.Type": "Edm.DateTime",
+          "@odata.Precision": 0
+        },
+        "valid_to": {
+          "type": "cds.DateTime",
+          "@odata.Type": "Edm.DateTime",
+          "@odata.Precision": 0
+        },
+        "version": {
+          "type": "cds.String",
+          "length": 10
+        },
+        "title": {
+          "type": "cds.String",
+          "length": 255
+        },
+        "description": {
+          "type": "cds.String",
+          "length": 16000
+        },
+        "app_key": {
+          "type": "cds.String",
+          "length": 256
+        },
+        "app_secret": {
+          "type": "cds.String",
+          "length": 1000
+        },
+        "subscribedRatePlan": {
+          "type": "cds.LargeString"
+        },
+        "apiProducts": {
+          "@cds.ambiguous": "missing on condition?",
+          "type": "cds.Association",
+          "target": "APIPortal_Developer_CF.APIProducts",
+          "cardinality": {
+            "max": "*"
+          },
+          "keys": []
+        },
+        "developer": {
+          "@cds.ambiguous": "missing on condition?",
+          "type": "cds.Association",
+          "target": "APIPortal_Developer_CF.Developers",
+          "on": [
+            {
+              "ref": [
+                "developer",
+                "id"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "FK_DEVELOPER_ID"
+              ]
+            }
+          ]
+        },
+        "resources": {
+          "@cds.ambiguous": "missing on condition?",
+          "type": "cds.Association",
+          "target": "APIPortal_Developer_CF.Resources",
+          "cardinality": {
+            "max": "*"
+          },
+          "keys": []
+        }
+      }
+    },
+    "APIPortal_Developer_CF.Steps": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "elements": {
+        "id": {
+          "key": true,
+          "type": "cds.String",
+          "length": 36
+        },
+        "condition": {
+          "type": "cds.LargeString"
+        },
+        "FK_DEFAULTFAULTRULE_ID": {
+          "type": "cds.String",
+          "length": 36
+        },
+        "FK_FAULTRULE_ID": {
+          "type": "cds.String",
+          "length": 36
+        },
+        "policy_name": {
+          "type": "cds.String",
+          "length": 255
+        },
+        "sequence": {
+          "type": "cds.Integer"
+        },
+        "FK_STREAM_ID": {
+          "type": "cds.String",
+          "length": 36
+        },
+        "defaultFaultRule": {
+          "@cds.ambiguous": "missing on condition?",
+          "type": "cds.Association",
+          "target": "APIPortal_Developer_CF.DefaultFaultRules",
+          "on": [
+            {
+              "ref": [
+                "defaultFaultRule",
+                "id"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "FK_DEFAULTFAULTRULE_ID"
+              ]
+            }
+          ]
+        },
+        "faultRule": {
+          "@cds.ambiguous": "missing on condition?",
+          "type": "cds.Association",
+          "target": "APIPortal_Developer_CF.FaultRules",
+          "on": [
+            {
+              "ref": [
+                "faultRule",
+                "id"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "FK_FAULTRULE_ID"
+              ]
+            }
+          ]
+        },
+        "stream": {
+          "@cds.ambiguous": "missing on condition?",
+          "type": "cds.Association",
+          "target": "APIPortal_Developer_CF.Streams",
+          "on": [
+            {
+              "ref": [
+                "stream",
+                "id"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "FK_STREAM_ID"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "APIPortal_Developer_CF.APIProviders": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "elements": {
+        "name": {
+          "key": true,
+          "type": "cds.String",
+          "length": 200
+        },
+        "isOnPremise": {
+          "type": "cds.Boolean"
+        },
+        "life_cycle": {
+          "type": "APIPortal_Developer_CF.History"
+        },
+        "rt_auth": {
+          "type": "cds.String",
+          "length": 255
+        },
+        "sslInfo": {
+          "type": "APIPortal_Developer_CF.SSLInfo"
+        },
+        "url": {
+          "type": "cds.LargeString"
+        },
+        "title": {
+          "type": "cds.String",
+          "length": 255
+        },
+        "description": {
+          "type": "cds.String",
+          "length": 16000
+        },
+        "destType": {
+          "type": "cds.String",
+          "length": 10
+        },
+        "host": {
+          "type": "cds.String",
+          "length": 2048
+        },
+        "port": {
+          "type": "cds.Integer"
+        },
+        "useSSL": {
+          "type": "cds.Boolean"
+        },
+        "trustAll": {
+          "type": "cds.Boolean"
+        },
+        "userName": {
+          "type": "cds.String",
+          "length": 2048
+        },
+        "password": {
+          "type": "cds.String",
+          "length": 126
+        },
+        "authType": {
+          "type": "cds.String",
+          "length": 126
+        },
+        "pathPrefix": {
+          "type": "cds.String",
+          "length": 2048
+        },
+        "timeout": {
+          "type": "cds.Integer"
+        },
+        "cockpit_url": {
+          "type": "cds.LargeString"
+        },
+        "cloudConnectorLocation": {
+          "type": "cds.String",
+          "length": 2048
+        },
+        "apiProxies": {
+          "@cds.ambiguous": "missing on condition?",
+          "type": "cds.Association",
+          "target": "APIPortal_Developer_CF.APIProxies",
+          "cardinality": {
+            "max": "*"
+          },
+          "on": [
+            {
+              "ref": [
+                "apiProxies",
+                "FK_PROVIDERNAME"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "name"
+              ]
+            }
+          ]
+        },
+        "resources": {
+          "@cds.ambiguous": "missing on condition?",
+          "type": "cds.Association",
+          "target": "APIPortal_Developer_CF.Resources",
+          "cardinality": {
+            "max": "*"
+          },
+          "keys": []
+        }
+      }
+    },
+    "APIPortal_Developer_CF.DestinationAndUrlMappings": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "elements": {
+        "id": {
+          "key": true,
+          "type": "cds.String",
+          "length": 36
+        },
+        "destination": {
+          "type": "cds.String",
+          "length": 256
+        },
+        "url": {
+          "type": "cds.String",
+          "length": 2048
+        }
+      }
+    },
+    "APIPortal_Developer_CF.Resources": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "elements": {
+        "locale": {
+          "key": true,
+          "type": "cds.String",
+          "length": 5
+        },
+        "object_id": {
+          "key": true,
+          "type": "cds.String",
+          "length": 255
+        },
+        "type": {
+          "key": true,
+          "type": "cds.String",
+          "length": 2
+        },
+        "long_text": {
+          "type": "cds.String",
+          "length": 16000
+        },
+        "medium_text": {
+          "type": "cds.String",
+          "length": 255
+        },
+        "short_text": {
+          "type": "cds.String",
+          "length": 255
+        }
+      }
+    },
+    "APIPortal_Developer_CF.ContentPackageMappers": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "elements": {
+        "targetId": {
+          "key": true,
+          "type": "cds.String",
+          "length": 255
+        },
+        "targetType": {
+          "key": true,
+          "type": "cds.String",
+          "length": 255
+        },
+        "content": {
+          "type": "cds.String",
+          "length": 255
+        },
+        "life_cycle": {
+          "type": "APIPortal_Developer_CF.History"
+        },
+        "srcArtifactName": {
+          "type": "cds.String",
+          "length": 255
+        },
+        "srcArtifactType": {
+          "type": "cds.String",
+          "length": 255
+        },
+        "srcPackageID": {
+          "type": "cds.String",
+          "length": 255
+        },
+        "srcRepo": {
+          "type": "cds.String",
+          "length": 255
+        },
+        "apiProxy": {
+          "@cds.ambiguous": "missing on condition?",
+          "type": "cds.Association",
+          "target": "APIPortal_Developer_CF.APIProxies",
+          "keys": []
+        }
+      }
+    },
+    "APIPortal_Developer_CF.ConditionalFlowRules": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "elements": {
+        "id": {
+          "key": true,
+          "type": "cds.String",
+          "length": 36
+        },
+        "conditions": {
+          "type": "cds.LargeString"
+        },
+        "name": {
+          "type": "cds.String",
+          "length": 255
+        },
+        "readOnly": {
+          "type": "cds.Boolean"
+        },
+        "FK_REQUEST_ID": {
+          "type": "cds.String",
+          "length": 36
+        },
+        "FK_RESPONSE_ID": {
+          "type": "cds.String",
+          "length": 36
+        },
+        "sequence": {
+          "type": "cds.Integer"
+        },
+        "apiResource": {
+          "@cds.ambiguous": "missing on condition?",
+          "type": "cds.Association",
+          "target": "APIPortal_Developer_CF.APIResources",
+          "keys": []
+        },
+        "proxyEndPoint": {
+          "@cds.ambiguous": "missing on condition?",
+          "type": "cds.Association",
+          "target": "APIPortal_Developer_CF.APIProxyEndPoints",
+          "keys": []
+        },
+        "request": {
+          "@cds.ambiguous": "missing on condition?",
+          "type": "cds.Association",
+          "target": "APIPortal_Developer_CF.Streams",
+          "on": [
+            {
+              "ref": [
+                "request",
+                "id"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "FK_REQUEST_ID"
+              ]
+            }
+          ]
+        },
+        "response": {
+          "@cds.ambiguous": "missing on condition?",
+          "type": "cds.Association",
+          "target": "APIPortal_Developer_CF.Streams",
+          "on": [
+            {
+              "ref": [
+                "response",
+                "id"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "FK_RESPONSE_ID"
+              ]
+            }
+          ]
+        },
+        "targetEndPoint": {
+          "@cds.ambiguous": "missing on condition?",
+          "type": "cds.Association",
+          "target": "APIPortal_Developer_CF.APITargetEndPoints",
+          "keys": []
+        }
+      }
+    },
+    "APIPortal_Developer_CF.DefaultFaultRules": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "elements": {
+        "id": {
+          "key": true,
+          "type": "cds.String",
+          "length": 36
+        },
+        "alwaysEnforce": {
+          "type": "cds.Boolean"
+        },
+        "name": {
+          "type": "cds.String",
+          "length": 255
+        },
+        "FK_PROXYENDPOINT_ID": {
+          "type": "cds.String",
+          "length": 36
+        },
+        "FK_TARGETENDPOINT_ID": {
+          "type": "cds.String",
+          "length": 36
+        },
+        "proxyEndPoint": {
+          "@cds.ambiguous": "missing on condition?",
+          "type": "cds.Association",
+          "target": "APIPortal_Developer_CF.APIProxyEndPoints",
+          "on": [
+            {
+              "ref": [
+                "proxyEndPoint",
+                "id"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "FK_PROXYENDPOINT_ID"
+              ]
+            }
+          ]
+        },
+        "steps": {
+          "@cds.ambiguous": "missing on condition?",
+          "type": "cds.Association",
+          "target": "APIPortal_Developer_CF.Steps",
+          "cardinality": {
+            "max": "*"
+          },
+          "on": [
+            {
+              "ref": [
+                "steps",
+                "FK_DEFAULTFAULTRULE_ID"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "id"
+              ]
+            }
+          ]
+        },
+        "targetEndPoint": {
+          "@cds.ambiguous": "missing on condition?",
+          "type": "cds.Association",
+          "target": "APIPortal_Developer_CF.APITargetEndPoints",
+          "on": [
+            {
+              "ref": [
+                "targetEndPoint",
+                "id"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "FK_TARGETENDPOINT_ID"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "APIPortal_Developer_CF.APIResources": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "elements": {
+        "id": {
+          "key": true,
+          "type": "cds.String",
+          "length": 36
+        },
+        "FK_PROXYENDPOINT_ID": {
+          "type": "cds.String",
+          "length": 36
+        },
+        "canShowDelete": {
+          "type": "cds.Boolean"
+        },
+        "canShowGet": {
+          "type": "cds.Boolean"
+        },
+        "canShowHead": {
+          "type": "cds.Boolean"
+        },
+        "canShowOption": {
+          "type": "cds.Boolean"
+        },
+        "canShowPatch": {
+          "type": "cds.Boolean"
+        },
+        "canShowPost": {
+          "type": "cds.Boolean"
+        },
+        "canShowPut": {
+          "type": "cds.Boolean"
+        },
+        "isDeleteChecked": {
+          "type": "cds.Boolean"
+        },
+        "isGetChecked": {
+          "type": "cds.Boolean"
+        },
+        "isHeadChecked": {
+          "type": "cds.Boolean"
+        },
+        "isOptionChecked": {
+          "type": "cds.Boolean"
+        },
+        "isPatchChecked": {
+          "type": "cds.Boolean"
+        },
+        "isPostChecked": {
+          "type": "cds.Boolean"
+        },
+        "isPutChecked": {
+          "type": "cds.Boolean"
+        },
+        "life_cycle": {
+          "type": "APIPortal_Developer_CF.History"
+        },
+        "name": {
+          "type": "cds.String",
+          "length": 1024
+        },
+        "proxyEndPointName": {
+          "type": "cds.LargeString"
+        },
+        "resource_path": {
+          "type": "cds.LargeString"
+        },
+        "title": {
+          "type": "cds.String",
+          "length": 255
+        },
+        "description": {
+          "type": "cds.String",
+          "length": 16000
+        },
+        "apiProxyEndPoint": {
+          "@cds.ambiguous": "missing on condition?",
+          "type": "cds.Association",
+          "target": "APIPortal_Developer_CF.APIProxyEndPoints",
+          "on": [
+            {
+              "ref": [
+                "apiProxyEndPoint",
+                "id"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "FK_PROXYENDPOINT_ID"
+              ]
+            }
+          ]
+        },
+        "documentations": {
+          "@cds.ambiguous": "missing on condition?",
+          "type": "cds.Association",
+          "target": "APIPortal_Developer_CF.Documentations",
+          "cardinality": {
+            "max": "*"
+          },
+          "on": [
+            {
+              "ref": [
+                "documentations",
+                "FK_APIRESOURCE_ID"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "id"
+              ]
+            }
+          ]
+        },
+        "resources": {
+          "@cds.ambiguous": "missing on condition?",
+          "type": "cds.Association",
+          "target": "APIPortal_Developer_CF.Resources",
+          "cardinality": {
+            "max": "*"
+          },
+          "keys": []
+        }
+      }
+    },
+    "APIPortal_Developer_CF.APITargetEndPoints": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "elements": {
+        "id": {
+          "key": true,
+          "type": "cds.String",
+          "length": 36
+        },
+        "FK_API_NAME": {
+          "type": "cds.String",
+          "length": 255
+        },
+        "FK_DEFAULTFAULTRULE_ID": {
+          "type": "cds.String",
+          "length": 36
+        },
+        "isDefault": {
+          "type": "cds.Boolean"
+        },
+        "life_cycle": {
+          "type": "APIPortal_Developer_CF.History"
+        },
+        "name": {
+          "type": "cds.String",
+          "length": 255
+        },
+        "FK_POSTFLOW_ID": {
+          "type": "cds.String",
+          "length": 36
+        },
+        "FK_PREFLOW_ID": {
+          "type": "cds.String",
+          "length": 36
+        },
+        "provider_id": {
+          "type": "cds.String",
+          "length": 200
+        },
+        "relativePath": {
+          "type": "cds.String",
+          "length": 255
+        },
+        "FK_TARGET_API_PROXY": {
+          "type": "cds.String",
+          "length": 255
+        },
+        "targetAPIProxyName": {
+          "type": "cds.String",
+          "length": 255
+        },
+        "url": {
+          "type": "cds.String",
+          "length": 2083
+        },
+        "apiProxy": {
+          "@cds.ambiguous": "missing on condition?",
+          "type": "cds.Association",
+          "target": "APIPortal_Developer_CF.APIProxies",
+          "on": [
+            {
+              "ref": [
+                "apiProxy",
+                "name"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "FK_API_NAME"
+              ]
+            }
+          ]
+        },
+        "conditionalFlows": {
+          "@cds.ambiguous": "missing on condition?",
+          "type": "cds.Association",
+          "target": "APIPortal_Developer_CF.ConditionalFlowRules",
+          "cardinality": {
+            "max": "*"
+          },
+          "keys": []
+        },
+        "defaultFaultRule": {
+          "@cds.ambiguous": "missing on condition?",
+          "type": "cds.Association",
+          "target": "APIPortal_Developer_CF.DefaultFaultRules",
+          "on": [
+            {
+              "ref": [
+                "defaultFaultRule",
+                "id"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "FK_DEFAULTFAULTRULE_ID"
+              ]
+            }
+          ]
+        },
+        "faultRules": {
+          "@cds.ambiguous": "missing on condition?",
+          "type": "cds.Association",
+          "target": "APIPortal_Developer_CF.FaultRules",
+          "cardinality": {
+            "max": "*"
+          },
+          "on": [
+            {
+              "ref": [
+                "faultRules",
+                "FK_TARGETENDPOINT_ID"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "id"
+              ]
+            }
+          ]
+        },
+        "postFlow": {
+          "@cds.ambiguous": "missing on condition?",
+          "type": "cds.Association",
+          "target": "APIPortal_Developer_CF.FlowRules",
+          "on": [
+            {
+              "ref": [
+                "postFlow",
+                "id"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "FK_POSTFLOW_ID"
+              ]
+            }
+          ]
+        },
+        "preFlow": {
+          "@cds.ambiguous": "missing on condition?",
+          "type": "cds.Association",
+          "target": "APIPortal_Developer_CF.FlowRules",
+          "on": [
+            {
+              "ref": [
+                "preFlow",
+                "id"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "FK_PREFLOW_ID"
+              ]
+            }
+          ]
+        },
+        "properties": {
+          "@cds.ambiguous": "missing on condition?",
+          "type": "cds.Association",
+          "target": "APIPortal_Developer_CF.EndPointProperties",
+          "cardinality": {
+            "max": "*"
+          },
+          "on": [
+            {
+              "ref": [
+                "properties",
+                "FK_TARGETENDPOINT_ID"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "id"
+              ]
+            }
+          ]
+        },
+        "targetAPIProxy": {
+          "@cds.ambiguous": "missing on condition?",
+          "type": "cds.Association",
+          "target": "APIPortal_Developer_CF.APIProxies",
+          "on": [
+            {
+              "ref": [
+                "targetAPIProxy",
+                "name"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "FK_TARGET_API_PROXY"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "APIPortal_Developer_CF.FaultRules": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "elements": {
+        "id": {
+          "key": true,
+          "type": "cds.String",
+          "length": 36
+        },
+        "condition": {
+          "type": "cds.LargeString"
+        },
+        "name": {
+          "type": "cds.String",
+          "length": 255
+        },
+        "FK_PROXYENDPOINT_ID": {
+          "type": "cds.String",
+          "length": 36
+        },
+        "FK_ROUTERULE_ID": {
+          "type": "cds.String",
+          "length": 36
+        },
+        "FK_TARGETENDPOINT_ID": {
+          "type": "cds.String",
+          "length": 36
+        },
+        "proxyEndPoint": {
+          "@cds.ambiguous": "missing on condition?",
+          "type": "cds.Association",
+          "target": "APIPortal_Developer_CF.APIProxyEndPoints",
+          "on": [
+            {
+              "ref": [
+                "proxyEndPoint",
+                "id"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "FK_PROXYENDPOINT_ID"
+              ]
+            }
+          ]
+        },
+        "routeRule": {
+          "@cds.ambiguous": "missing on condition?",
+          "type": "cds.Association",
+          "target": "APIPortal_Developer_CF.RouteRules",
+          "on": [
+            {
+              "ref": [
+                "routeRule",
+                "id"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "FK_ROUTERULE_ID"
+              ]
+            }
+          ]
+        },
+        "steps": {
+          "@cds.ambiguous": "missing on condition?",
+          "type": "cds.Association",
+          "target": "APIPortal_Developer_CF.Steps",
+          "cardinality": {
+            "max": "*"
+          },
+          "on": [
+            {
+              "ref": [
+                "steps",
+                "FK_FAULTRULE_ID"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "id"
+              ]
+            }
+          ]
+        },
+        "targetEndPoint": {
+          "@cds.ambiguous": "missing on condition?",
+          "type": "cds.Association",
+          "target": "APIPortal_Developer_CF.APITargetEndPoints",
+          "on": [
+            {
+              "ref": [
+                "targetEndPoint",
+                "id"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "FK_TARGETENDPOINT_ID"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "APIPortal_Developer_CF.APIProducts": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "elements": {
+        "name": {
+          "key": true,
+          "type": "cds.String",
+          "length": 255
+        },
+        "isPublished": {
+          "type": "cds.Boolean"
+        },
+        "isRestricted": {
+          "type": "cds.Boolean"
+        },
+        "life_cycle": {
+          "type": "APIPortal_Developer_CF.History"
+        },
+        "published_at": {
+          "type": "cds.DateTime",
+          "@odata.Type": "Edm.DateTime",
+          "@odata.Precision": 0
+        },
+        "published_by": {
+          "type": "cds.String",
+          "length": 256
+        },
+        "quotaCount": {
+          "type": "cds.Integer"
+        },
+        "quotaInterval": {
+          "type": "cds.Integer"
+        },
+        "quotaTimeUnit": {
+          "type": "cds.String",
+          "length": 10
+        },
+        "scope": {
+          "type": "cds.String",
+          "length": 255
+        },
+        "status_code": {
+          "type": "cds.String",
+          "length": 20
+        },
+        "version": {
+          "type": "cds.String",
+          "length": 10
+        },
+        "title": {
+          "type": "cds.String",
+          "length": 255
+        },
+        "description": {
+          "type": "cds.String",
+          "length": 16000
+        },
+        "apiProxies": {
+          "@cds.ambiguous": "missing on condition?",
+          "type": "cds.Association",
+          "target": "APIPortal_Developer_CF.APIProxies",
+          "cardinality": {
+            "max": "*"
+          },
+          "keys": []
+        },
+        "apiResources": {
+          "@cds.ambiguous": "missing on condition?",
+          "type": "cds.Association",
+          "target": "APIPortal_Developer_CF.APIResources",
+          "cardinality": {
+            "max": "*"
+          },
+          "keys": []
+        },
+        "applications": {
+          "@cds.ambiguous": "missing on condition?",
+          "type": "cds.Association",
+          "target": "APIPortal_Developer_CF.Applications",
+          "cardinality": {
+            "max": "*"
+          },
+          "keys": []
+        },
+        "ratePlans": {
+          "@cds.ambiguous": "missing on condition?",
+          "type": "cds.Association",
+          "target": "APIPortal_Developer_CF.RatePlans",
+          "cardinality": {
+            "max": "*"
+          },
+          "keys": []
+        },
+        "resources": {
+          "@cds.ambiguous": "missing on condition?",
+          "type": "cds.Association",
+          "target": "APIPortal_Developer_CF.Resources",
+          "cardinality": {
+            "max": "*"
+          },
+          "keys": []
+        }
+      }
+    },
+    "APIPortal_Developer_CF.Documentations": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "elements": {
+        "id": {
+          "key": true,
+          "type": "cds.String",
+          "length": 36
+        },
+        "locale": {
+          "key": true,
+          "type": "cds.String",
+          "length": 5
+        },
+        "FK_APIRESOURCE_ID": {
+          "type": "cds.String",
+          "length": 36
+        },
+        "apiResourceName": {
+          "type": "cds.LargeString"
+        },
+        "content": {
+          "type": "cds.LargeString"
+        },
+        "life_cycle": {
+          "type": "APIPortal_Developer_CF.History"
+        },
+        "mime_type": {
+          "type": "cds.String",
+          "length": 256
+        },
+        "apiResource": {
+          "@cds.ambiguous": "missing on condition?",
+          "type": "cds.Association",
+          "target": "APIPortal_Developer_CF.APIResources",
+          "on": [
+            {
+              "ref": [
+                "apiResource",
+                "id"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "FK_APIRESOURCE_ID"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "APIPortal_Developer_CF.Certificates": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "elements": {
+        "name": {
+          "key": true,
+          "type": "cds.String",
+          "length": 200
+        },
+        "storeName": {
+          "key": true,
+          "type": "cds.String",
+          "length": 200
+        },
+        "certName": {
+          "type": "cds.String",
+          "length": 256
+        },
+        "description": {
+          "type": "cds.String",
+          "length": 2048
+        },
+        "life_cycle": {
+          "type": "APIPortal_Developer_CF.History"
+        },
+        "password": {
+          "type": "cds.String",
+          "length": 256
+        },
+        "storeType": {
+          "type": "cds.String",
+          "length": 256
+        },
+        "expiryDate": {
+          "type": "cds.String",
+          "length": 256
+        },
+        "issuerEmail": {
+          "type": "cds.String",
+          "length": 2048
+        },
+        "subjectEmail": {
+          "type": "cds.String",
+          "length": 2048
+        },
+        "signAlgName": {
+          "type": "cds.String",
+          "length": 256
+        },
+        "isValid": {
+          "type": "cds.String",
+          "length": 256
+        },
+        "validFrom": {
+          "type": "cds.String",
+          "length": 256
+        },
+        "version": {
+          "type": "cds.String",
+          "length": 256
+        },
+        "content": {
+          "type": "cds.LargeBinary"
+        },
+        "certificateStore": {
+          "@cds.ambiguous": "missing on condition?",
+          "type": "cds.Association",
+          "target": "APIPortal_Developer_CF.CertificateStores",
+          "on": [
+            {
+              "ref": [
+                "certificateStore",
+                "name"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "storeName"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "APIPortal_Developer_CF.RatePlans": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "elements": {
+        "id": {
+          "key": true,
+          "type": "cds.LargeString"
+        },
+        "currency": {
+          "type": "cds.String",
+          "length": 50
+        },
+        "frequency": {
+          "type": "cds.String",
+          "length": 255
+        },
+        "isActive": {
+          "type": "cds.Boolean"
+        },
+        "isPublished": {
+          "type": "cds.Boolean"
+        },
+        "isSeasonal": {
+          "type": "cds.Boolean"
+        },
+        "life_cycle": {
+          "type": "APIPortal_Developer_CF.History"
+        },
+        "name": {
+          "type": "cds.String",
+          "length": 255
+        },
+        "rate": {
+          "type": "cds.LargeString"
+        },
+        "type": {
+          "type": "cds.String",
+          "length": 255
+        },
+        "validFrom": {
+          "type": "cds.DateTime",
+          "@odata.Type": "Edm.DateTime",
+          "@odata.Precision": 0
+        },
+        "validTo": {
+          "type": "cds.DateTime",
+          "@odata.Type": "Edm.DateTime",
+          "@odata.Precision": 0
+        },
+        "description": {
+          "type": "cds.String",
+          "length": 16000
+        },
+        "apiProducts": {
+          "@cds.ambiguous": "missing on condition?",
+          "type": "cds.Association",
+          "target": "APIPortal_Developer_CF.APIProducts",
+          "cardinality": {
+            "max": "*"
+          },
+          "keys": []
+        },
+        "resources": {
+          "@cds.ambiguous": "missing on condition?",
+          "type": "cds.Association",
+          "target": "APIPortal_Developer_CF.Resources",
+          "cardinality": {
+            "max": "*"
+          },
+          "keys": []
+        }
+      }
+    },
+    "APIPortal_Developer_CF.PolicyTemplateContainers": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "elements": {
+        "name": {
+          "key": true,
+          "type": "cds.String",
+          "length": 255
+        },
+        "description": {
+          "type": "cds.String",
+          "length": 4096
+        },
+        "life_cycle": {
+          "type": "APIPortal_Developer_CF.History"
+        },
+        "proxyEndPointxml": {
+          "type": "cds.LargeString"
+        },
+        "targetEndPointxml": {
+          "type": "cds.LargeString"
+        },
+        "title": {
+          "type": "cds.String",
+          "length": 255
+        },
+        "version": {
+          "type": "cds.String",
+          "length": 10
+        },
+        "fileResources": {
+          "@cds.ambiguous": "missing on condition?",
+          "type": "cds.Association",
+          "target": "APIPortal_Developer_CF.TemplateFileResources",
+          "cardinality": {
+            "max": "*"
+          },
+          "on": [
+            {
+              "ref": [
+                "fileResources",
+                "FK_TEMPLATE_NAME"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "name"
+              ]
+            }
+          ]
+        },
+        "policies": {
+          "@cds.ambiguous": "missing on condition?",
+          "type": "cds.Association",
+          "target": "APIPortal_Developer_CF.TemplatePolicys",
+          "cardinality": {
+            "max": "*"
+          },
+          "on": [
+            {
+              "ref": [
+                "policies",
+                "FK_TEMPLATE_NAME"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "name"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "APIPortal_Developer_CF.Bills": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "elements": {
+        "entityId": {
+          "key": true,
+          "type": "cds.String",
+          "length": 256
+        },
+        "entityType": {
+          "key": true,
+          "type": "cds.String",
+          "length": 32
+        },
+        "fromDate": {
+          "key": true,
+          "type": "cds.DateTime",
+          "@odata.Type": "Edm.DateTime",
+          "@odata.Precision": 0
+        },
+        "toDate": {
+          "key": true,
+          "type": "cds.DateTime",
+          "@odata.Type": "Edm.DateTime",
+          "@odata.Precision": 0
+        },
+        "billDetails": {
+          "type": "cds.LargeString"
+        },
+        "billGeneratedAt": {
+          "type": "cds.DateTime",
+          "@odata.Type": "Edm.DateTime",
+          "@odata.Precision": 0
+        },
+        "billGeneratedBy": {
+          "type": "cds.String",
+          "length": 255
+        },
+        "billId": {
+          "type": "cds.String",
+          "length": 64
+        },
+        "currency": {
+          "type": "cds.String",
+          "length": 32
+        },
+        "description": {
+          "type": "cds.String",
+          "length": 2048
+        },
+        "emailId": {
+          "type": "cds.String",
+          "length": 255
+        },
+        "entityName": {
+          "type": "cds.String",
+          "length": 256
+        },
+        "firstName": {
+          "type": "cds.String",
+          "length": 255
+        },
+        "isoffboarded": {
+          "type": "cds.Boolean"
+        },
+        "lastName": {
+          "type": "cds.String",
+          "length": 255
+        },
+        "offboardedDate": {
+          "type": "cds.DateTime",
+          "@odata.Type": "Edm.DateTime",
+          "@odata.Precision": 0
+        },
+        "status": {
+          "type": "cds.String",
+          "length": 64
+        },
+        "total": {
+          "type": "cds.Double"
+        }
+      }
+    },
+    "APIPortal_Developer_CF.RouteRules": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "elements": {
+        "id": {
+          "key": true,
+          "type": "cds.String",
+          "length": 36
+        },
+        "conditions": {
+          "type": "cds.LargeString"
+        },
+        "name": {
+          "type": "cds.String",
+          "length": 255
+        },
+        "FK_PROXYENDPOINT_ID": {
+          "type": "cds.String",
+          "length": 36
+        },
+        "sequence": {
+          "type": "cds.Integer"
+        },
+        "targetEndPointName": {
+          "type": "cds.String",
+          "length": 255
+        },
+        "url": {
+          "type": "cds.LargeString"
+        },
+        "faultRules": {
+          "@cds.ambiguous": "missing on condition?",
+          "type": "cds.Association",
+          "target": "APIPortal_Developer_CF.FaultRules",
+          "cardinality": {
+            "max": "*"
+          },
+          "on": [
+            {
+              "ref": [
+                "faultRules",
+                "FK_ROUTERULE_ID"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "id"
+              ]
+            }
+          ]
+        },
+        "proxyEndPoint": {
+          "@cds.ambiguous": "missing on condition?",
+          "type": "cds.Association",
+          "target": "APIPortal_Developer_CF.APIProxyEndPoints",
+          "on": [
+            {
+              "ref": [
+                "proxyEndPoint",
+                "id"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "FK_PROXYENDPOINT_ID"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "APIPortal_Developer_CF.KeyMapEntryValues": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "elements": {
+        "map_name": {
+          "key": true,
+          "type": "cds.String",
+          "length": 255
+        },
+        "name": {
+          "key": true,
+          "type": "cds.String",
+          "length": 255
+        },
+        "value": {
+          "type": "cds.String",
+          "length": 4096
+        },
+        "keyMapEntry": {
+          "@cds.ambiguous": "missing on condition?",
+          "type": "cds.Association",
+          "target": "APIPortal_Developer_CF.KeyMapEntries",
+          "on": [
+            {
+              "ref": [
+                "keyMapEntry",
+                "name"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "map_name"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "APIPortal_Developer_CF.FileResources": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "elements": {
+        "id": {
+          "key": true,
+          "type": "cds.String",
+          "length": 36
+        },
+        "content": {
+          "type": "cds.LargeString"
+        },
+        "name": {
+          "type": "cds.String",
+          "length": 255
+        },
+        "scope": {
+          "type": "cds.String",
+          "length": 20
+        },
+        "type": {
+          "type": "cds.String",
+          "length": 10
+        },
+        "apiProxies": {
+          "@cds.ambiguous": "missing on condition?",
+          "type": "cds.Association",
+          "target": "APIPortal_Developer_CF.APIProxies",
+          "cardinality": {
+            "max": "*"
+          },
+          "keys": []
+        }
+      }
+    },
+    "APIPortal_Developer_CF.CacheResources": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "elements": {
+        "name": {
+          "key": true,
+          "type": "cds.String",
+          "length": 255
+        },
+        "compression_enabled": {
+          "type": "cds.Boolean"
+        },
+        "disk_size": {
+          "type": "cds.Integer"
+        },
+        "expirySettings": {
+          "type": "APIPortal_Developer_CF.ExpirySettings"
+        },
+        "in_memory_size": {
+          "type": "cds.Integer"
+        },
+        "life_cycle": {
+          "type": "APIPortal_Developer_CF.History"
+        },
+        "max_element_disk": {
+          "type": "cds.Integer"
+        },
+        "max_element_memory": {
+          "type": "cds.Integer"
+        },
+        "min_compression_size": {
+          "type": "cds.Integer"
+        },
+        "over_flow_to_disk": {
+          "type": "cds.Boolean"
+        },
+        "persistent_cache": {
+          "type": "cds.Boolean"
+        },
+        "skip_cache_element_size": {
+          "type": "cds.Integer"
+        }
+      }
+    },
+    "APIPortal_Developer_CF.Developers": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "elements": {
+        "id": {
+          "key": true,
+          "type": "cds.String",
+          "length": 256
+        },
+        "country": {
+          "type": "cds.LargeString"
+        },
+        "emailId": {
+          "type": "cds.String",
+          "length": 255
+        },
+        "firstName": {
+          "type": "cds.String",
+          "length": 255
+        },
+        "lastName": {
+          "type": "cds.String",
+          "length": 255
+        },
+        "life_cycle": {
+          "type": "APIPortal_Developer_CF.History"
+        },
+        "applications": {
+          "@cds.ambiguous": "missing on condition?",
+          "type": "cds.Association",
+          "target": "APIPortal_Developer_CF.Applications",
+          "cardinality": {
+            "max": "*"
+          },
+          "keys": []
+        }
+      }
+    },
+    "APIPortal_Developer_CF.Streams": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "elements": {
+        "id": {
+          "key": true,
+          "type": "cds.String",
+          "length": 36
+        },
+        "FK_FLOW_ID": {
+          "type": "cds.String",
+          "length": 36
+        },
+        "isRequest": {
+          "type": "cds.Boolean"
+        },
+        "flow": {
+          "@cds.ambiguous": "missing on condition?",
+          "type": "cds.Association",
+          "target": "APIPortal_Developer_CF.FlowRules",
+          "on": [
+            {
+              "ref": [
+                "flow",
+                "id"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "FK_FLOW_ID"
+              ]
+            }
+          ]
+        },
+        "steps": {
+          "@cds.ambiguous": "missing on condition?",
+          "type": "cds.Association",
+          "target": "APIPortal_Developer_CF.Steps",
+          "cardinality": {
+            "max": "*"
+          },
+          "on": [
+            {
+              "ref": [
+                "steps",
+                "FK_STREAM_ID"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "id"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "APIPortal_Developer_CF.Policies": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "elements": {
+        "id": {
+          "key": true,
+          "type": "cds.String",
+          "length": 36
+        },
+        "FK_API_NAME": {
+          "type": "cds.String",
+          "length": 255
+        },
+        "life_cycle": {
+          "type": "APIPortal_Developer_CF.History"
+        },
+        "name": {
+          "type": "cds.String",
+          "length": 255
+        },
+        "policy_content": {
+          "type": "cds.LargeString"
+        },
+        "type": {
+          "type": "cds.String",
+          "length": 40
+        },
+        "apiProxy": {
+          "@cds.ambiguous": "missing on condition?",
+          "type": "cds.Association",
+          "target": "APIPortal_Developer_CF.APIProxies",
+          "on": [
+            {
+              "ref": [
+                "apiProxy",
+                "name"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "FK_API_NAME"
+              ]
+            }
+          ]
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,95 @@
+{
+  "name": "btp-invoicing",
+  "version": "1.0.0",
+  "description": "A simple CAP project.",
+  "repository": "<Add your repository here>",
+  "license": "UNLICENSED",
+  "private": true,
+  "dependencies": {
+    "@sap-cloud-sdk/http-client": "2.6.0",
+    "@sap-cloud-sdk/openapi": "^2.9.0",
+    "@sap/cds": "^6",
+    "@sap/cds-dk": "^6.0.4",
+    "express": "^4",
+    "hdb": "^0.18.3",
+    "moment": "^2.29.4",
+    "passport": "^0.6.0",
+    "stripe": "^9.13.0"
+  },
+  "devDependencies": {
+    "cross-var": "^1.1.0",
+    "typescript": "^4.7.4"
+  },
+  "scripts": {
+    "start": "cds run",
+    "start:ts": "NODE_ENV=production cds-ts run",
+    "watch": "NODE_ENV=production cds-ts watch",
+    "build": "npm run build:cds && npm run cleanup:ts && npm run build:ts",
+    "cleanup:ts": "npx rimraf gen/srv/srv/**/*.ts",
+    "build:ts": "tsc",
+    "build:cds": "cds build --production",
+    "build:docker": "cross-var npm run build && cross-var npm run pack --image_name=$npm_config_image_name",
+    "helm": "cds add helm",
+    "pack": "cross-var pack build $npm_config_image_name --path gen/srv --buildpack gcr.io/paketo-buildpacks/nodejs:0.24 --builder paketobuildpacks/builder:base",
+    "push:docker": "cross-var docker push $npm_config_image_name",
+    "deploy:kyma": "cross-var helm upgrade --install btp-invoicing ./chart --namespace=$npm_config_namespace",
+    "undeploy:kyma": "cross-var helm uninstall btp-invoicing --namespace=$npm_config_namespace",
+    "build-deploy:kyma": "cross-var npm run build:docker --image_name=$npm_config_image_name && cross-var npm run push:docker --image_name=$npm_config_image_name && cross-var npm run deploy:kyma --namespace=$npm_config_namespace"
+  },
+  "build": {
+    "target": "gen",
+    "tasks": [
+      {
+        "for": "node-cf",
+        "src": "srv",
+        "options": {
+          "model": [
+            "srv"
+          ]
+        }
+      }
+    ]
+  },
+  "eslintConfig": {
+    "extends": "eslint:recommended",
+    "env": {
+      "es2020": true,
+      "node": true,
+      "jest": true,
+      "mocha": true
+    },
+    "globals": {
+      "SELECT": true,
+      "INSERT": true,
+      "UPDATE": true,
+      "DELETE": true,
+      "CREATE": true,
+      "DROP": true,
+      "CDL": true,
+      "CQL": true,
+      "CXL": true,
+      "cds": true
+    },
+    "rules": {
+      "no-console": "off",
+      "require-atomic-updates": "off"
+    }
+  },
+  "cds": {
+    "requires": {
+      "auth": {
+        "restrict_all_services": false,
+        "kind": "xsuaa"
+      },
+      "apiportal": {
+        "kind": "odata-v2",
+        "model": "srv/external/APIPortal_Developer_CF",
+        "credentials": {
+          "destination": "api-portal",
+          "path": "/apiportal/api/1.0/Management.svc",
+          "requestTimeout": 1000000
+        }
+      }
+    }
+  }
+}
