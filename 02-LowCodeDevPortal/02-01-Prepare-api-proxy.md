@@ -1,5 +1,8 @@
 # Prepare SAP API Management for service account access
-1. Import the [API Proxy](https://github.com/SAP-samples/btp-create-api-integrations/raw/low-code-dev-portal/DevPortal_Anonymous.zip) into your instance of SAP API Management via the **Develop** menu > **Import API**.
+1. Import the [API Proxy](https://github.com/SAP-samples/btp-create-api-integrations/raw/low-code-dev-portal/DevPortal_Anonymous.zip) into your instance of SAP API Management via the **Design** menu > **Import API**.
+
+    ![image](https://user-images.githubusercontent.com/6976027/200876883-b334ee3c-804e-4dd2-bc4b-8ca1199acb19.png)
+
 2. Update the Target EndPoint to reflect your environment. The host name depends on which region you are subscribed in and can be retrieved from the service keys created in the previous section.
     ![image](https://user-images.githubusercontent.com/6976027/193166133-4427b8ab-637e-469c-8433-ae785b4f8c3c.png). 
 
