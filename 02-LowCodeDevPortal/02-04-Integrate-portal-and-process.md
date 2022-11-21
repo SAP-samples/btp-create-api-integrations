@@ -1,6 +1,6 @@
 ## Integrate the portal and process
 Now that your low code portal is built and request API access process deployed, the final step is to integrate the two, so that the process can be invoked from a request form in the portal.
-  1. Open the **API Product Detail** page in SAP AppGyver.
+  1. Open the **API Product Detail** page in SAP Build Apps.
   2. Add a button to the bottom of the canvas and set the label to **Request Access to this API**.
   3. Create a new page called **API request form**.
   4. Customize the header and add three input fields below. Name them **First Name**, **Last Name**, and **Email**.

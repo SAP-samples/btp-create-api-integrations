@@ -67,8 +67,8 @@ A service instance lets you interact with the API Management, API portal service
       "clientSecret": "secret"
       }
       ```
-## Create a Service Instance for SAP Process Automation
-  1. Create a service instance of SAP Process Automation along with a service key. Follow the same steps as above, but select **SAP Process Automation** as the service. Save the endpoints.api value and credentials for later.
+## Create a Service Instance for SAP Build Process Automation
+  1. Create a service instance of SAP Build Process Automation along with a service key. Follow the same steps as above, but select **SAP Build Process Automation** as the service. Save the endpoints.api value and uaa credentials for later.
 
 ## Create a Destination for API Portal API access
 

@@ -8,28 +8,33 @@ The required systems and components are:
 
 - SAP BTP account
 
-Entitlements/Quota required in your SAP Business Technology Platform Account:
+Free (Tier) Entitlements/Quota required in your SAP Business Technology Platform Account:
 
-| Service                           | Plan        | Number of instances |
-| --------------------------------- | ----------- | ------------------- |
-| SAP Integration Suite             | free        | 1                   |
-|API Management, API Portal         | apiportal-apiaccess | 1           |
-|API Management, developer portal   | devportal-apiaccess | 1           |
-| SAP Process Automation            | standard    | 1                   |
-| Authorization & Trust Management  | application | 1                   |
-| Destination                       | lite        | 1                   |
-| SAP AppGyver                      | free        | 1                   |
-| SAP BTP, Kyma runtime             | free        | 1                   |
+| Service                           | Plan                    | Number of instances |
+| --------------------------------- | ----------------------- | ------------------- |
+| API Management, API Portal        | apiportal-apiaccess     | 1                   |
+| API Management, developer portal  | devportal-apiaccess     | 1                   |
+| Authorization & Trust Management  | application             | 1                   |
+| Destination                       | lite                    | 1                   |
+| SAP BTP, Kyma runtime             | free                    | 1                   |
+| SAP Build Apps                    | free (Application)      | 1                   |
+| SAP Build Process Automation      | free (Application)      | 1                   |
+| SAP Build Process Automation      | standard <sup>(1)</sup> | 1                   |
+| SAP Integration Suite             | free                    | 1                   |
+
+> **(1)** - Make sure to select the **standard** and not the **standard (Application)** quota for SAP Build Process Automation. 
 
 Subscriptions required in your SAP Business Technology Platform Account:
 
 | Subscription                      | Plan             |
 | --------------------------------- | ---------------- |
-| SAP Integration Suite             | standard         |
-| SAP AppGyver                      | standard         |
-| SAP Process Automation            | free             |
+| SAP Integration Suite             | free             |
+| SAP Build Process Automation      | free             |
+| SAP Build Apps                    | free             |
 
-* [Setup SAP low code solutions using BTP boosters](https://github.com/SAP-docs/btp-cloud-platform/blob/main/docs/30-development/boosters-fb1b561.md) - In this section, you can learn how to use BTP boosters and automate the setup of SAP BTP low code SaaS applications by executing the SAP Process Automation and SAP AppGyver boosters in your subaccount
+> **Hint** - In Trial accounts, the service plans for e.g. SAP Integration Suite will be different like **trial** instead of free. 
+
+* [Setup SAP low code solutions using BTP boosters](https://github.com/SAP-docs/btp-cloud-platform/blob/main/docs/30-development/boosters-fb1b561.md) - In this section, you can learn how to use BTP boosters and automate the setup of SAP BTP low code SaaS applications by executing the SAP Build Process Automation and SAP Build Apps boosters in your subaccount
 * [Subscribe to SAP Integration Suite](./01-02-Subscribe-Integration-Suite.md)
 * [Deploy SAP BTP, Kyma runtime](https://github.com/SAP-docs/btp-cloud-platform/blob/main/docs/50-administration-and-ops/create-the-kyma-environment-instance-09dd313.md) - If you're interested in API federation and monetization, you will need an instance of Kyma runtime. Follow these instructions to get started with Kyma.
 * [Activate the API Management capability in SAP Integration Suite](01-04-Activate-API-Management.md)

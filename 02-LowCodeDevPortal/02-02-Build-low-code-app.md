@@ -1,8 +1,8 @@
 # Build a low code Developer Portal
-In this section, you will build a low code app in SAP AppGyver. For reference, see other walkthrough missions, such as [Custom mobile HR app](https://github.com/SAP-samples/successfactors-extension-calculate-employee-seniority/tree/mission-sfsf-mobile-appgyver/04-CreateSAPAppGyverProject) and [Covid certificate checker](https://github.com/SAP-samples/cap-appgyver-covid-certcheck/tree/main/tutorials/4_AppGyverApp).
+In this section, you will build a low code app in SAP Build Apps. For reference, see other walkthrough missions, such as [Custom mobile HR app](https://github.com/SAP-samples/successfactors-extension-calculate-employee-seniority/tree/mission-sfsf-mobile-appgyver/04-CreateSAPAppGyverProject) and [Covid certificate checker](https://github.com/SAP-samples/cap-appgyver-covid-certcheck/tree/main/tutorials/4_AppGyverApp).
 
 ## API Product Home
-1. Access SAP AppGyver from the SAP BTP cockpit under **Subscriptions and Instances** and create a new SAP Appgyver project from the dropdown list.
+1. Access SAP Build Apps from the SAP BTP cockpit under **Subscriptions and Instances** and create a new SAP Build Apps project from the dropdown list.
 2. Activate **Auth > Enable Authentication > BTP authentication**.
 3. Create a new integration under **Data > Add Integration > BTP Destinations** and select the LCDevPortal destination from the previous step.
 4. Enable the Applications, APIProducts, and APIProxies entities and save (use the browse data feature to make sure everything is working).
@@ -86,7 +86,7 @@ However, we are providing the basic authentication credentials for the custom HT
   ![Application Detail](img/ApplicationDetail.png)
 
 ## Swagger UI (Optional)
-As an optional step, you can deploy this ["Dockerized" version of swagger-ui-express](https://github.com/SAP-samples/btp-create-api-integrations/tree/low-code-dev-portal/swagger-ui-sample) on Kyma and use it to provide the API documentation from your Business Hub Enterprise tenant. The full experience of Business Hub Enterprise uses [Swagger UI](https://swagger.io/tools/swagger-ui/) which is implemented as a browser-side js/css. SAP AppGyver doesn't currently support inclusion of custom client-side libraries but it is a current [roadmap item](https://discovery-center.cloud.sap/serviceCatalog/sap-appgyver?service_plan=standard&region=europe(frankfurt)&commercialModel=cloud&tab=roadmap). 
+As an optional step, you can deploy this ["Dockerized" version of swagger-ui-express](https://github.com/SAP-samples/btp-create-api-integrations/tree/low-code-dev-portal/swagger-ui-sample) on Kyma and use it to provide the API documentation from your Business Hub Enterprise tenant. The full experience of Business Hub Enterprise uses [Swagger UI](https://swagger.io/tools/swagger-ui/) which is implemented as a browser-side js/css. SAP Build Apps doesn't currently support inclusion of custom client-side libraries but it is a current [roadmap item](https://discovery-center.cloud.sap/serviceCatalog/sap-appgyver?service_plan=standard&region=europe(frankfurt)&commercialModel=cloud&tab=roadmap). 
 
 Important: The sample isn't intended to be used productively, as you would run into POST body size issues for very lengthy API documentation and each successive POST overwrites the previous documentation. Instead, consider it to be an example of how you can solve problems creatively with low code tools.
 

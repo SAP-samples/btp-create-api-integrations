@@ -3,7 +3,7 @@
 # Create simple, connected digital experiences with API-based integration
 
 ## Description
-Build a unified catalog and a developer portal for all APIs, regardless of where they're managed. Create your own digital experiences with SAP AppGyver, SAP Integration Suite, and SAP Process Automation to operationalize access requests, federate API from disparate gateways, and monetize their use.
+Build a unified catalog and a developer portal for all APIs, regardless of where they're managed. Create your own digital experiences with SAP Build Apps, SAP Integration Suite, and SAP Build Process Automation to operationalize access requests, federate API from disparate gateways, and monetize their use.
 
 In an API-first economy, the new business opportunities created from transactional and analytical systems are invaluable. Ensure governance, agility, and a clean line of sight into consumption help you make the most of them.
 
