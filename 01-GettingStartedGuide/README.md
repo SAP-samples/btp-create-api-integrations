@@ -7,32 +7,38 @@ All SAP BTP services in this use case have free tier service plans. Please remem
 The required systems and components are:
 
 - SAP BTP account
+- SAP Identity Authentication Service (SAP IAS) tenant
+
+> **Important** - Please make sure to setup a trust between your custom **SAP IAS tenant** and your SAP BTP subaccount before using the **SAP Build Apps** booster! If you don't have a SAP IAS tenant yet, you can create one yourself from within your SAP BTP cockpit. When signing up for a **SAP BTP** account (**PAYG** or **CPEA**), you're entitled for a test and productive **SAP Identity Authentication Service** tenant. Any further tenant can be licensed as **Aditional Tenant** and will be charged according to your account type. Please also check the official SAP Help documentation ([click here](https://help.sap.com/docs/IDENTITY_AUTHENTICATION/6d6d63354d1242d185ab4830fc04feb1/93160ebd2dcb40e98aadcbb9a970f2b9.html?locale=en-US#loio93160ebd2dcb40e98aadcbb9a970f2b9__licensing_section)) and the following blog post ([click here](https://blogs.sap.com/2021/10/26/is-sap-cloud-identity-services-for-free/)) for further information.
 
 Free (Tier) Entitlements/Quota required in your SAP Business Technology Platform Account:
 
-| Service                           | Plan                    | Number of instances |
-| --------------------------------- | ----------------------- | ------------------- |
-| API Management, API Portal        | apiportal-apiaccess     | 1                   |
-| API Management, developer portal  | devportal-apiaccess     | 1                   |
-| Authorization & Trust Management  | application             | 1                   |
-| Destination                       | lite                    | 1                   |
-| SAP BTP, Kyma runtime             | free                    | 1                   |
-| SAP Build Apps                    | free (Application)      | 1                   |
-| SAP Build Process Automation      | free (Application)      | 1                   |
-| SAP Build Process Automation      | standard <sup>(1)</sup> | 1                   |
-| SAP Integration Suite             | free                    | 1                   |
+| Service                           | Plan                                  | Number of instances |
+| --------------------------------- | ------------------------------------- | ------------------- |
+| API Management, API Portal        | apiportal-apiaccess                   | 1                   |
+| API Management, developer portal  | devportal-apiaccess                   | 1                   |
+| Authorization & Trust Management  | application                           | 1                   |
+| Destination                       | lite                                  | 1                   |
+| SAP BTP, Kyma runtime             | free                                  | 1                   |
+| SAP Build Apps                    | free (Application)                    | 1                   |
+| SAP Build Process Automation      | free (Application)                    | 1                   |
+| SAP Build Process Automation      | standard <sup>(1)</sup>               | 1                   |
+| SAP Integration Suite             | free                                  | 1                   |
+| Cloud Identity Services           | default <sup>(2)</sup>                | 1                   |
 
 > **(1)** - Make sure to select the **standard** and not the **standard (Application)** quota for SAP Build Process Automation. 
+> **(2)** - Only if a new SAP Identity Authentication Service tenant is required. Please also check the **Prerequisite** section.
 
 Subscriptions required in your SAP Business Technology Platform Account:
 
-| Subscription                      | Plan             |
-| --------------------------------- | ---------------- |
-| SAP Integration Suite             | free             |
-| SAP Build Process Automation      | free             |
-| SAP Build Apps                    | free             |
+| Subscription                      | Plan                           |
+| --------------------------------- | ------------------------------ |
+| SAP Integration Suite             | free                           |
+| SAP Build Process Automation      | free                           |
+| SAP Build Apps                    | free                           |
+| Cloud Identity Services           | default <sup>(3)</sup>         |
 
-> **Hint** - In Trial accounts, the service plans for e.g. SAP Integration Suite will be different like **trial** instead of free. 
+> **(3)** - Only if a new SAP Identity Authentication Service tenant is required. Please also check the **Prerequisite** section.
 
 * [Setup SAP low code solutions using BTP boosters](https://github.com/SAP-docs/btp-cloud-platform/blob/main/docs/30-development/boosters-fb1b561.md) - In this section, you can learn how to use BTP boosters and automate the setup of SAP BTP low code SaaS applications by executing the SAP Build Process Automation and SAP Build Apps boosters in your subaccount
 * [Subscribe to SAP Integration Suite](./01-02-Subscribe-Integration-Suite.md)
