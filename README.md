@@ -1,6 +1,6 @@
 [![REUSE status](https://api.reuse.software/badge/github.com/SAP-samples/btp-create-api-integrations)](https://api.reuse.software/info/github.com/SAP-samples/btp-create-api-integrations)
 
-# Create simple, connected digital experiences with API-based integration
+# Create simple, connected experiences with API-based integration
 
 ## Description
 Build a unified catalog and a developer portal for all APIs, regardless of where they're managed. Create your own digital experiences with SAP Build Apps, SAP Integration Suite, and SAP Build Process Automation to operationalize access requests, federate API from disparate gateways, and monetize their use.
