@@ -71,7 +71,7 @@ This part of the use case scope demonstrates federation of API from different ga
   * Get an instance of [Azure API Management](https://docs.microsoft.com/en-us/azure/api-management/get-started-create-service-instance)
   * Activate [Azure Event Grid](https://docs.microsoft.com/en-us/azure/event-grid/)
   * [Send events from API Management to Event Grid](https://docs.microsoft.com/en-us/azure/api-management/how-to-event-grid)
-  * Create a [topic using Cloud event schema](https://docs.microsoft.com/en-us/azure/event-grid/event-schema-api-management?tabs=cloud-event-schema) for events such as **Microsoft.ApiManagement.APIUpdated**, **Microsoft.ApiManagement.APIReleaseCreated* and **Microsoft.ApiManagement.APICreated**
+  * Create a [topic using Cloud event schema](https://docs.microsoft.com/en-us/azure/event-grid/event-schema-api-management?tabs=cloud-event-schema) for events such as **Microsoft.ApiManagement.APIUpdated**, **Microsoft.ApiManagement.APIReleaseCreated** and **Microsoft.ApiManagement.APICreated**
   * [Dynamically expose Open API definitions in Azure API Management](https://yourazurecoach.com/2021/12/21/dynamically-expose-open-api-definitions-in-azure-api-management/) so that an SAP BTP webhook can callback and retrieve the API specification
 
   ![API Gateway Federation - Solution Diagram](../images/api_federation_solution_diagram.png)
