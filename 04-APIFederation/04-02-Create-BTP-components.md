@@ -7,14 +7,14 @@ Once you've completed the prerequisites, you will need 2 SAP BTP Destinations av
 3. Create an additional destination called **azure-dest** and provide the details which will look something like this:
    * Type: HTTP
    * Description: Azure API Management
-   * URL: <Gateway URL retrieved from Azure Portal>
+   * URL: **Gateway URL retrieved from Azure Portal**
 
       [<img src="./img/api_gateway_url.png" width="70%">](./img/api_gateway_url.png)
 
    * Proxy Type: Internet
    * Authentication: NoAuthentication
    * Additional Properties: URL.headers.Ocp-Apim-Subscription-Key
-   * Additional Properties value: <Subscription key retrieved from test console of Azure API Management>
+   * Additional Properties value: **Subscription key retrieved from test console of Azure API Management**
 
       [<img src="./img/get_subscription_key.png" width="70%">](./img/get_subscription_key.png)
 
