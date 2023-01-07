@@ -9,13 +9,13 @@ Once you've completed the prerequisites, you will need 2 SAP BTP Destinations av
    * Description: Azure API Management
    * URL: <Gateway URL retrieved from Azure Portal>
 
-      <br><br>[<img src="./img/IS_RoleCollection.png" width="70%">](./img/api_gateway_url.png)
+    <br><br>[<img src="./img/IS_RoleCollection.png" width="70%">](./img/api_gateway_url.png)
 
    * Proxy Type: Internet
    * Authentication: NoAuthentication
    * Additional Properties: URL.headers.Ocp-Apim-Subscription-Key
    * Additional Properties value: <Subscription key retrieved from test console of Azure API Management>
 
-     <br><br>[<img src="./img/IS_RoleCollection.png" width="70%">](./img/get_subscription_key.png)
+    <br><br>[<img src="./img/IS_RoleCollection.png" width="70%">](./img/get_subscription_key.png)
 
 4. Access the SAP API Management portal and create an API Product called **Federated_API**
