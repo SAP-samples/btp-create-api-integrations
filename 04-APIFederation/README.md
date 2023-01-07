@@ -1,0 +1,5 @@
+# API Gateway Federation scope
+* [Ensure completion of prerequisite steps](../01-01-GettingStartedGuide/README.md#prerequisites-for-api-gateway-federation) - Configure your Azure API Management instance and Event Grid topic to send events and accept an OpenAPI definition callback
+* [Create SAP BTP components](04-02-Create-BTP-components.md) - Create SAP BTP destinations to manage the access and HTTP headers needed to retrieve and update API details. Create an API Product to expose the remotely managed API documentation to developers  
+* [Deploy the API federation components](04-03-Deploy-kyma-components.md) - Deploy the API Federation service, a CAP application, to your Kyma environment
+* [Test API federation capability end to end](04-04-Test-E2E.md) - Federate a remotely managed API and it's documentation
