@@ -1,0 +1,48 @@
+{
+    "name": "Dynamic from data",
+    "version": "Dynamic from data",
+    "title": "Dynamic from data",
+    "releaseStatus": "Active",
+    "releaseMetadata": "{\"reason\":\"updated via event\"}",
+    "description": null,
+    "isUnmanaged": true,
+    "isPublished": false,
+    "serviceCode": "REST",
+    "providerName": "NONE",
+    "statusCode": "REGISTERED",
+    "state": "EXTERNAL",
+    "targetEndPoints": [],
+    "proxyEndPoints": [{
+        "publishUrl": "Dynamic from data",
+        "name": "default",
+        "isDefault": true,
+        "apiResources": [{
+            "canShowDelete": true,
+            "canShowGet": true,
+            "canShowPost": true,
+            "canShowPut": true,
+            "canShowOption": true,
+            "canShowHead": true,
+            "canShowPatch": true,
+            "isDeleteChecked": false,
+            "isGetChecked": false,
+            "isPostChecked": false,
+            "isPutChecked": false,
+            "isHeadChecked": false,
+            "isPatchChecked": false,
+            "resourcePath": "/SWAGGER_JSON",
+            "title": "SWAGGER_JSON",
+            "name": "SWAGGER_JSON",
+            "description": "",
+            "documentations": [{
+                "content": "Dynamic from data",
+                "mimeType": "HTML",
+                "apiResourceName": "SWAGGER_JSON",
+                "locale": "en_US"
+            }]
+        }]
+    }],
+    "__metadata": {
+        "type": "apiportal.APIProxy"
+    }
+}

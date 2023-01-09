@@ -1,0 +1,120 @@
+{
+  "name": "api-federation-cap",
+  "version": "1.1.0",
+  "description": "API Gateway Federation sample",
+  "repository": "https://github.com/SAP-samples/btp-create-api-integrations",
+  "license": "Apache 2.0",
+  "private": true,
+  "dependencies": {
+    "@sap-cloud-sdk/odata-v2": "^2.12.0",
+    "@sap/cds": "^6.3.2",
+    "@sap/cds-dk": "^6.3.2",
+    "@sap/xssec": "^3",
+    "@types/node": "^18.11.9",
+    "express": "^4.18.2",
+    "js-yaml": "^4.1.0",
+    "passport": "^0.6.0"
+  },
+  "devDependencies": {
+    "@sap-cloud-sdk/generator": "^2.12.0",
+    "@types/express": "^4.17.14",
+    "@types/js-yaml": "^4.0.5",
+    "cross-var": "^1.1.0",
+    "rimraf": "^2.6.2"
+  },
+  "engines": {
+    "npm": ">=8.0.0 <9.0.0",
+    "node": ">=16.0.0 <17.0.0"
+  },
+  "scripts": {
+    "start": "cds run",
+    "rimraf": "./node_modules/rimraf/bin.js",
+    "start:ts": "NODE_ENV=production cds-ts run",
+    "watch": "NODE_ENV=production cds-ts watch",
+    "build": "npm run build:cds && npm run cleanup:ts && npm run build:ts",
+    "cleanup:ts": "npx rimraf gen/srv/srv/**/*.ts",
+    "build:ts": "tsc",
+    "build:cds": "cds build --production",
+    "build:docker": "cross-var npm run build && cross-var npm run pack --image_name=$npm_config_image_name",
+    "helm": "cds add helm",
+    "pack": "cross-var pack build $npm_config_image_name --path gen/srv --buildpack gcr.io/paketo-buildpacks/nodejs:0.24 --builder paketobuildpacks/builder:base",
+    "push:docker": "cross-var docker push $npm_config_image_name",
+    "deploy:kyma": "cross-var helm upgrade --install api-federation-cap ./chart --namespace=$npm_config_namespace",
+    "undeploy:kyma": "cross-var helm uninstall api-federation-cap --namespace=$npm_config_namespace",
+    "build-deploy:kyma": "cross-var npm run build:docker --image_name=$npm_config_image_name && cross-var npm run push:docker --image_name=$npm_config_image_name && cross-var npm run deploy:kyma --namespace=$npm_config_namespace"
+  },
+  "build": {
+    "target": "gen",
+    "tasks": [
+      {
+        "for": "node-cf",
+        "src": "srv",
+        "options": {
+          "model": [
+            "srv"
+          ]
+        }
+      }
+    ]
+  },
+  "eslintConfig": {
+    "extends": "eslint:recommended",
+    "env": {
+      "es2020": true,
+      "node": true,
+      "jest": true,
+      "mocha": true
+    },
+    "globals": {
+      "SELECT": true,
+      "INSERT": true,
+      "UPDATE": true,
+      "DELETE": true,
+      "CREATE": true,
+      "DROP": true,
+      "CDL": true,
+      "CQL": true,
+      "CXL": true,
+      "cds": true
+    },
+    "rules": {
+      "no-console": "off",
+      "require-atomic-updates": "off"
+    }
+  },
+  "cds": {
+    "requires": {
+      "auth": {
+        "restrict_all_services": false,
+        "kind": "xsuaa"
+      },
+      "uaa": {
+        "kind": "xsuaa"
+      },
+      "azureapi": {
+        "kind": "rest",
+        "credentials": {
+          "destination": "azure-dest",
+          "requestTimeout": 1000000
+        }
+      },
+      "apim-dest": {
+        "kind": "destination"
+      },
+      "apiportal": {
+        "kind": "odata-v2",
+        "model": "srv/external/apim_metadata",
+        "credentials": {
+          "destination": "apim-dest",
+          "path": "/apiportal/api/1.0/Management.svc",
+          "requestTimeout": 1000000
+        }
+      },
+      "[production]": {
+        "auth": {
+          "kind": "xsuaa"
+        }
+      }
+    }
+  }
+}
