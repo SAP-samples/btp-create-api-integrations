@@ -1,4 +1,4 @@
-# Test API federation capability end to end
+# Test API gateway federation capability end to end
 
 Now that you have deployed the components and configured an event subscription, you can test the API Federation capability by creating API artifacts in your Azure API Management instance. The sample application supports 2 scenarios out of the box, creation of a new remotely managed API, and updating an existing one, for example by adding a new method/verb. Additional scenarios, such as deleting an API could also be implemented.
 
