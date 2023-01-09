@@ -13,7 +13,7 @@
 
 # Create event subscription between Azure Event Grid and SAP BTP, Kyma runtime webhook
 
-1. Create an [event subscription using Cloud event schema](https://docs.microsoft.com/en-us/azure/event-grid/event-schema-api-management?tabs=cloud-event-schema) for events such as **Microsoft.ApiManagement.APIUpdated**, **Microsoft.ApiManagement.APIReleaseCreated** and **Microsoft.ApiManagement.APICreated**
+1. Create an [event subscription using Cloud event schema](https://docs.microsoft.com/en-us/azure/event-grid/event-schema-api-management?tabs=cloud-event-schema) for events such as **Microsoft.ApiManagement.APIUpdated**, **Microsoft.ApiManagement.APIReleaseCreated**, **Microsoft.ApiManagement.APIReleaseUpdated** and **Microsoft.ApiManagement.APICreated**
 
   [<img src="./img/create_event_subscription.png" width="70%">](./img/create_event_subscription.png)
 
