@@ -17,7 +17,7 @@
 
   [<img src="./img/create_event_subscription.png" width="70%">](./img/create_event_subscription.png)
 
-2. Set the Endpoint Type to **Web Hook** and set the Endpoint value to the **/apiReceiver/NewApi** path of the CAP application, for example: https://api-federation-cap-srv-api-federation.\<kyma cluster\>/apiReceiver/NewApi
+2. Set the Endpoint Type to **Web Hook** and set the Endpoint value to the **/apiReceiver/NewApi** path of the CAP application, for example: https://api-federation-cap-srv-api-federation.<\kyma cluster\>/apiReceiver/NewApi
 3. Confirm the selection. You can check the logs of the deployed pod in Kyma (Pods > api-federation-cap-srv > Containers > View Logs) and you should see the handshake process complete: 
 
   ```Callback address: https://rp-eastus.eventgrid.azure.net:553/eventsubscriptions/btp-cap/validate?id=<ID>=2023-01-09T18:39:37.5594330Z&apiVersion=2021-10-15-preview&token=<token>```<br>
