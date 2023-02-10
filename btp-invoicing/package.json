@@ -18,10 +18,12 @@
   },
   "devDependencies": {
     "cross-var": "^1.1.0",
-    "typescript": "^4.7.4"
+    "typescript": "^4.7.4",
+    "rimraf": "^2.6.2"
   },
   "scripts": {
     "start": "cds run",
+    "rimraf": "./node_modules/rimraf/bin.js",
     "start:ts": "NODE_ENV=production cds-ts run",
     "watch": "NODE_ENV=production cds-ts watch",
     "build": "npm run build:cds && npm run cleanup:ts && npm run build:ts",
