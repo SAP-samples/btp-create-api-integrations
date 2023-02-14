@@ -62,7 +62,7 @@ export default class StripeService {
                 const ratePlanName: string = position.ratePlanSubscribed[0][0].productName;
                 const calls: number = position.ratePlanSubscribed[0][0].calls;
                 const start: number = moment(bill.startDate, "YYYY/MM/DDTHH:mm:SS").valueOf() / 1000;
-                const end: number = moment(bill.endDate, "YYYY/MM/DDTHH:mm:SS").valueOf() / 1000;
+                const end: number = moment(bill.endDate, "YYYY/MM/DDTHH:mm:SS").valueOf() / 1000
 
                 await this.stripe.invoiceItems.create({
                     customer: customer.id,
