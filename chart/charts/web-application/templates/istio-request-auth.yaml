@@ -1,0 +1,12 @@
+apiVersion: security.istio.io/v1beta1
+kind: RequestAuthentication
+metadata:
+  name: {{ include "web-application.fullname" . }}
+  labels: {{- include "web-application.labels" . | nindent 4 }}
+spec:
+  selector:
+    matchLabels:
+      {{- include "web-application.selectorLabels" . | nindent 6 }}
+  jwtRules:
+    - issuer: https://sts.windows.net/<Azure tenant ID>/
+      jwksUri: https://login.microsoftonline.com/common/discovery/keys
