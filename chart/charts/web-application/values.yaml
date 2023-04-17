@@ -51,9 +51,13 @@ health_check:
 
 startupTimeout: 30
 
-envSecretNames: []
+envSecretNames: ["azure-api-key"]
 
-env: {}
+env:
+  AZURE_API_KEY:
+      secretKeyRef:
+        name: azure-api-key
+        key: AZURE_API_KEY
 # env:
 #   key1: value
 #   key2:

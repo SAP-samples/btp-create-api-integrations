@@ -10,6 +10,8 @@ import {
 } from "./generated/apiportal-service";
 import * as fs from "fs";
 import { HttpResponse } from "@sap-cloud-sdk/http-client";
+import { retrieveJwt } from "@sap-cloud-sdk/connectivity";
+import { IncomingMessage } from "http";
 
 const {
   apiProxiesApi,
@@ -25,7 +27,12 @@ class ApiReceiver extends ApplicationService {
   async init(): Promise<void> {
     this.on("CREATE", "NewApi", async (req: Request): Promise<void> => {
       const eventData = <ApiEvent>req.data;
-      const apiMetadata: NewApiData = await this.getApiMetadata(eventData);
+      const reqIncomingMsg = <unknown>req;
+      const azureJwt = retrieveJwt(<IncomingMessage>reqIncomingMsg);
+      const apiMetadata: NewApiData = await this.getApiMetadata(
+        eventData,
+        azureJwt
+      );
       const proxyExists: NewApiData = await this.getApiDataByKey(
         `${apiMetadata.name}`
       );
@@ -44,14 +51,22 @@ class ApiReceiver extends ApplicationService {
     await super.init();
   }
 
-  private getApiMetadata = async (eventData: ApiEvent): Promise<NewApiData> => {
+  private getApiMetadata = async (
+    eventData: ApiEvent,
+    jwt?: String
+  ): Promise<NewApiData> => {
     const azureapi: Service = await cds.connect.to("azureapi");
     const { subject } = eventData;
-    const apiYaml = <unknown>(
-      await azureapi.get(
-        `/apis/${encodeURIComponent(subject)}/open-api-definition`
-      )
-    );
+    const sendHeaders: any = {
+      Authorization: `Bearer ${jwt}`,
+      "Ocp-Apim-Subscription-Key": process.env.AZURE_API_KEY,
+    };
+    // @ts-ignore
+    const apiYaml: any = await azureapi.send({
+      // @ts-ignore
+      query: `GET /apis/${encodeURIComponent(subject)}/open-api-definition`,
+      headers: sendHeaders,
+    });
     const apiYamlString: string = <string>apiYaml;
     const jsonObject = YAML.load(apiYamlString);
     const encodedRes = Buffer.from(JSON.stringify(jsonObject)).toString(

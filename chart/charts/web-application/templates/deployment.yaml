@@ -30,6 +30,11 @@ spec:
             name: {{ $secretName }}
         {{- end }}
         env:
+        {{- include "cap.web-application.env" . | indent 8 }}
+        {{- range $k, $v := .Values.env }}
+        - name: {{ $k }}
+          value: {{ tpl ($v | toString) $ | quote }}
+        {{- end }}
         {{- if .Values.bindings }}
         - name: SERVICE_BINDING_ROOT
           value: /bindings

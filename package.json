@@ -95,7 +95,8 @@
         "kind": "rest",
         "credentials": {
           "destination": "azure-dest",
-          "requestTimeout": 1000000
+          "requestTimeout": 1000000,
+          "forwardAuthToken": true
         }
       },
       "apim-dest": {

@@ -1,5 +1,5 @@
 global:
-  domain: null
+  domain: c9ff5e0.kyma.ondemand.com
   imagePullSecret:
     name: regcred
 srv:
@@ -9,7 +9,7 @@ srv:
     destinations:
       serviceInstanceName: destinations
   image:
-    repository: <your_docker_account>/api-federation-cap
+    repository: jmsrpp/api-federation-cap
     tag: latest
   resources:
     limits:

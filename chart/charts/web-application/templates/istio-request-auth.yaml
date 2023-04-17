@@ -8,5 +8,6 @@ spec:
     matchLabels:
       {{- include "web-application.selectorLabels" . | nindent 6 }}
   jwtRules:
-    - issuer: https://sts.windows.net/<Azure tenant ID>/
+    - issuer: https://sts.windows.net/42f7676c-f455-423c-82f6-dc2d99791af7/
       jwksUri: https://login.microsoftonline.com/common/discovery/keys
+      forwardOriginalToken: true
