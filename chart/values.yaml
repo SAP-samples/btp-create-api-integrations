@@ -1,5 +1,5 @@
 global:
-  domain: c9ff5e0.kyma.ondemand.com
+  domain: <cluster>.kyma.ondemand.com
   imagePullSecret:
     name: regcred
 srv:
