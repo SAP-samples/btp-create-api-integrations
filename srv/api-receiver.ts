@@ -29,9 +29,10 @@ class ApiReceiver extends ApplicationService {
       const eventData = <ApiEvent>req.data;
       const reqIncomingMsg = <unknown>req;
       const azureJwt = retrieveJwt(<IncomingMessage>reqIncomingMsg);
+      const azuretoken = (req.headers as any).azuretoken;
       const apiMetadata: NewApiData = await this.getApiMetadata(
         eventData,
-        azureJwt
+        azuretoken
       );
       const proxyExists: NewApiData = await this.getApiDataByKey(
         `${apiMetadata.name}`
@@ -53,12 +54,12 @@ class ApiReceiver extends ApplicationService {
 
   private getApiMetadata = async (
     eventData: ApiEvent,
-    jwt?: String
+    azuretoken?: any
   ): Promise<NewApiData> => {
     const azureapi: Service = await cds.connect.to("azureapi");
     const { subject } = eventData;
     const sendHeaders: any = {
-      Authorization: `Bearer ${jwt}`,
+      Authorization: `Bearer ${azuretoken}`,
       "Ocp-Apim-Subscription-Key": process.env.AZURE_API_KEY,
     };
     // @ts-ignore

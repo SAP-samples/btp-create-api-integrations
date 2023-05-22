@@ -96,7 +96,7 @@
         "credentials": {
           "destination": "azure-dest",
           "requestTimeout": 1000000,
-          "forwardAuthToken": true
+          "forwardAuthToken": false
         }
       },
       "apim-dest": {
