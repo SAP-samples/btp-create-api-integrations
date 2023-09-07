@@ -1,165 +1,128 @@
-/* checksum : 6cfe606185817b5b2f436d61a9aeb6e7 */
+/* checksum : b50f14d7bf42efd2bf9875f1bb6d89b8 */
 @cds.external : true
 @m.IsDefaultEntityContainer : 'true'
-service apiportal {};
+service apim_metadata {};
 
-type apiportal.ExpirySettings {
-  @odata.type : 'Edm.DateTime'
-  @odata.precision : 0
-  expiry_date : DateTime;
-  expiry_settings_override_disabled : Boolean;
-  time_out : Integer;
-  time_out_day : String(255);
-};
-
-type apiportal.HealthMonitor {
-  httpMonitor : String(2048);
-  intervalInSec : Integer;
-  isEnabled : Boolean;
-  tcpMonitor : String(2048);
-};
-
-type apiportal.LoadBalancerConfigurations {
-  algorithm : String(255);
-  fallBackServer : String(255);
-  HealthMonitor : apiportal.HealthMonitor;
-  isRetry : Boolean;
-  maxFailures : Integer;
-  serverUnhealthyResponseCode : String(255);
-  weigths : String(255);
-};
-
-type apiportal.History {
-  @odata.type : 'Edm.DateTime'
-  @odata.precision : 0
-  changed_at : DateTime;
-  changed_by : String(255);
-  @odata.type : 'Edm.DateTime'
-  @odata.precision : 0
-  created_at : DateTime;
-  created_by : String(255);
-};
-
-type apiportal.SSLInfo {
-  ciphers : String(255);
-  clientAuthEnabled : Boolean;
-  enabled : Boolean;
-  ignoreValidationErrors : Boolean;
-  keyAlias : String(255);
-  keyStore : String(255);
-  protocols : String(255);
-  trustStore : String(255);
-};
-
+@cds.external : true
 @cds.persistence.skip : true
-entity apiportal.Developers {
-  key id : String(256);
+entity apim_metadata.Developers {
+  key id : String(256) not null;
   country : LargeString;
-  emailId : String(255);
-  firstName : String(255);
-  lastName : String(255);
-  life_cycle : apiportal.History;
+  emailId : String(255) not null;
+  firstName : String(255) not null;
+  lastName : String(255) not null;
+  life_cycle : apim_metadata.History;
   @cds.ambiguous : 'missing on condition?'
-  applications : Association to many apiportal.Applications {  };
+  applications : Association to many apim_metadata.Applications {  };
 };
 
+@cds.external : true
 @cds.persistence.skip : true
-entity apiportal.EndPointProperties {
-  key id : String(36);
+entity apim_metadata.EndPointProperties {
+  key id : String(36) not null;
   name : String(512);
   FK_PROXYENDPOINT_ID : String(36);
   FK_TARGETENDPOINT_ID : String(36);
   value : LargeString;
   @cds.ambiguous : 'missing on condition?'
-  proxyEndPoint : Association to apiportal.APIProxyEndPoints on proxyEndPoint.id = FK_PROXYENDPOINT_ID;
+  proxyEndPoint : Association to apim_metadata.APIProxyEndPoints on proxyEndPoint.id = FK_PROXYENDPOINT_ID;
   @cds.ambiguous : 'missing on condition?'
-  targetEndPoint : Association to apiportal.APITargetEndPoints on targetEndPoint.id = FK_TARGETENDPOINT_ID;
+  targetEndPoint : Association to apim_metadata.APITargetEndPoints on targetEndPoint.id = FK_TARGETENDPOINT_ID;
 };
 
+@cds.external : true
 @cds.persistence.skip : true
-entity apiportal.APIProviderAdditionalPropertys {
-  key entityId : String(255);
-  key name : String(255);
+entity apim_metadata.APIProviderAdditionalPropertys {
+  key entityId : String(255) not null;
+  key name : String(255) not null;
   value : String(1024);
 };
 
+@cds.external : true
 @cds.persistence.skip : true
-entity apiportal.KeyMapEntries {
-  key name : String(255);
+entity apim_metadata.KeyMapEntries {
+  key name : String(255) not null;
   encrypted : Boolean;
-  life_cycle : apiportal.History;
+  life_cycle : apim_metadata.History;
   scope : String(255);
   @cds.ambiguous : 'missing on condition?'
-  keyMapEntryValues : Association to many apiportal.KeyMapEntryValues on keyMapEntryValues.map_name = name;
+  keyMapEntryValues : Association to many apim_metadata.KeyMapEntryValues on keyMapEntryValues.map_name = name;
 };
 
+@cds.external : true
 @cds.persistence.skip : true
-entity apiportal.FileResources {
-  key id : String(36);
+entity apim_metadata.FileResources {
+  key id : String(36) not null;
   content : LargeString;
   name : String(255);
   scope : String(20);
   type : String(10);
   @cds.ambiguous : 'missing on condition?'
-  apiProxies : Association to many apiportal.APIProxies {  };
+  apiProxies : Association to many apim_metadata.APIProxies {  };
 };
 
+@cds.external : true
 @cds.persistence.skip : true
-entity apiportal.ApplicationAdditionalPropertys {
-  key entityId : String(255);
-  key name : String(255);
+entity apim_metadata.ApplicationAdditionalPropertys {
+  key entityId : String(255) not null;
+  key name : String(255) not null;
   value : String(1024);
 };
 
+@cds.external : true
 @cds.persistence.skip : true
-entity apiportal.FlowRules {
-  key id : String(36);
+entity apim_metadata.FlowRules {
+  key id : String(36) not null;
   FK_REQUEST_ID : String(36);
   FK_RESPONSE_ID : String(36);
   @cds.ambiguous : 'missing on condition?'
-  request : Association to apiportal.Streams on request.id = FK_REQUEST_ID;
+  request : Association to apim_metadata.Streams on request.id = FK_REQUEST_ID;
   @cds.ambiguous : 'missing on condition?'
-  response : Association to apiportal.Streams on response.id = FK_RESPONSE_ID;
+  response : Association to apim_metadata.Streams on response.id = FK_RESPONSE_ID;
 };
 
+@cds.external : true
 @cds.persistence.skip : true
-entity apiportal.Documentations {
-  key id : String(36);
-  key locale : String(5);
+entity apim_metadata.Documentations {
+  key id : String(36) not null;
+  key locale : String(5) not null;
   FK_APIRESOURCE_ID : String(36);
   apiResourceName : String(1024);
   content : LargeString;
-  life_cycle : apiportal.History;
+  life_cycle : apim_metadata.History;
   mime_type : String(256);
   @cds.ambiguous : 'missing on condition?'
-  apiResource : Association to apiportal.APIResources on apiResource.id = FK_APIRESOURCE_ID;
+  apiResource : Association to apim_metadata.APIResources on apiResource.id = FK_APIRESOURCE_ID;
 };
 
+@cds.external : true
 @cds.persistence.skip : true
-entity apiportal.Resources {
-  key locale : String(5);
-  key object_id : String(255);
-  key type : String(2);
+entity apim_metadata.Resources {
+  key locale : String(5) not null;
+  key object_id : String(255) not null;
+  key type : String(2) not null;
   long_text : String(16000);
   medium_text : String(255);
   short_text : String(255);
 };
 
+@cds.external : true
 @cds.persistence.skip : true
-entity apiportal.GenericKeyMapEntryValues {
-  key mapName : String(255);
-  key name : String(255);
-  key scope : String(60);
-  key scopeId : String(255);
-  life_cycle : apiportal.History;
+entity apim_metadata.GenericKeyMapEntryValues {
+  key mapName : String(255) not null;
+  key name : String(255) not null;
+  key scope : String(60) not null;
+  key scopeId : String(255) not null;
+  life_cycle : apim_metadata.History;
   value : String(10240);
   @cds.ambiguous : 'missing on condition?'
-  genericKeyMapEntry : Association to apiportal.GenericKeyMapEntries on genericKeyMapEntry.name = mapName and genericKeyMapEntry.scope = scope and genericKeyMapEntry.scopeId = scopeId;
+  genericKeyMapEntry : Association to apim_metadata.GenericKeyMapEntries on genericKeyMapEntry.name = mapName and genericKeyMapEntry.scope = scope and genericKeyMapEntry.scopeId = scopeId;
 };
 
+@cds.external : true
 @cds.persistence.skip : true
-entity apiportal.RouteRules {
-  key id : String(36);
+entity apim_metadata.RouteRules {
+  key id : String(36) not null;
   conditions : LargeString;
   name : String(255);
   FK_PROXYENDPOINT_ID : String(36);
@@ -167,69 +130,72 @@ entity apiportal.RouteRules {
   targetEndPointName : String(255);
   url : LargeString;
   @cds.ambiguous : 'missing on condition?'
-  faultRules : Association to many apiportal.FaultRules on faultRules.FK_ROUTERULE_ID = id;
+  faultRules : Association to many apim_metadata.FaultRules on faultRules.FK_ROUTERULE_ID = id;
   @cds.ambiguous : 'missing on condition?'
-  proxyEndPoint : Association to apiportal.APIProxyEndPoints on proxyEndPoint.id = FK_PROXYENDPOINT_ID;
+  proxyEndPoint : Association to apim_metadata.APIProxyEndPoints on proxyEndPoint.id = FK_PROXYENDPOINT_ID;
 };
 
+@cds.external : true
 @cds.persistence.skip : true
-entity apiportal.TemplatePolicys {
-  key id : String(36);
-  life_cycle : apiportal.History;
+entity apim_metadata.TemplatePolicys {
+  key id : String(36) not null;
+  life_cycle : apim_metadata.History;
   name : String(255);
   FK_TEMPLATE_NAME : String(255);
   policy_content : LargeString;
   type : String(40);
   @cds.ambiguous : 'missing on condition?'
-  policyTemplateContainer : Association to apiportal.PolicyTemplateContainers on policyTemplateContainer.name = FK_TEMPLATE_NAME;
+  policyTemplateContainer : Association to apim_metadata.PolicyTemplateContainers on policyTemplateContainer.name = FK_TEMPLATE_NAME;
 };
 
+@cds.external : true
 @cds.persistence.skip : true
-entity apiportal.APIProxyEndPoints {
-  key id : String(36);
+entity apim_metadata.APIProxyEndPoints {
+  key id : String(36) not null;
   FK_API_NAME : String(255);
   base_path : LargeString;
   FK_DEFAULTFAULTRULE_ID : String(36);
   isDefault : Boolean;
-  life_cycle : apiportal.History;
+  life_cycle : apim_metadata.History;
   name : String(255);
   FK_POSTCLIENTFLOW_ID : String(36);
   FK_POSTFLOW_ID : String(36);
   FK_PREFLOW_ID : String(36);
   publishUrl : LargeString;
   @cds.ambiguous : 'missing on condition?'
-  apiProxy : Association to apiportal.APIProxies on apiProxy.name = FK_API_NAME;
+  apiProxy : Association to apim_metadata.APIProxies on apiProxy.name = FK_API_NAME;
   @cds.ambiguous : 'missing on condition?'
-  apiResources : Association to many apiportal.APIResources on apiResources.FK_PROXYENDPOINT_ID = id;
+  apiResources : Association to many apim_metadata.APIResources on apiResources.FK_PROXYENDPOINT_ID = id;
   @cds.ambiguous : 'missing on condition?'
-  conditionalFlows : Association to many apiportal.ConditionalFlowRules on conditionalFlows.FK_PROXYENDPOINT_ID = id;
+  conditionalFlows : Association to many apim_metadata.ConditionalFlowRules on conditionalFlows.FK_PROXYENDPOINT_ID = id;
   @cds.ambiguous : 'missing on condition?'
-  defaultFaultRule : Association to apiportal.DefaultFaultRules on defaultFaultRule.id = FK_DEFAULTFAULTRULE_ID;
+  defaultFaultRule : Association to apim_metadata.DefaultFaultRules on defaultFaultRule.id = FK_DEFAULTFAULTRULE_ID;
   @cds.ambiguous : 'missing on condition?'
-  faultRules : Association to many apiportal.FaultRules on faultRules.FK_PROXYENDPOINT_ID = id;
+  faultRules : Association to many apim_metadata.FaultRules on faultRules.FK_PROXYENDPOINT_ID = id;
   @cds.ambiguous : 'missing on condition?'
-  postClientFlow : Association to apiportal.FlowRules on postClientFlow.id = FK_POSTCLIENTFLOW_ID;
+  postClientFlow : Association to apim_metadata.FlowRules on postClientFlow.id = FK_POSTCLIENTFLOW_ID;
   @cds.ambiguous : 'missing on condition?'
-  postFlow : Association to apiportal.FlowRules on postFlow.id = FK_POSTFLOW_ID;
+  postFlow : Association to apim_metadata.FlowRules on postFlow.id = FK_POSTFLOW_ID;
   @cds.ambiguous : 'missing on condition?'
-  preFlow : Association to apiportal.FlowRules on preFlow.id = FK_PREFLOW_ID;
+  preFlow : Association to apim_metadata.FlowRules on preFlow.id = FK_PREFLOW_ID;
   @cds.ambiguous : 'missing on condition?'
-  properties : Association to many apiportal.EndPointProperties on properties.FK_PROXYENDPOINT_ID = id;
+  properties : Association to many apim_metadata.EndPointProperties on properties.FK_PROXYENDPOINT_ID = id;
   @cds.ambiguous : 'missing on condition?'
-  routeRules : Association to many apiportal.RouteRules on routeRules.FK_PROXYENDPOINT_ID = id;
+  routeRules : Association to many apim_metadata.RouteRules on routeRules.FK_PROXYENDPOINT_ID = id;
   @cds.ambiguous : 'missing on condition?'
-  virtualhosts : Association to many apiportal.VirtualHosts {  };
+  virtualhosts : Association to many apim_metadata.VirtualHosts {  };
 };
 
+@cds.external : true
 @cds.persistence.skip : true
-entity apiportal.APIProviders {
-  key name : String(200);
+entity apim_metadata.APIProviders {
+  key name : String(200) not null;
   destType : String(30);
   isOnPremise : Boolean;
-  life_cycle : apiportal.History;
+  life_cycle : apim_metadata.History;
   region : String(100);
   rt_auth : String(255);
-  sslInfo : apiportal.SSLInfo;
+  sslInfo : apim_metadata.SSLInfo;
   url : LargeString;
   title : String(255);
   description : String(16000);
@@ -252,20 +218,21 @@ entity apiportal.APIProviders {
   keystorePassword : LargeString;
   keystoreLocation : LargeString;
   @cds.ambiguous : 'missing on condition?'
-  additionalProperties : Association to many apiportal.APIProviderAdditionalPropertys {  };
+  additionalProperties : Association to many apim_metadata.APIProviderAdditionalPropertys {  };
   @cds.ambiguous : 'missing on condition?'
-  apiProxies : Association to many apiportal.APIProxies on apiProxies.FK_PROVIDERNAME = name;
+  apiProxies : Association to many apim_metadata.APIProxies on apiProxies.FK_PROVIDERNAME = name;
   @cds.ambiguous : 'missing on condition?'
-  envKVMs : Association to many apiportal.KeyMapEntries {  };
+  envKVMs : Association to many apim_metadata.KeyMapEntries {  };
   @cds.ambiguous : 'missing on condition?'
-  resources : Association to many apiportal.Resources {  };
+  resources : Association to many apim_metadata.Resources {  };
   @cds.ambiguous : 'missing on condition?'
-  targetEndPoints : Association to many apiportal.APITargetEndPoints {  };
+  targetEndPoints : Association to many apim_metadata.APITargetEndPoints {  };
 };
 
+@cds.external : true
 @cds.persistence.skip : true
-entity apiportal.APIProxies {
-  key name : String(255);
+entity apim_metadata.APIProxies {
+  key name : String(255) not null;
   FK_PROVIDERNAME : String(200);
   apiVersionGroup : String(255);
   cfBindingId : String(36);
@@ -274,7 +241,7 @@ entity apiportal.APIProxies {
   isPublished : Boolean;
   isUnmanaged : Boolean;
   isVersioned : Boolean;
-  life_cycle : apiportal.History;
+  life_cycle : apim_metadata.History;
   provider_name : String(200);
   releaseMetadata : String(2048);
   releaseStatus : String(15);
@@ -286,32 +253,33 @@ entity apiportal.APIProxies {
   title : String(255);
   description : String(16000);
   @cds.ambiguous : 'missing on condition?'
-  apiProducts : Association to many apiportal.APIProducts {  };
+  apiProducts : Association to many apim_metadata.APIProducts {  };
   @cds.ambiguous : 'missing on condition?'
-  apiProvider : Association to apiportal.APIProviders on apiProvider.name = FK_PROVIDERNAME;
+  apiProvider : Association to apim_metadata.APIProviders on apiProvider.name = FK_PROVIDERNAME;
   @cds.ambiguous : 'missing on condition?'
-  contentPackage : Association to apiportal.ContentPackageMappers {  };
+  contentPackage : Association to apim_metadata.ContentPackageMappers {  };
   @cds.ambiguous : 'missing on condition?'
-  fileResources : Association to many apiportal.FileResources {  };
+  fileResources : Association to many apim_metadata.FileResources {  };
   @cds.ambiguous : 'missing on condition?'
-  policies : Association to many apiportal.Policies on policies.FK_API_NAME = name;
+  policies : Association to many apim_metadata.Policies on policies.FK_API_NAME = name;
   @cds.ambiguous : 'missing on condition?'
-  proxyEndPoints : Association to many apiportal.APIProxyEndPoints on proxyEndPoints.FK_API_NAME = name;
+  proxyEndPoints : Association to many apim_metadata.APIProxyEndPoints on proxyEndPoints.FK_API_NAME = name;
   @cds.ambiguous : 'missing on condition?'
-  resources : Association to many apiportal.Resources {  };
+  resources : Association to many apim_metadata.Resources {  };
   @cds.ambiguous : 'missing on condition?'
-  successorAPI : Association to apiportal.APIProxies {  };
+  successorAPI : Association to apim_metadata.APIProxies {  };
   @cds.ambiguous : 'missing on condition?'
-  successorAPIReferences : Association to many apiportal.APIProxies {  };
+  successorAPIReferences : Association to many apim_metadata.APIProxies {  };
   @cds.ambiguous : 'missing on condition?'
-  targetAPIProxies : Association to many apiportal.APITargetEndPoints {  };
+  targetAPIProxies : Association to many apim_metadata.APITargetEndPoints {  };
   @cds.ambiguous : 'missing on condition?'
-  targetEndPoints : Association to many apiportal.APITargetEndPoints on targetEndPoints.FK_API_NAME = name;
+  targetEndPoints : Association to many apim_metadata.APITargetEndPoints on targetEndPoints.FK_API_NAME = name;
 };
 
+@cds.external : true
 @cds.persistence.skip : true
-entity apiportal.Steps {
-  key id : String(36);
+entity apim_metadata.Steps {
+  key id : String(36) not null;
   condition : LargeString;
   FK_DEFAULTFAULTRULE_ID : String(36);
   FK_FAULTRULE_ID : String(36);
@@ -319,72 +287,72 @@ entity apiportal.Steps {
   sequence : Integer;
   FK_STREAM_ID : String(36);
   @cds.ambiguous : 'missing on condition?'
-  defaultFaultRule : Association to apiportal.DefaultFaultRules on defaultFaultRule.id = FK_DEFAULTFAULTRULE_ID;
+  defaultFaultRule : Association to apim_metadata.DefaultFaultRules on defaultFaultRule.id = FK_DEFAULTFAULTRULE_ID;
   @cds.ambiguous : 'missing on condition?'
-  faultRule : Association to apiportal.FaultRules on faultRule.id = FK_FAULTRULE_ID;
+  faultRule : Association to apim_metadata.FaultRules on faultRule.id = FK_FAULTRULE_ID;
   @cds.ambiguous : 'missing on condition?'
-  stream : Association to apiportal.Streams on stream.id = FK_STREAM_ID;
+  stream : Association to apim_metadata.Streams on stream.id = FK_STREAM_ID;
 };
 
+@cds.external : true
 @cds.persistence.skip : true
-entity apiportal.Policies {
-  key id : String(36);
+entity apim_metadata.Policies {
+  key id : String(36) not null;
   FK_API_NAME : String(255);
-  life_cycle : apiportal.History;
+  life_cycle : apim_metadata.History;
   name : String(255);
   policy_content : LargeString;
   type : String(40);
   @cds.ambiguous : 'missing on condition?'
-  apiProxy : Association to apiportal.APIProxies on apiProxy.name = FK_API_NAME;
+  apiProxy : Association to apim_metadata.APIProxies on apiProxy.name = FK_API_NAME;
 };
 
+@cds.external : true
 @cds.persistence.skip : true
-entity apiportal.RatePlans {
-  key id : LargeString;
-  currency : String(50);
-  frequency : String(255);
-  isActive : Boolean;
-  isPublished : Boolean;
+entity apim_metadata.RatePlans {
+  key id : LargeString not null;
+  currency : String(50) not null;
+  frequency : String(255) not null;
+  isActive : Boolean not null;
+  isPublished : Boolean not null;
   isSeasonal : Boolean;
-  life_cycle : apiportal.History;
-  name : String(255);
+  life_cycle : apim_metadata.History;
+  name : String(255) not null;
   rate : LargeString;
   type : String(255);
-  @odata.type : 'Edm.DateTime'
-  @odata.precision : 0
+  @odata.Type : 'Edm.DateTime'
   validFrom : DateTime;
-  @odata.type : 'Edm.DateTime'
-  @odata.precision : 0
+  @odata.Type : 'Edm.DateTime'
   validTo : DateTime;
   description : String(16000);
   @cds.ambiguous : 'missing on condition?'
-  apiProducts : Association to many apiportal.APIProducts {  };
+  apiProducts : Association to many apim_metadata.APIProducts {  };
   @cds.ambiguous : 'missing on condition?'
-  resources : Association to many apiportal.Resources {  };
+  resources : Association to many apim_metadata.Resources {  };
 };
 
+@cds.external : true
 @cds.persistence.skip : true
-entity apiportal.ApiportalCloneMappings {
-  key subaccountId : String(512);
+entity apim_metadata.ApiportalCloneMappings {
+  key subaccountId : String(512) not null;
   apiportalClientId : String(512);
   devportalTenantId : String(512);
-  life_cycle : apiportal.History;
+  life_cycle : apim_metadata.History;
   newServiceInstanceId : String(512);
   serviceInstanceId : String(512);
 };
 
+@cds.external : true
 @cds.persistence.skip : true
-entity apiportal.Applications {
-  key id : String(36);
+entity apim_metadata.Applications {
+  key id : String(36) not null;
   callbackurl : String(255);
   FK_DEVELOPER_ID : String(256);
-  life_cycle : apiportal.History;
+  life_cycle : apim_metadata.History;
   status_code : String(20);
-  @odata.type : 'Edm.DateTime'
-  @odata.precision : 0
+  @odata.Type : 'Edm.DateTime'
   valid_from : DateTime;
-  @odata.type : 'Edm.DateTime'
-  @odata.precision : 0
+  @odata.Type : 'Edm.DateTime'
   valid_to : DateTime;
   version : String(10);
   title : String(255);
@@ -393,23 +361,24 @@ entity apiportal.Applications {
   app_secret : String(1000);
   subscribedRatePlan : LargeString;
   @cds.ambiguous : 'missing on condition?'
-  apiProducts : Association to many apiportal.APIProducts {  };
+  apiProducts : Association to many apim_metadata.APIProducts {  };
   @cds.ambiguous : 'missing on condition?'
-  attributes : Association to many apiportal.ApplicationAdditionalPropertys {  };
+  attributes : Association to many apim_metadata.ApplicationAdditionalPropertys {  };
   @cds.ambiguous : 'missing on condition?'
-  developer : Association to apiportal.Developers on developer.id = FK_DEVELOPER_ID;
+  developer : Association to apim_metadata.Developers on developer.id = FK_DEVELOPER_ID;
   @cds.ambiguous : 'missing on condition?'
-  resources : Association to many apiportal.Resources {  };
+  resources : Association to many apim_metadata.Resources {  };
 };
 
+@cds.external : true
 @cds.persistence.skip : true
-entity apiportal.APITargetEndPoints {
-  key id : String(36);
+entity apim_metadata.APITargetEndPoints {
+  key id : String(36) not null;
   FK_API_NAME : String(255);
   FK_DEFAULTFAULTRULE_ID : String(36);
   isDefault : Boolean;
-  life_cycle : apiportal.History;
-  loadBalancerConfigurations : apiportal.LoadBalancerConfigurations;
+  life_cycle : apim_metadata.History;
+  loadBalancerConfigurations : apim_metadata.LoadBalancerConfigurations;
   name : String(255);
   FK_POSTFLOW_ID : String(36);
   FK_PREFLOW_ID : String(36);
@@ -419,40 +388,42 @@ entity apiportal.APITargetEndPoints {
   targetAPIProxyName : String(255);
   url : String(2083);
   @cds.ambiguous : 'missing on condition?'
-  additionalApiProviders : Association to many apiportal.APIProviders {  };
+  additionalApiProviders : Association to many apim_metadata.APIProviders {  };
   @cds.ambiguous : 'missing on condition?'
-  apiProxy : Association to apiportal.APIProxies on apiProxy.name = FK_API_NAME;
+  apiProxy : Association to apim_metadata.APIProxies on apiProxy.name = FK_API_NAME;
   @cds.ambiguous : 'missing on condition?'
-  conditionalFlows : Association to many apiportal.ConditionalFlowRules on conditionalFlows.FK_TARGETENDPOINT_ID = id;
+  conditionalFlows : Association to many apim_metadata.ConditionalFlowRules on conditionalFlows.FK_TARGETENDPOINT_ID = id;
   @cds.ambiguous : 'missing on condition?'
-  defaultFaultRule : Association to apiportal.DefaultFaultRules on defaultFaultRule.id = FK_DEFAULTFAULTRULE_ID;
+  defaultFaultRule : Association to apim_metadata.DefaultFaultRules on defaultFaultRule.id = FK_DEFAULTFAULTRULE_ID;
   @cds.ambiguous : 'missing on condition?'
-  faultRules : Association to many apiportal.FaultRules on faultRules.FK_TARGETENDPOINT_ID = id;
+  faultRules : Association to many apim_metadata.FaultRules on faultRules.FK_TARGETENDPOINT_ID = id;
   @cds.ambiguous : 'missing on condition?'
-  postFlow : Association to apiportal.FlowRules on postFlow.id = FK_POSTFLOW_ID;
+  postFlow : Association to apim_metadata.FlowRules on postFlow.id = FK_POSTFLOW_ID;
   @cds.ambiguous : 'missing on condition?'
-  preFlow : Association to apiportal.FlowRules on preFlow.id = FK_PREFLOW_ID;
+  preFlow : Association to apim_metadata.FlowRules on preFlow.id = FK_PREFLOW_ID;
   @cds.ambiguous : 'missing on condition?'
-  properties : Association to many apiportal.EndPointProperties on properties.FK_TARGETENDPOINT_ID = id;
+  properties : Association to many apim_metadata.EndPointProperties on properties.FK_TARGETENDPOINT_ID = id;
   @cds.ambiguous : 'missing on condition?'
-  targetAPIProxy : Association to apiportal.APIProxies on targetAPIProxy.name = FK_TARGET_API_PROXY;
+  targetAPIProxy : Association to apim_metadata.APIProxies on targetAPIProxy.name = FK_TARGET_API_PROXY;
 };
 
+@cds.external : true
 @cds.persistence.skip : true
-entity apiportal.VirtualHosts {
-  key id : String(36);
+entity apim_metadata.VirtualHosts {
+  key id : String(36) not null;
   isDefault : Boolean;
   isSSL : Boolean;
-  life_cycle : apiportal.History;
+  life_cycle : apim_metadata.History;
   name : String(255);
   projectPath : String(255);
   virtual_host : String(2048);
   virtual_port : Integer;
 };
 
+@cds.external : true
 @cds.persistence.skip : true
-entity apiportal.ACLProductLinkages {
-  key ruleId : String(255);
+entity apim_metadata.ACLProductLinkages {
+  key ruleId : String(255) not null;
   devportalRuleId : String(255);
   entityId : String(255);
   entityType : String(64);
@@ -461,41 +432,44 @@ entity apiportal.ACLProductLinkages {
   permissionSet : String(1024);
 };
 
+@cds.external : true
 @cds.persistence.skip : true
-entity apiportal.TemplateFileResources {
-  key id : String(36);
+entity apim_metadata.TemplateFileResources {
+  key id : String(36) not null;
   content : LargeString;
   name : String(255);
   FK_TEMPLATE_NAME : String(255);
   scope : String(20);
   type : String(10);
   @cds.ambiguous : 'missing on condition?'
-  policyTemplateContainer : Association to apiportal.PolicyTemplateContainers on policyTemplateContainer.name = FK_TEMPLATE_NAME;
+  policyTemplateContainer : Association to apim_metadata.PolicyTemplateContainers on policyTemplateContainer.name = FK_TEMPLATE_NAME;
 };
 
+@cds.external : true
 @cds.persistence.skip : true
-entity apiportal.DefaultFaultRules {
-  key id : String(36);
+entity apim_metadata.DefaultFaultRules {
+  key id : String(36) not null;
   alwaysEnforce : Boolean;
   name : String(255);
   FK_PROXYENDPOINT_ID : String(36);
   FK_TARGETENDPOINT_ID : String(36);
   @cds.ambiguous : 'missing on condition?'
-  proxyEndPoint : Association to apiportal.APIProxyEndPoints on proxyEndPoint.id = FK_PROXYENDPOINT_ID;
+  proxyEndPoint : Association to apim_metadata.APIProxyEndPoints on proxyEndPoint.id = FK_PROXYENDPOINT_ID;
   @cds.ambiguous : 'missing on condition?'
-  steps : Association to many apiportal.Steps on steps.FK_DEFAULTFAULTRULE_ID = id;
+  steps : Association to many apim_metadata.Steps on steps.FK_DEFAULTFAULTRULE_ID = id;
   @cds.ambiguous : 'missing on condition?'
-  targetEndPoint : Association to apiportal.APITargetEndPoints on targetEndPoint.id = FK_TARGETENDPOINT_ID;
+  targetEndPoint : Association to apim_metadata.APITargetEndPoints on targetEndPoint.id = FK_TARGETENDPOINT_ID;
 };
 
+@cds.external : true
 @cds.persistence.skip : true
-entity apiportal.CacheResources {
-  key name : String(255);
+entity apim_metadata.CacheResources {
+  key name : String(255) not null;
   compression_enabled : Boolean;
   disk_size : Integer;
-  expirySettings : apiportal.ExpirySettings;
+  expirySettings : apim_metadata.ExpirySettings;
   in_memory_size : Integer;
-  life_cycle : apiportal.History;
+  life_cycle : apim_metadata.History;
   max_element_disk : Integer;
   max_element_memory : Integer;
   min_compression_size : Integer;
@@ -504,15 +478,16 @@ entity apiportal.CacheResources {
   skip_cache_element_size : Integer;
 };
 
+@cds.external : true
 @cds.persistence.skip : true
-entity apiportal.Certificates {
-  key name : String(200);
-  key storeName : String(200);
+entity apim_metadata.Certificates {
+  key name : String(200) not null;
+  key storeName : String(200) not null;
   certName : String(256);
   csKey : String(255);
   description : String(2048);
   format : String(256);
-  life_cycle : apiportal.History;
+  life_cycle : apim_metadata.History;
   password : String(256);
   storeType : String(256);
   expiryDate : String(256);
@@ -524,49 +499,52 @@ entity apiportal.Certificates {
   version : String(256);
   content : LargeBinary;
   @cds.ambiguous : 'missing on condition?'
-  certificateStore : Association to apiportal.CertificateStores on certificateStore.name = storeName;
+  certificateStore : Association to apim_metadata.CertificateStores on certificateStore.name = storeName;
 };
 
+@cds.external : true
 @cds.persistence.skip : true
-entity apiportal.GenericKeyMapEntries {
-  key name : String(255);
-  key scope : String(60);
-  key scopeId : String(255);
+entity apim_metadata.GenericKeyMapEntries {
+  key name : String(255) not null;
+  key scope : String(60) not null;
+  key scopeId : String(255) not null;
   isEncrypted : Boolean;
-  life_cycle : apiportal.History;
+  life_cycle : apim_metadata.History;
   @cds.ambiguous : 'missing on condition?'
-  genericKeyMapEntryValues : Association to many apiportal.GenericKeyMapEntryValues on genericKeyMapEntryValues.mapName = name and genericKeyMapEntryValues.scope = scope and genericKeyMapEntryValues.scopeId = scopeId;
+  genericKeyMapEntryValues : Association to many apim_metadata.GenericKeyMapEntryValues on genericKeyMapEntryValues.mapName = name and genericKeyMapEntryValues.scope = scope and genericKeyMapEntryValues.scopeId = scopeId;
 };
 
+@cds.external : true
 @cds.persistence.skip : true
-entity apiportal.APIProductAdditionalProperties {
-  key entityId : String(255);
-  key name : String(255);
+entity apim_metadata.APIProductAdditionalProperties {
+  key entityId : String(255) not null;
+  key name : String(255) not null;
   value : String(1024);
 };
 
+@cds.external : true
 @cds.persistence.skip : true
-entity apiportal.ContentPackageMappers {
-  key targetId : String(255);
-  key targetType : String(255);
+entity apim_metadata.ContentPackageMappers {
+  key targetId : String(255) not null;
+  key targetType : String(255) not null;
   content : String(255);
-  life_cycle : apiportal.History;
+  life_cycle : apim_metadata.History;
   srcArtifactName : String(255);
   srcArtifactType : String(255);
   srcPackageID : String(255);
   srcRepo : String(255);
   @cds.ambiguous : 'missing on condition?'
-  apiProxy : Association to apiportal.APIProxies {  };
+  apiProxy : Association to apim_metadata.APIProxies {  };
 };
 
+@cds.external : true
 @cds.persistence.skip : true
-entity apiportal.APIProducts {
-  key name : String(255);
+entity apim_metadata.APIProducts {
+  key name : String(255) not null;
   isPublished : Boolean;
   isRestricted : Boolean;
-  life_cycle : apiportal.History;
-  @odata.type : 'Edm.DateTime'
-  @odata.precision : 0
+  life_cycle : apim_metadata.History;
+  @odata.Type : 'Edm.DateTime'
   published_at : DateTime;
   published_by : String(256);
   quotaCount : Integer;
@@ -578,75 +556,76 @@ entity apiportal.APIProducts {
   title : String(255);
   description : String(16000);
   @cds.ambiguous : 'missing on condition?'
-  additionalProperties : Association to many apiportal.APIProductAdditionalProperties {  };
+  additionalProperties : Association to many apim_metadata.APIProductAdditionalProperties {  };
   @cds.ambiguous : 'missing on condition?'
-  apiProxies : Association to many apiportal.APIProxies {  };
+  apiProxies : Association to many apim_metadata.APIProxies {  };
   @cds.ambiguous : 'missing on condition?'
-  apiResources : Association to many apiportal.APIResources {  };
+  apiResources : Association to many apim_metadata.APIResources {  };
   @cds.ambiguous : 'missing on condition?'
-  applications : Association to many apiportal.Applications {  };
+  applications : Association to many apim_metadata.Applications {  };
   @cds.ambiguous : 'missing on condition?'
-  ratePlans : Association to many apiportal.RatePlans {  };
+  ratePlans : Association to many apim_metadata.RatePlans {  };
   @cds.ambiguous : 'missing on condition?'
-  resources : Association to many apiportal.Resources {  };
+  resources : Association to many apim_metadata.Resources {  };
 };
 
+@cds.external : true
 @cds.persistence.skip : true
-entity apiportal.PolicyTemplateContainers {
-  key name : String(255);
+entity apim_metadata.PolicyTemplateContainers {
+  key name : String(255) not null;
   description : String(4096);
-  life_cycle : apiportal.History;
+  life_cycle : apim_metadata.History;
   proxyEndPointxml : LargeString;
   targetEndPointxml : LargeString;
   title : String(255);
   version : String(10);
   @cds.ambiguous : 'missing on condition?'
-  fileResources : Association to many apiportal.TemplateFileResources on fileResources.FK_TEMPLATE_NAME = name;
+  fileResources : Association to many apim_metadata.TemplateFileResources on fileResources.FK_TEMPLATE_NAME = name;
   @cds.ambiguous : 'missing on condition?'
-  policies : Association to many apiportal.TemplatePolicys on policies.FK_TEMPLATE_NAME = name;
+  policies : Association to many apim_metadata.TemplatePolicys on policies.FK_TEMPLATE_NAME = name;
 };
 
+@cds.external : true
 @cds.persistence.skip : true
-entity apiportal.FaultRules {
-  key id : String(36);
+entity apim_metadata.FaultRules {
+  key id : String(36) not null;
   condition : LargeString;
   name : String(255);
   FK_PROXYENDPOINT_ID : String(36);
   FK_ROUTERULE_ID : String(36);
   FK_TARGETENDPOINT_ID : String(36);
   @cds.ambiguous : 'missing on condition?'
-  proxyEndPoint : Association to apiportal.APIProxyEndPoints on proxyEndPoint.id = FK_PROXYENDPOINT_ID;
+  proxyEndPoint : Association to apim_metadata.APIProxyEndPoints on proxyEndPoint.id = FK_PROXYENDPOINT_ID;
   @cds.ambiguous : 'missing on condition?'
-  routeRule : Association to apiportal.RouteRules on routeRule.id = FK_ROUTERULE_ID;
+  routeRule : Association to apim_metadata.RouteRules on routeRule.id = FK_ROUTERULE_ID;
   @cds.ambiguous : 'missing on condition?'
-  steps : Association to many apiportal.Steps on steps.FK_FAULTRULE_ID = id;
+  steps : Association to many apim_metadata.Steps on steps.FK_FAULTRULE_ID = id;
   @cds.ambiguous : 'missing on condition?'
-  targetEndPoint : Association to apiportal.APITargetEndPoints on targetEndPoint.id = FK_TARGETENDPOINT_ID;
+  targetEndPoint : Association to apim_metadata.APITargetEndPoints on targetEndPoint.id = FK_TARGETENDPOINT_ID;
 };
 
+@cds.external : true
 @cds.persistence.skip : true
-entity apiportal.KeyMapEntryValues {
-  key map_name : String(255);
-  key name : String(255);
-  life_cycle : apiportal.History;
+entity apim_metadata.KeyMapEntryValues {
+  key map_name : String(255) not null;
+  key name : String(255) not null;
+  life_cycle : apim_metadata.History;
   value : String(10240);
   @cds.ambiguous : 'missing on condition?'
-  keyMapEntry : Association to apiportal.KeyMapEntries on keyMapEntry.name = map_name;
+  keyMapEntry : Association to apim_metadata.KeyMapEntries on keyMapEntry.name = map_name;
 };
 
+@cds.external : true
 @cds.persistence.skip : true
-entity apiportal.Bills {
-  key entityId : String(256);
-  key entityType : String(32);
-  @odata.type : 'Edm.DateTime'
-  @odata.precision : 0
-  key fromDate : DateTime;
-  @odata.type : 'Edm.DateTime'
-  @odata.precision : 0
-  key toDate : DateTime;
+entity apim_metadata.Bills {
+  key entityId : String(256) not null;
+  key entityType : String(32) not null;
+  @odata.Type : 'Edm.DateTime'
+  key fromDate : DateTime not null;
+  @odata.Type : 'Edm.DateTime'
+  key toDate : DateTime not null;
   billDetails : LargeString;
-  @odata.type : 'Edm.DateTime'
-  @odata.precision : 0
+  @odata.Type : 'Edm.DateTime'
   billGeneratedAt : DateTime;
   billGeneratedBy : String(255);
   billId : String(64);
@@ -657,16 +636,16 @@ entity apiportal.Bills {
   firstName : String(255);
   isoffboarded : Boolean;
   lastName : String(255);
-  @odata.type : 'Edm.DateTime'
-  @odata.precision : 0
+  @odata.Type : 'Edm.DateTime'
   offboardedDate : DateTime;
   status : String(64);
   total : Double;
 };
 
+@cds.external : true
 @cds.persistence.skip : true
-entity apiportal.APIResources {
-  key id : String(36);
+entity apim_metadata.APIResources {
+  key id : String(36) not null;
   FK_PROXYENDPOINT_ID : String(36);
   canShowDelete : Boolean;
   canShowGet : Boolean;
@@ -682,23 +661,24 @@ entity apiportal.APIResources {
   isPatchChecked : Boolean;
   isPostChecked : Boolean;
   isPutChecked : Boolean;
-  life_cycle : apiportal.History;
+  life_cycle : apim_metadata.History;
   name : String(1024);
   proxyEndPointName : LargeString;
   resource_path : LargeString;
   title : String(255);
   description : String(16000);
   @cds.ambiguous : 'missing on condition?'
-  apiProxyEndPoint : Association to apiportal.APIProxyEndPoints on apiProxyEndPoint.id = FK_PROXYENDPOINT_ID;
+  apiProxyEndPoint : Association to apim_metadata.APIProxyEndPoints on apiProxyEndPoint.id = FK_PROXYENDPOINT_ID;
   @cds.ambiguous : 'missing on condition?'
-  documentations : Association to many apiportal.Documentations on documentations.FK_APIRESOURCE_ID = id;
+  documentations : Association to many apim_metadata.Documentations on documentations.FK_APIRESOURCE_ID = id;
   @cds.ambiguous : 'missing on condition?'
-  resources : Association to many apiportal.Resources {  };
+  resources : Association to many apim_metadata.Resources {  };
 };
 
+@cds.external : true
 @cds.persistence.skip : true
-entity apiportal.ConditionalFlowRules {
-  key id : String(36);
+entity apim_metadata.ConditionalFlowRules {
+  key id : String(36) not null;
   FK_APIRESOURCE_ID : String(36);
   conditions : LargeString;
   name : String(1024);
@@ -709,41 +689,94 @@ entity apiportal.ConditionalFlowRules {
   sequence : Integer;
   FK_TARGETENDPOINT_ID : String(36);
   @cds.ambiguous : 'missing on condition?'
-  apiResource : Association to apiportal.APIResources on apiResource.id = FK_APIRESOURCE_ID;
+  apiResource : Association to apim_metadata.APIResources on apiResource.id = FK_APIRESOURCE_ID;
   @cds.ambiguous : 'missing on condition?'
-  proxyEndPoint : Association to apiportal.APIProxyEndPoints on proxyEndPoint.id = FK_PROXYENDPOINT_ID;
+  proxyEndPoint : Association to apim_metadata.APIProxyEndPoints on proxyEndPoint.id = FK_PROXYENDPOINT_ID;
   @cds.ambiguous : 'missing on condition?'
-  request : Association to apiportal.Streams on request.id = FK_REQUEST_ID;
+  request : Association to apim_metadata.Streams on request.id = FK_REQUEST_ID;
   @cds.ambiguous : 'missing on condition?'
-  response : Association to apiportal.Streams on response.id = FK_RESPONSE_ID;
+  response : Association to apim_metadata.Streams on response.id = FK_RESPONSE_ID;
   @cds.ambiguous : 'missing on condition?'
-  targetEndPoint : Association to apiportal.APITargetEndPoints on targetEndPoint.id = FK_TARGETENDPOINT_ID;
+  targetEndPoint : Association to apim_metadata.APITargetEndPoints on targetEndPoint.id = FK_TARGETENDPOINT_ID;
 };
 
+@cds.external : true
 @cds.persistence.skip : true
-entity apiportal.CertificateStores {
-  key name : String(200);
-  life_cycle : apiportal.History;
+entity apim_metadata.CertificateStores {
+  key name : String(200) not null;
+  life_cycle : apim_metadata.History;
   storeType : String(20);
   @cds.ambiguous : 'missing on condition?'
-  certificates : Association to many apiportal.Certificates on certificates.storeName = name;
+  certificates : Association to many apim_metadata.Certificates on certificates.storeName = name;
 };
 
+@cds.external : true
 @cds.persistence.skip : true
-entity apiportal.DestinationAndUrlMappings {
-  key id : String(36);
-  destination : String(256);
-  url : String(2048);
+entity apim_metadata.DestinationAndUrlMappings {
+  key id : String(36) not null;
+  destination : String(256) not null;
+  url : String(2048) not null;
 };
 
+@cds.external : true
 @cds.persistence.skip : true
-entity apiportal.Streams {
-  key id : String(36);
+entity apim_metadata.Streams {
+  key id : String(36) not null;
   FK_FLOW_ID : String(36);
   isRequest : Boolean;
   @cds.ambiguous : 'missing on condition?'
-  flow : Association to apiportal.FlowRules on flow.id = FK_FLOW_ID;
+  flow : Association to apim_metadata.FlowRules on flow.id = FK_FLOW_ID;
   @cds.ambiguous : 'missing on condition?'
-  steps : Association to many apiportal.Steps on steps.FK_STREAM_ID = id;
+  steps : Association to many apim_metadata.Steps on steps.FK_STREAM_ID = id;
+};
+
+@cds.external : true
+type apim_metadata.ExpirySettings {
+  @odata.Type : 'Edm.DateTime'
+  expiry_date : DateTime;
+  expiry_settings_override_disabled : Boolean;
+  time_out : Integer;
+  time_out_day : String(255);
+};
+
+@cds.external : true
+type apim_metadata.HealthMonitor {
+  httpMonitor : String(2048);
+  intervalInSec : Integer;
+  isEnabled : Boolean;
+  tcpMonitor : String(2048);
+};
+
+@cds.external : true
+type apim_metadata.LoadBalancerConfigurations {
+  algorithm : String(255);
+  fallBackServer : String(255);
+  HealthMonitor : apim_metadata.HealthMonitor;
+  isRetry : Boolean;
+  maxFailures : Integer;
+  serverUnhealthyResponseCode : String(255);
+  weigths : String(255);
+};
+
+@cds.external : true
+type apim_metadata.History {
+  @odata.Type : 'Edm.DateTime'
+  changed_at : DateTime;
+  changed_by : String(255);
+  @odata.Type : 'Edm.DateTime'
+  created_at : DateTime;
+  created_by : String(255);
+};
+
+@cds.external : true
+type apim_metadata.SSLInfo {
+  ciphers : String(255);
+  clientAuthEnabled : Boolean;
+  enabled : Boolean;
+  ignoreValidationErrors : Boolean;
+  keyAlias : String(255);
+  keyStore : String(255);
+  protocols : String(255);
+  trustStore : String(255);
 };
 

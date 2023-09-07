@@ -1,5 +1,5 @@
 global:
-  domain: null
+  domain: <your kyma cluster>
   imagePullSecret:
     name: regcred
 srv:
@@ -9,7 +9,7 @@ srv:
     destinations:
       serviceInstanceName: destinations
   image:
-    repository: <your_docker_account>/api-federation-cap
+    repository: <your docker username>/api-federation-cap
     tag: latest
   resources:
     limits:

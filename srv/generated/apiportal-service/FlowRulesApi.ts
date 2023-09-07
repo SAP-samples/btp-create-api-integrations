@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 SAP SE or an SAP affiliate company. All rights reserved.
+ * Copyright (c) 2023 SAP SE or an SAP affiliate company. All rights reserved.
  *
  * This is a generated file powered by the SAP Cloud SDK for JavaScript.
  */
@@ -25,8 +25,22 @@ export class FlowRulesApi<
 {
   public deSerializers: DeSerializersT;
 
-  constructor(deSerializers: DeSerializersT = defaultDeSerializers as any) {
+  private constructor(
+    deSerializers: DeSerializersT = defaultDeSerializers as any
+  ) {
     this.deSerializers = deSerializers;
+  }
+
+  /**
+   * Do not use this method or the constructor directly.
+   * Use the service function as described in the documentation to get an API instance.
+   */
+  public static _privateFactory<
+    DeSerializersT extends DeSerializers = DefaultDeSerializers
+  >(
+    deSerializers: DeSerializersT = defaultDeSerializers as any
+  ): FlowRulesApi<DeSerializersT> {
+    return new FlowRulesApi(deSerializers);
   }
 
   private navigationPropertyFields!: {

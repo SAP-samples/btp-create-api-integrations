@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 SAP SE or an SAP affiliate company. All rights reserved.
+ * Copyright (c) 2023 SAP SE or an SAP affiliate company. All rights reserved.
  *
  * This is a generated file powered by the SAP Cloud SDK for JavaScript.
  */
@@ -25,7 +25,7 @@ export class Bills<T extends DeSerializers = DefaultDeSerializers>
   /**
    * Default url path for the according service.
    */
-  static _defaultServicePath = '/apiportal/api/1.0/Management.svc';
+  static _defaultBasePath = '/apiportal/api/1.0/Management.svc';
   /**
    * All key fields of the Bills entity
    */

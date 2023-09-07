@@ -45,6 +45,7 @@ class ApiReceiver extends ApplicationService {
   }
 
   private getApiMetadata = async (eventData: ApiEvent): Promise<NewApiData> => {
+    //@ts-ignore
     const azureapi: Service = await cds.connect.to("azureapi");
     const { subject } = eventData;
     const apiYaml = <unknown>(

@@ -1,0 +1,7 @@
+{
+  "service-specifications/apim_metadata.edmx": {
+    "packageName": "apiportal-service",
+    "directoryName": "apiportal-service",
+    "basePath": "/apiportal/api/1.0/Management.svc"
+  }
+}

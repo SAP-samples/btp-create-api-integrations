@@ -14,5 +14,5 @@ spec:
             principals:
               - cluster.local/ns/istio-system/sa/istio-ingressgateway-service-account
             requestPrincipals:
-              - "https://sts.windows.net/<Azure tenant ID>/*"
+              - "https://sts.windows.net/<your Azure tenant id>/*"
                 

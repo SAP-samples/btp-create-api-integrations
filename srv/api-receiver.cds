@@ -1,6 +1,6 @@
-using {apiportal as external} from './external/apim_metadata';
+using {apim_metadata as external} from './external/apim_metadata';
 
-@path : 'apiReceiver'
+@path : '/apiReceiver'
 @cds.persistence.skip
 service ApiReceiver {
     entity dataObject {
@@ -15,7 +15,7 @@ service ApiReceiver {
         datacontenttype : String;
         subject         : String;
         time            : String;
-        virtual data    : Composition of one dataObject @Core.Computed : false;
+        data            : Composition of one dataObject @Core.Computed : false;
     };
 
     entity APIProducts        as

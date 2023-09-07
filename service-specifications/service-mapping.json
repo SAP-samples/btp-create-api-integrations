@@ -1,7 +1,0 @@
-{
-  "apim_metadata": {
-    "directoryName": "apiportal-service",
-    "servicePath": "/apiportal/api/1.0/Management.svc",
-    "npmPackageName": "apiportal-service"
-  }
-}
