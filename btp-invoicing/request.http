@@ -1,0 +1,7 @@
+POST http://localhost:4004/odata/v4/invoicing/createStripeInvoices
+Content-Type: application/json
+
+{
+   "month": "7",
+   "year": "2022" 
+}

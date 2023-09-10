@@ -115,6 +115,7 @@ target/
 # Web IDE, App Studio
 .che/
 .gen/
+.cdsrc-private.json
 
 # MTA
 *_mta_build_tmp

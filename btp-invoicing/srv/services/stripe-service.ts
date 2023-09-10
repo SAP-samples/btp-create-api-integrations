@@ -13,7 +13,7 @@ export default class StripeService {
 
     constructor(apiKey: string) {
         this.stripe = new Stripe(apiKey, {
-            apiVersion: '2020-08-27',
+            apiVersion: '2023-08-16',
         });
     }
 
@@ -55,6 +55,16 @@ export default class StripeService {
      */
     public createAndSendInvoice = async (bill: BillResponse, customer: Stripe.Customer): Promise<boolean> => {
         if (!await this.invoiceExists(bill)) {
+            // Create the Invoice
+            const invoice = await this.stripe.invoices.create({
+                customer: customer.id,
+                collection_method: "send_invoice",
+                days_until_due: 30,
+                description: bill.billId,
+                metadata: {
+                    billId: bill.billId
+                }
+            });
             // Create all invoice items/positions from the bill
             for await (const position of bill.apps) {
                 const appName: string = position.appName;
@@ -63,9 +73,9 @@ export default class StripeService {
                 const calls: number = position.ratePlanSubscribed[0][0].calls;
                 const start: number = moment(bill.startDate, "YYYY/MM/DDTHH:mm:SS").valueOf() / 1000;
                 const end: number = moment(bill.endDate, "YYYY/MM/DDTHH:mm:SS").valueOf() / 1000
-
                 await this.stripe.invoiceItems.create({
                     customer: customer.id,
+                    invoice: invoice.id,
                     amount: position.bill.value * 100, //amount needs to be passed in 'cents'
                     currency: currencyMapping.get(position.bill.currency.toLowerCase()),
                     period: {
@@ -82,17 +92,6 @@ export default class StripeService {
                 });
             }
 
-            // Create the Invoice
-            const invoice = await this.stripe.invoices.create({
-                customer: customer.id,
-                collection_method: "send_invoice",
-                days_until_due: 30,
-                description: bill.billId,
-                metadata: {
-                    billId: bill.billId
-                }
-            });
-
             // Send the Invoice
             await this.stripe.invoices.sendInvoice(invoice.id);
             return true
@@ -108,7 +107,8 @@ export default class StripeService {
      */
     private invoiceExists = async (bill: BillResponse): Promise<boolean> => {
         const potentialInvoice: Stripe.ApiSearchResult<Stripe.Invoice> = await this.stripe.invoices.search({ query: `metadata["billId"]: "${bill.billId}"` })
-        return potentialInvoice.data.length > 0
+        console.log(potentialInvoice.data.length);
+        return potentialInvoice.data.length < 0
     }
 
     /**

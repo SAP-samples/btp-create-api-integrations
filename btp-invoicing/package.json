@@ -6,15 +6,15 @@
   "license": "UNLICENSED",
   "private": true,
   "dependencies": {
-    "@sap-cloud-sdk/http-client": "2.6.0",
-    "@sap-cloud-sdk/openapi": "^2.9.0",
-    "@sap/cds": "^6",
-    "@sap/cds-dk": "^6.0.4",
+    "@sap-cloud-sdk/http-client": "3.4.0",
+    "@sap-cloud-sdk/openapi": "^3.4.0",
+    "@sap/cds": "^7.2",
+    "@sap/cds-dk": "^7.2",
     "express": "^4",
     "hdb": "^0.18.3",
     "moment": "^2.29.4",
     "passport": "^0.6.0",
-    "stripe": "^9.13.0"
+    "stripe": "^13.5.0"
   },
   "devDependencies": {
     "cross-var": "^1.1.0",
