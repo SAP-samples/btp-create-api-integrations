@@ -139,6 +139,8 @@ kubeconfig.yaml
 tutorial-kubeconfig.yaml
 orders_vcap_services.json
 commands.txt
+launch.json
+.vscode/
 
 templates/*
 credentials/*

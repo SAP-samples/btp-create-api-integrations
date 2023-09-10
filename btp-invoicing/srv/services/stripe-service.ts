@@ -107,8 +107,7 @@ export default class StripeService {
      */
     private invoiceExists = async (bill: BillResponse): Promise<boolean> => {
         const potentialInvoice: Stripe.ApiSearchResult<Stripe.Invoice> = await this.stripe.invoices.search({ query: `metadata["billId"]: "${bill.billId}"` })
-        console.log(potentialInvoice.data.length);
-        return potentialInvoice.data.length < 0
+        return potentialInvoice.data.length > 0
     }
 
     /**
