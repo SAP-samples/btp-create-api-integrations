@@ -4,7 +4,7 @@
 - Setup Phase
   - [Setup SAP BTP low code solutions with boosters](https://github.com/SAP-docs/btp-cloud-platform/blob/main/docs/30-development/boosters-fb1b561.md)
   - [Subscribe to SAP Integration Suite](./01-GettingStartedGuide/01-02-Subscribe-Integration-Suite.md)
-  - [Deploy SAP BTP, Kyma runtime](https://github.com/SAP-docs/btp-cloud-platform/blob/main/docs/50-administration-and-ops/create-the-kyma-environment-instance-09dd313.md)
+  - [Deploy SAP BTP, Kyma runtime](https://help.sap.com/docs/btp/sap-business-technology-platform/create-kyma-environment-instance)
   - [Activate the API Management capability in SAP Integration Suite](./01-GettingStartedGuide/01-04-Activate-API-Management.md)
   - [Create service instances for API access](./01-GettingStartedGuide/01-05-Create-service-instances.md)
 - Low code developer portal
