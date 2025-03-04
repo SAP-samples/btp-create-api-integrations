@@ -2,6 +2,8 @@
 
 # Create simple, connected experiences with API-based integration
 
+This repository is now archived as of Q1 '25
+
 ## Description
 Build a unified catalog and a developer portal for all APIs, regardless of where they're managed. Create your own digital experiences with SAP Build Apps, SAP Integration Suite, and SAP Build Process Automation to operationalize access requests, federate API from disparate gateways, and monetize their use.
 
